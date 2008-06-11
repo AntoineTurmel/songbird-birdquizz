@@ -7,3 +7,5 @@ http://antoineturmel.free.fr/img/icon1.png
 http://antoineturmel.free.fr/img/icon2.png
 http://antoineturmel.free.fr/img/icon3.png
 http://antoineturmel.free.fr/img/icon4.png
+http://antoineturmel.free.fr/img/icon5.png
+http://antoineturmel.free.fr/img/icon6.png
