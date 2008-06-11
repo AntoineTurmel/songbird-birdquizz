@@ -54,11 +54,15 @@ window.mediaPage = {
 
   get choices() { return this._choices; },
 
+  get maxRounds() { return this._maxRounds; },
+
   get rounds() { return this._rounds; },
 
   get score() { return this._score; },
 
   set choices(value) { this._choices = value; },
+
+  set maxRounds(value) { this._maxRounds = value; },
 
   set rounds(value) { this._rounds = value; },
 
@@ -88,7 +92,8 @@ window.mediaPage = {
     this._playlist = document.getElementById("playlist");
 
     this.choices = 5;
-    this.rounds = 3;
+    this.maxRounds = 3;
+    this.rounds = this.maxRounds;
 
     this.score = 0;
 
@@ -185,7 +190,7 @@ window.mediaPage = {
     if (this.rounds <= 0)
     {
         this.showFinalScore();
-        this.rounds = 3;
+        this.rounds = this.maxRounds;
         this.score = 0;
         var scoreLabel = document.getElementById("score");
         scoreLabel.setAttribute("value", "");
