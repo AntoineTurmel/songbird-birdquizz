@@ -91,8 +91,18 @@ window.mediaPage = {
 
     this._playlist = document.getElementById("playlist");
 
-    this.choices = 5;
-    this.maxRounds = 3;
+	  // Preferences
+    var Cc = Components.classes;
+    var Ci = Components.interfaces;
+    const prefchoices	= "extensions.birdquizz.choices";
+    const prefmaxRounds	= "extensions.birdquizz.maxRounds";
+    var prefs = Cc["@mozilla.org/preferences-service;1"].
+		getService(Ci.nsIPrefBranch2);
+
+    this.choices = prefs.getCharPref(prefchoices);
+    this.maxRounds =  prefs.getCharPref(prefmaxRounds);
+    //this.choices = 5;
+    //this.maxRounds = 3;
     this.rounds = this.maxRounds;
 
     this.score = 0;
