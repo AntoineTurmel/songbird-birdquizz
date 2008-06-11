@@ -2,21 +2,16 @@
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#"
      xmlns:songbird="http://www.songbirdnest.com/2007/addon-metadata-rdf#">
   <Description about="urn:mozilla:install-manifest">
-    <em:id>{fbf32071-b7fc-402b-b6fd-86e50abe1d20}</em:id>
+    <em:id>BirdQuizz@songbirdnest.com</em:id>
     <em:type>2</em:type>
     <em:name>BirdQuizz</em:name>
-    <em:version>1.0.0.0</em:version>
-    <em:creator>GeekShadow</em:creator>
-
-
+    <em:version>1.0</em:version>
+    <em:creator>Mitch and GeekShadow</em:creator>
     <em:description>What is the song ?</em:description>
+    <em:iconURL>chrome://birdquizz/skin/icon.png</em:iconURL>
+    <em:homepageURL>http://code.google.com/p/songbird-birdquizz/</em:homepageURL>
 
-
-
-
-
-
-
+    <!-- Songbird -->
     <em:targetApplication>
       <Description>
         <em:id>songbird@songbirdnest.com</em:id>
@@ -24,12 +19,6 @@
         <em:maxVersion>0.7pre</em:maxVersion>
       </Description>
     </em:targetApplication>
-
-
-
-
-
-
 
     <!-- Register a custom media page.
          See http://songbirdnest.com/add-on-api/articles/media-pages -->
