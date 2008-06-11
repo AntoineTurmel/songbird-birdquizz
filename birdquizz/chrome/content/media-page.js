@@ -176,6 +176,8 @@ window.mediaPage = {
     if (!node)
     {
         this.createButtons();
+        var scoreLabel = document.getElementById("score");
+        scoreLabel.setAttribute("value", 0);
         var start = document.getElementById("start");
         start.disabled = true;
     }
@@ -185,6 +187,8 @@ window.mediaPage = {
         this.showFinalScore();
         this.rounds = 3;
         this.score = 0;
+        var scoreLabel = document.getElementById("score");
+        scoreLabel.setAttribute("value", "");
         var start = document.getElementById("start");
         start.disabled = false;
         this.deleteButtons();
@@ -260,7 +264,7 @@ window.mediaPage = {
     // this.startPosition = start;
     if (answer == currentTrack)
     {
-        var score = position ? parseInt(10000 / position) : 0;
+        var score = position ? parseInt(16000 / position) : 0;
         this.score += score;
         var scoreLabel = document.getElementById("score");
         scoreLabel.setAttribute("value", this.score);
