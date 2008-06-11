@@ -8,7 +8,6 @@ if (typeof(Cu) == "undefined")
 if (typeof(Cr) == "undefined")
   var Cr = Components.results;
 
-
 /**
  * Media Page Controller
  *
@@ -22,14 +21,13 @@ if (typeof(Cr) == "undefined")
  * delegated to the sb-playlist widget.
  */
 window.mediaPage = {
-    
+
     // The sbIMediaListView that this page is to display
   _mediaListView: null,
-    
+
     // The sb-playlist XBL binding
   _playlist: null, 
-    
-  
+
   /** 
    * Gets the sbIMediaListView that this page is displaying
    */
@@ -37,8 +35,7 @@ window.mediaPage = {
   {
     return this._mediaListView;
   },
-  
-  
+
   /** 
    * Set the sbIMediaListView that this page is to display.
    * Called in the capturing phase of window load by the Songbird browser.
@@ -46,7 +43,6 @@ window.mediaPage = {
    */
   set mediaListView(value)
   {
-    
     if (!this._mediaListView) {
       this._mediaListView = value;
     } else {
@@ -54,10 +50,19 @@ window.mediaPage = {
     }
   },
 
-  set startPosition(value)
-  {
-    this._startPos = value;
-  },
+  set startPosition(value){ this._startPos = value; },
+
+  get choices() { return this._choices; },
+
+  get rounds() { return this._rounds; },
+
+  get score() { return this._score; },
+
+  set choices(value) { this._choices = value; },
+
+  set rounds(value) { this._rounds = value; },
+
+  set score(value) { this._score = value; },
 
   /** 
    * Called when the page finishes loading.  
@@ -66,71 +71,37 @@ window.mediaPage = {
    */
   onLoad: function(e)
   {
-  
-    // Make sure we have the javascript modules we're going to use
+    // Make sure we have the JavaScript modules we're going to use
     if (!window.SBProperties) 
       Cu.import("resource://app/jsmodules/sbProperties.jsm");
     if (!window.LibraryUtils) 
       Cu.import("resource://app/jsmodules/sbLibraryUtils.jsm");
     if (!window.kPlaylistCommands) 
       Cu.import("resource://app/jsmodules/kPlaylistCommands.jsm");
-    
+
     if (!this._mediaListView) {
       Components.utils.reportError("Media Page did not receive  " + 
                                    "a mediaListView before the onload event!");
       return;
     } 
-    
+
     this._playlist = document.getElementById("playlist");
-	var aChoice = document.getElementById("aChoice");
-    // var agoodchoice = document.getElementById("agoodchoice");
 
-    const CHOICES = 5;
+    this.choices = 5;
+    this.rounds = 3;
 
-    var mediaList = this._mediaListView.mediaList;
-    var choice, item, r;
-    var buttons = new Array();
-    var ml = new Array();
-
-    for (var i = 1; i < mediaList.length; i++)
-    {
-        ml.push(mediaList.getItemByIndex(i));
-    }
-
-    // Create the buttons
-    for (var i = 0; i < CHOICES; i++)
-    {
-        choice = document.createElement("button");
-        r = parseInt(Math.random() * (ml.length - 1));
-        item = ml[r];
-        ml.splice(r, 1);
-        choice.setAttribute("id", "choice" + i.toString());
-        choice.setAttribute("label", "");
-        choice.setAttribute("onclick", "window.mediaPage.selectAnswer(event);");
-        buttons.push(choice);
-        aChoice.appendChild(buttons[i]);
-    }
-    //
-
-    /*
-    var goodchoice = document.createElement("observes");
-    goodchoice.setAttribute("type","dataremote");
-    goodchoice.setAttribute("key","metadata.title");
-    goodchoice.setAttribute("attribute","label");
-    agoodchoice.appendChild(goodchoice);
-    */
+    this.score = 0;
 
     // Get playlist commands (context menu, keyboard shortcuts, toolbar)
     // Note: playlist commands currently depend on the playlist widget.
     var mgr = Cc["@songbirdnest.com/Songbird/PlaylistCommandsManager;1"]
                 .createInstance(Ci.sbIPlaylistCommandsManager);
     var cmds = mgr.request(kPlaylistCommands.MEDIAITEM_DEFAULT);
-    
+
     // Set up the playlist widget
     this._playlist.bind(this._mediaListView, cmds);
   },
 
-    
   /** 
    * Called as the window is about to unload
    */
@@ -141,8 +112,7 @@ window.mediaPage = {
       this._playlist = null;
     }
   },
-    
-  
+
   /** 
    * Show/highlight the MediaItem at the given MediaListView index.
    * Called by the Find Current Track button.
@@ -151,8 +121,7 @@ window.mediaPage = {
   {
     this._playlist.highlightItem(aIndex);
   },
-    
-  
+
   /** 
    * Called when something is dragged over the tabbrowser tab for this window
    */
@@ -160,8 +129,7 @@ window.mediaPage = {
   {
     return this._playlist.canDrop(aEvent, aSession);
   },
-    
-  
+
   /** 
    * Called when something is dropped on the tabbrowser tab for this window
    */
@@ -171,40 +139,64 @@ window.mediaPage = {
                ._dropOnTree(this._playlist.mediaListView.length,
                             Ci.sbIMediaListViewTreeViewObserver.DROP_AFTER);
   },
-
-  confirmAnswer: function()
-  {
-    alert(document.getElementById('choice1').label);
-  },
-  
-  startQuiz: function()
-  {
-  },
   
   showFinalScore: function()
   {
+    alert("Game finished! Your final score was " + (this.score).toString() + " points.");
   },
-  
+
+  createButtons: function()
+  {
+    var mediaList = this._mediaListView.mediaList;
+    var choice, item, r;
+    var ml = new Array();
+    var aChoice = document.getElementById("aChoice");
+
+    for (var i = 1; i < mediaList.length; i++)
+    {
+        ml.push(mediaList.getItemByIndex(i));
+    }
+
+    for (var i = 0; i < this.choices; i++)
+    {
+        choice = document.createElement("button");
+        r = parseInt(Math.random() * (ml.length - 1));
+        item = ml[r];
+        ml.splice(r, 1);
+        choice.setAttribute("id", "choice" + i.toString());
+        choice.setAttribute("label", "");
+        choice.setAttribute("onclick", "window.mediaPage.selectAnswer(event);");
+        aChoice.appendChild(choice);
+    }
+  },
+
   setButtons: function()
   {
-  
-    // Make sure we have the javascript modules we're going to use
-    if (!window.SBProperties) 
+    var node = document.getElementById("choice0");
+    if (!node)
+        this.createButtons();
+    if (this.rounds <= 0)
+    {
+        this.showFinalScore();
+        this.deleteButtons();
+        this.rounds = 3;
+        this.score = 0;
+        return;
+    }
+
+    // Make sure we have the JavasSript modules we're going to use
+    if (!window.SBProperties)
       Cu.import("resource://app/jsmodules/sbProperties.jsm");
-    if (!window.LibraryUtils) 
+    if (!window.LibraryUtils)
       Cu.import("resource://app/jsmodules/sbLibraryUtils.jsm");
-    if (!window.kPlaylistCommands) 
+    if (!window.kPlaylistCommands)
       Cu.import("resource://app/jsmodules/kPlaylistCommands.jsm");
     
     if (!this._mediaListView) {
       Components.utils.reportError("Media Page did not receive  " + 
                                    "a mediaListView before the onload event!");
       return;
-    } 
-    
-    this._playlist = document.getElementById("playlist");
-
-    const CHOICES = 5;
+    }
 
     var mediaList = this._mediaListView.mediaList;
     var choice, item, r;
@@ -216,8 +208,8 @@ window.mediaPage = {
         ml.push(mediaList.getItemByIndex(i));
     }
 
-    // Modify the buttons
-    for (var i = 0; i < CHOICES; i++)
+    // Set the buttons
+    for (var i = 0; i < this.choices; i++)
     {
         choice = document.getElementById("choice" + i.toString());
         r = parseInt(Math.random() * (ml.length - 1));
@@ -227,32 +219,24 @@ window.mediaPage = {
         choice.setAttribute("url", item.getProperty(SBProperties.contentURL));
         buttons.push(choice);
     }
+    //
 
-    var rb = parseInt(Math.random() * (CHOICES - 1));
+    var rb = parseInt(Math.random() * (this.choices - 1));
 
     this.playTrackSample(buttons[rb].getAttribute("url"));
-    //
+
+    this.rounds--;
+  },
+
+  deleteButtons: function()
+  {
+    var aChoice = document.getElementById("aChoice");
+    while (aChoice.hasChildNodes > 0)
+        aChoice.removeChild(aChoice.firstChild);
   },
 
   playTrackSample: function(url)
   {
-  
-    // Make sure we have the JavaScript modules we're going to use
-    if (!window.SBProperties) 
-      Cu.import("resource://app/jsmodules/sbProperties.jsm");
-    if (!window.LibraryUtils) 
-      Cu.import("resource://app/jsmodules/sbLibraryUtils.jsm");
-    if (!window.kPlaylistCommands) 
-      Cu.import("resource://app/jsmodules/kPlaylistCommands.jsm");
-    
-    if (!this._mediaListView) {
-      Components.utils.reportError("Media Page did not receive  " + 
-                                   "a mediaListView before the onload event!");
-      return;
-    }
-
-    this._playlist = document.getElementById("playlist");
-    
     var pPS = Cc["@songbirdnest.com/Songbird/PlaylistPlayback;1"]
                 .getService(Ci.sbIPlaylistPlayback);
     pPS.playURL(url);
@@ -265,13 +249,16 @@ window.mediaPage = {
                 .getService(Ci.sbIPlaylistPlayback);
     var currentTrack = pPS.currentURL;
     var position = pPS.position;
+    pPS.stop();
     // this.startPosition = start;
     if (answer == currentTrack)
     {
         var score = position ? parseInt(10000 / position) : 0;
+        this.score += score;
         alert("Correct! You scored " + score + " points.");
-        this.setButtons();
     }
+    
+    this.setButtons();
   }
 
 } // End window.mediaPage

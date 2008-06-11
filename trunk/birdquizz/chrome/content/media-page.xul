@@ -46,21 +46,17 @@
     <textbox id="timeleft"/>
     <label control="score" value="Score :"/>
     <textbox id="score"/>
-    <label control="title" value="Title :"/>
-    <textbox id="debug"/>
-    <label value="debug"/>
+    <!--<label control="title" value="Title :"/>
   <textbox>
     <observes type="dataremote" key="metadata.title" attribute="value"/>
-  </textbox>
+  </textbox>-->
   </hbox>
-      <vbox uri="start"  align="center">
-        <button id="start"   label="Start!" oncommand="window.mediaPage.setButtons();"/>
+      <vbox uri="start" align="center">
+        <button id="start" label="Start!" oncommand="window.mediaPage.setButtons();"/>
       </vbox>
       <groupbox>
    <caption label="Choice"/>
-      <vbox id="aChoice" uri="choice" align="left">
-        <!--<button id="agoodchoice"></button>-->
-      </vbox> 
+      <vbox id="aChoice" uri="choice" align="left"/>
       </groupbox>
        <!--<box id="aBox" width="200">
   <button label="Ajouter" oncommand="addButton();"/>
