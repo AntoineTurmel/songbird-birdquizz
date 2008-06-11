@@ -91,18 +91,7 @@ window.mediaPage = {
 
     this._playlist = document.getElementById("playlist");
 
-	  // Preferences
-    var Cc = Components.classes;
-    var Ci = Components.interfaces;
-    const prefchoices	= "extensions.birdquizz.choices";
-    const prefmaxRounds	= "extensions.birdquizz.maxRounds";
-    var prefs = Cc["@mozilla.org/preferences-service;1"].
-		getService(Ci.nsIPrefBranch2);
-
-    this.choices = prefs.getCharPref(prefchoices);
-    this.maxRounds =  prefs.getCharPref(prefmaxRounds);
-    //this.choices = 5;
-    //this.maxRounds = 3;
+    this.readPrefs();
     this.rounds = this.maxRounds;
 
     this.score = 0;
@@ -162,6 +151,7 @@ window.mediaPage = {
 
   createButtons: function()
   {
+    this.readPrefs();
     var mediaList = this._mediaListView.mediaList;
     var choice, item, r;
     var ml = new Array();
@@ -200,6 +190,7 @@ window.mediaPage = {
     if (this.rounds <= 0)
     {
         this.showFinalScore();
+        this.readPrefs();
         this.rounds = this.maxRounds;
         this.score = 0;
         var scoreLabel = document.getElementById("score");
@@ -286,6 +277,18 @@ window.mediaPage = {
     }
     
     this.setButtons();
+  },
+
+  readPrefs: function()
+  {
+	// Preferences
+    const prefchoices = "extensions.birdquizz.choices";
+    const prefmaxRounds	= "extensions.birdquizz.maxRounds";
+    var prefs = Cc["@mozilla.org/preferences-service;1"]
+                  .getService(Ci.nsIPrefBranch2);
+
+    this.choices = prefs.getCharPref(prefchoices);
+    this.maxRounds = prefs.getCharPref(prefmaxRounds);
   }
 
 } // End window.mediaPage
