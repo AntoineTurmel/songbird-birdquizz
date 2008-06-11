@@ -1,0 +1,9 @@
+#labels Phase-Design
+Some ideas for iconURL
+
+Current : http://antoineturmel.free.fr/img/dice.png
+Ideas :
+http://antoineturmel.free.fr/img/icon1.png
+http://antoineturmel.free.fr/img/icon2.png
+http://antoineturmel.free.fr/img/icon3.png
+http://antoineturmel.free.fr/img/icon4.png
