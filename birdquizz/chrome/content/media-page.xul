@@ -43,9 +43,9 @@
   </vbox>
   <hbox>
     <label control="timeleft" value="Time Left:"/>
-    <textbox id="timeleft"/>
+    <textbox id="timeleft" disabled="true"/>
     <label control="score" value="Score :"/>
-    <textbox id="score"/>
+    <textbox id="score" disabled="true"/>
     <!--<label control="title" value="Title :"/>
   <textbox>
     <observes type="dataremote" key="metadata.title" attribute="value"/>
