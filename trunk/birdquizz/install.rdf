@@ -7,7 +7,7 @@
     <em:name>BirdQuizz</em:name>
     <em:version>1.0</em:version>
     <em:creator>Mitch and GeekShadow</em:creator>
-    <em:description>What is the song ?</em:description>
+    <em:description>Identify songs in your collection.</em:description>
     <em:iconURL>chrome://birdquizz/skin/icon.png</em:iconURL>
     <em:homepageURL>http://code.google.com/p/songbird-birdquizz/</em:homepageURL>
 
@@ -15,7 +15,7 @@
     <em:targetApplication>
       <Description>
         <em:id>songbird@songbirdnest.com</em:id>
-        <em:minVersion>0.5pre</em:minVersion>
+        <em:minVersion>0.5</em:minVersion>
         <em:maxVersion>0.7pre</em:maxVersion>
       </Description>
     </em:targetApplication>
