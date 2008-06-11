@@ -174,13 +174,20 @@ window.mediaPage = {
   {
     var node = document.getElementById("choice0");
     if (!node)
+    {
         this.createButtons();
+        var start = document.getElementById("start");
+        start.disabled = true;
+    }
+
     if (this.rounds <= 0)
     {
         this.showFinalScore();
-        this.deleteButtons();
         this.rounds = 3;
         this.score = 0;
+        var start = document.getElementById("start");
+        start.disabled = false;
+        this.deleteButtons();
         return;
     }
 
@@ -231,7 +238,7 @@ window.mediaPage = {
   deleteButtons: function()
   {
     var aChoice = document.getElementById("aChoice");
-    while (aChoice.hasChildNodes > 0)
+    while (aChoice.hasChildNodes)
         aChoice.removeChild(aChoice.firstChild);
   },
 
@@ -255,7 +262,8 @@ window.mediaPage = {
     {
         var score = position ? parseInt(10000 / position) : 0;
         this.score += score;
-        alert("Correct! You scored " + score + " points.");
+        var scoreLabel = document.getElementById("score");
+        scoreLabel.setAttribute("value", this.score);
     }
     
     this.setButtons();
