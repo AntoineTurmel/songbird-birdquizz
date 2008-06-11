@@ -10,6 +10,7 @@
     <em:description>Identify songs in your collection.</em:description>
     <em:iconURL>chrome://birdquizz/skin/icon.png</em:iconURL>
     <em:homepageURL>http://code.google.com/p/songbird-birdquizz/</em:homepageURL>
+    <em:optionsURL>chrome://birdquizz/content/optionsWindow.xul</em:optionsURL>
 
     <!-- Songbird -->
     <em:targetApplication>
