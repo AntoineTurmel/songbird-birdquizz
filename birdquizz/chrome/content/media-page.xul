@@ -47,26 +47,19 @@
     <label control="score" value="Score :"/>
     <textbox id="score"/>
     <label control="title" value="Title :"/>
+    <textbox id="debug"/>
+    <label value="debug"/>
   <textbox>
     <observes type="dataremote" key="metadata.title" attribute="value"/>
   </textbox>
   </hbox>
       <vbox uri="start"  align="center">
-        <button id="start"   label="Start!" />
+        <button id="start"   label="Start!" oncommand="window.mediaPage.setButtons();"/>
       </vbox>
       <groupbox>
    <caption label="Choice"/>
       <vbox id="aChoice" uri="choice" align="left">
-        <button id="agoodchoice">
-        </button>
-        <!-- <button>
-        <observes type="dataremote" key="metadata.title" attribute="label"/>
-        </button>
-        <button id="choice1" label="choice 1"/>
-        <button id="choice2" label="choice 2"/>
-        <button id="choice3" label="choice 3"/>
-        <button id="choice4" label="choice 4"/>
-        <button id="choice5" label="choice 5"/>-->
+        <!--<button id="agoodchoice"></button>-->
       </vbox> 
       </groupbox>
        <!--<box id="aBox" width="200">
