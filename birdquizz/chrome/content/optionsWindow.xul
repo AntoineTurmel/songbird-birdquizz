@@ -4,7 +4,7 @@
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         onload="birdquizzPrefsPane.openPreferences(); window.close();">
 
-	<script type="application/x-javascript" 
+	<script type="application/x-javascript"
 		src="chrome://birdquizz/content/bqPrefs.js"/>
 
 </window>
