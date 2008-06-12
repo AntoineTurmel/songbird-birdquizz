@@ -1,5 +1,6 @@
 content birdquizz  chrome/content/
 locale  birdquizz  en-US  chrome/locale/en-US/
+locale  birdquizz  fr-FR  chrome/locale/fr-FR/
 skin    birdquizz  classic/1.0 chrome/skin/
 
 
