@@ -7,10 +7,10 @@
 		src="chrome://birdquizz/content/bqPrefs.js"/>
 
 	<prefpane id="paneBQ" onpaneload="birdquizzPrefsPane.handleLoad();">
-		<preferences>
+        <preferences>
 			<preference id="choices" name="extensions.birdquizz.choices"
 				type="string" />
-							<preference id="maxRounds" name="extensions.birdquizz.maxRounds"
+            <preference id="maxRounds" name="extensions.birdquizz.maxRounds"
 				type="string" />
 		</preferences>
 		
@@ -20,11 +20,11 @@
 				<label value="Choices :" style="width:8em" />
 				<textbox preference="choices" size="4" />
 			</hbox>
-						<hbox flex="1">
+            <hbox flex="1">
 				<label value="Maximum Rounds :" style="width:8em" />
 				<textbox preference="maxRounds" size="4" />
-			</hbox>
-			</vbox>
+            </hbox>
+        </vbox>
 
 		<spacer flex="1" />
 	</prefpane>
