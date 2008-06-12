@@ -7,4 +7,3 @@ cd ..
 cd ..
 echo Deleting temp folder
 rmdir %TEMP%\birdquizz /S /Q
-pause
