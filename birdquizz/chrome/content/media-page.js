@@ -209,7 +209,7 @@ window.mediaPage = {
     if (answer == currentTrack)
     {
         // var score = position ? parseInt(16000 / (position - this.startPosition)) : 0;
-        var score = position ? parseInt(16000 / (position - this.startPosition)) : 0;
+        var score = position ? parseInt(16000 / position) : 0;
         this.score += score;
         var scoreLabel = document.getElementById("score");
         scoreLabel.setAttribute("value", this.score);
