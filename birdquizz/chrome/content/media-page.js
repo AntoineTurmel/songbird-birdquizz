@@ -50,22 +50,16 @@ window.mediaPage = {
     }
   },
 
-  set startPosition(value){ this._startPos = value; },
-
+  set startPosition(value) { this._startPos = value; },
   get choices() { return this._choices; },
-
+  get isRunning() { return this._isRunning; },
   get maxRounds() { return this._maxRounds; },
-
   get rounds() { return this._rounds; },
-
   get score() { return this._score; },
-
   set choices(value) { this._choices = value; },
-
+  set isRunning(value) { this._isRunning = value; },
   set maxRounds(value) { this._maxRounds = value; },
-
   set rounds(value) { this._rounds = value; },
-
   set score(value) { this._score = value; },
 
   /** 
@@ -143,11 +137,6 @@ window.mediaPage = {
                ._dropOnTree(this._playlist.mediaListView.length,
                             Ci.sbIMediaListViewTreeViewObserver.DROP_AFTER);
   },
-  
-  showFinalScore: function()
-  {
-    alert("Game finished! Your final score was " + (this.score).toString() + " points.");
-  },
 
   createButtons: function()
   {
@@ -175,6 +164,60 @@ window.mediaPage = {
     }
   },
 
+  deleteButtons: function()
+  {
+    var aChoice = document.getElementById("aChoice");
+    while (aChoice.hasChildNodes)
+        aChoice.removeChild(aChoice.firstChild);
+  },
+
+  endQuiz: function()
+  {
+    this.showFinalScore();
+    this.trackSamplePlayback("stop");
+    this.readPrefs();
+    this.rounds = this.maxRounds;
+    this.score = 0;
+    var scoreLabel = document.getElementById("score");
+    scoreLabel.setAttribute("value", "");
+    var start = document.getElementById("stop");
+    start.setAttribute("id", "start");
+    start.setAttribute("label", "Start");
+    this.deleteButtons();
+  },
+
+  readPrefs: function()
+  {
+	// Preferences
+    const prefchoices = "extensions.birdquizz.choices";
+    const prefmaxRounds	= "extensions.birdquizz.maxRounds";
+    var prefs = Cc["@mozilla.org/preferences-service;1"]
+                  .getService(Ci.nsIPrefBranch2);
+
+    this.choices = prefs.getCharPref(prefchoices);
+    this.maxRounds = prefs.getCharPref(prefmaxRounds);
+  },
+
+  selectAnswer: function(e)
+  {
+    var answer = (e.target).getAttribute("url");
+    var pPS = Cc["@songbirdnest.com/Songbird/PlaylistPlayback;1"]
+                .getService(Ci.sbIPlaylistPlayback);
+    var currentTrack = pPS.currentURL;
+    var position = pPS.position;
+    pPS.stop();
+    // this.startPosition = start;
+    if (answer == currentTrack)
+    {
+        var score = position ? parseInt(16000 / position) : 0;
+        this.score += score;
+        var scoreLabel = document.getElementById("score");
+        scoreLabel.setAttribute("value", this.score);
+    }
+    
+    this.setButtons();
+  },
+
   setButtons: function()
   {
     var node = document.getElementById("choice0");
@@ -184,20 +227,12 @@ window.mediaPage = {
         var scoreLabel = document.getElementById("score");
         scoreLabel.setAttribute("value", 0);
         var start = document.getElementById("start");
-        start.disabled = true;
+        start.setAttribute("id", "stop");
+        start.setAttribute("label", "Stop");
     }
-
-    if (this.rounds <= 0)
+    else if (this.rounds <= 0)
     {
-        this.showFinalScore();
-        this.readPrefs();
-        this.rounds = this.maxRounds;
-        this.score = 0;
-        var scoreLabel = document.getElementById("score");
-        scoreLabel.setAttribute("value", "");
-        var start = document.getElementById("start");
-        start.disabled = false;
-        this.deleteButtons();
+        this.endQuiz();
         return;
     }
 
@@ -240,55 +275,33 @@ window.mediaPage = {
 
     var rb = parseInt(Math.random() * (this.choices - 1));
 
-    this.playTrackSample(buttons[rb].getAttribute("url"));
+    this.trackSamplePlayback("play", buttons[rb].getAttribute("url"));
 
     this.rounds--;
   },
 
-  deleteButtons: function()
+  showFinalScore: function()
   {
-    var aChoice = document.getElementById("aChoice");
-    while (aChoice.hasChildNodes)
-        aChoice.removeChild(aChoice.firstChild);
+    alert("Game finished! Your final score was " + (this.score).toString() + " points.");
   },
 
-  playTrackSample: function(url)
+  startOrStop: function(e)
   {
-    var pPS = Cc["@songbirdnest.com/Songbird/PlaylistPlayback;1"]
-                .getService(Ci.sbIPlaylistPlayback);
-    pPS.playURL(url);
-  },
+    if ((e.target).getAttribute("id") == "stop")
+        this.rounds = 0;
 
-  selectAnswer: function(e)
-  {
-    var answer = (e.target).getAttribute("url");
-    var pPS = Cc["@songbirdnest.com/Songbird/PlaylistPlayback;1"]
-                .getService(Ci.sbIPlaylistPlayback);
-    var currentTrack = pPS.currentURL;
-    var position = pPS.position;
-    pPS.stop();
-    // this.startPosition = start;
-    if (answer == currentTrack)
-    {
-        var score = position ? parseInt(16000 / position) : 0;
-        this.score += score;
-        var scoreLabel = document.getElementById("score");
-        scoreLabel.setAttribute("value", this.score);
-    }
-    
     this.setButtons();
   },
 
-  readPrefs: function()
+  trackSamplePlayback: function(command, url)
   {
-	// Preferences
-    const prefchoices = "extensions.birdquizz.choices";
-    const prefmaxRounds	= "extensions.birdquizz.maxRounds";
-    var prefs = Cc["@mozilla.org/preferences-service;1"]
-                  .getService(Ci.nsIPrefBranch2);
+    var pPS = Cc["@songbirdnest.com/Songbird/PlaylistPlayback;1"]
+                .getService(Ci.sbIPlaylistPlayback);
 
-    this.choices = prefs.getCharPref(prefchoices);
-    this.maxRounds = prefs.getCharPref(prefmaxRounds);
+    if ((command == "play") && (url != null))
+        pPS.playURL(url);
+    else if (command == "stop")
+        pPS.stop();
   }
 
 } // End window.mediaPage

@@ -42,8 +42,8 @@
     <label value="BirdQuizz" />
   </vbox>
   <hbox>
-    <label control="timeleft" value="Time Left:"/>
-    <textbox id="timeleft" disabled="true"/>
+    <!--<label control="timeleft" value="Time Left:"/>
+    <textbox id="timeleft" disabled="true"/>-->
     <label control="score" value="Score :"/>
     <textbox id="score" disabled="true"/>
     <!--<label control="title" value="Title :"/>
@@ -52,10 +52,10 @@
   </textbox>-->
   </hbox>
       <vbox uri="start" align="center">
-        <button id="start" label="Start!" oncommand="window.mediaPage.setButtons();"/>
+        <button id="start" label="Start!" oncommand="window.mediaPage.startOrStop(event);"/>
       </vbox>
       <groupbox>
-   <caption label="Choice"/>
+   <caption label="Choices"/>
       <vbox id="aChoice" uri="choice" align="left"/>
       </groupbox>
        <!--<box id="aBox" width="200">
