@@ -253,7 +253,7 @@ window.mediaPage = {
     this.mediaListView.filterConstraint = LibraryUtils.standardFilterConstraint;
 
     var mediaList = this.mediaListView.mediaList;
-    var choice, item, isList, r;
+    var choice, item, r;
     var buttons = new Array();
     var ml = new Array();
 
