@@ -43,7 +43,7 @@ Birdquizz.Controller = {
   _firstRunSetup : function() {
   
     // Call this.doHelloWorld() after a 3 second timeout
-    setTimeout(function(controller) { controller.doHelloWorld(); }, 3000, this); 
+    // setTimeout(function(controller) { controller.doHelloWorld(); }, 3000, this); 
   
 
   },
