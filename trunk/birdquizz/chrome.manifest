@@ -3,9 +3,5 @@ locale  birdquizz  en-US  chrome/locale/en-US/
 locale  birdquizz  fr-FR  chrome/locale/fr-FR/
 skin    birdquizz  classic/1.0 chrome/skin/
 
-
 overlay chrome://songbird/content/xul/layoutWithBrowserOverlay.xul chrome://birdquizz/content/scripts-overlay.xul
 overlay chrome://browser/content/preferences/preferences.xul chrome://birdquizz/content/prefsOverlay.xul
-
-
-

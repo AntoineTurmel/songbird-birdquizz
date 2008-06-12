@@ -282,7 +282,8 @@ window.mediaPage = {
 
   showFinalScore: function()
   {
-    alert(this._strings.getString("end") + " " + (this.score).toString() + " " + this._strings.getString("points") + ".");
+    alert(this._strings.getString("end") + " " + (this.score).toString() + " " +
+          this._strings.getString("points") + ".");
   },
 
   startOrStop: function(e)

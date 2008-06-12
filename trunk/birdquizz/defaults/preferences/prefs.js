@@ -1,4 +1,4 @@
-// Used to detect the first time the extension is run 
+// Used to detect the first time the extension is run
 pref("extensions.birdquizz.firstrun", true);
 pref("extensions.birdquizz.choices", "5");
 pref("extensions.birdquizz.maxRounds", "3");
