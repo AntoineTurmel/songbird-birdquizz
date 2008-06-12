@@ -270,6 +270,7 @@ window.mediaPage = {
         start.setAttribute("id", "start");
         start.setAttribute("label", this._strings.getString("start"));
         this.deleteButtons();
+        return;
     }
 
     for (var i = 1; i < mediaList.length; i++)
