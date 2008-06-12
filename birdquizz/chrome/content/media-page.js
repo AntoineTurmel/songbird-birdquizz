@@ -14,10 +14,10 @@ if (typeof(Cr) == "undefined")
  * In order to display the contents of a library or list, pages
  * must provide a "window.mediaPage" object implementing
  * the Songbird sbIMediaPage interface. This interface allows
- * the rest of Songbird to talk to the page without knowledge 
+ * the rest of Songbird to talk to the page without knowledge
  * of what the page looks like.
  *
- * In this particular page most functionality is simply 
+ * In this particular page most functionality is simply
  * delegated to the sb-playlist widget.
  */
 window.mediaPage = {
@@ -26,9 +26,9 @@ window.mediaPage = {
   _mediaListView: null,
 
     // The sb-playlist XBL binding
-  _playlist: null, 
+  _playlist: null,
 
-  /** 
+  /**
    * Gets the sbIMediaListView that this page is displaying
    */
   get mediaListView()
@@ -36,7 +36,7 @@ window.mediaPage = {
     return this._mediaListView;
   },
 
-  /** 
+  /**
    * Set the sbIMediaListView that this page is to display.
    * Called in the capturing phase of window load by the Songbird browser.
    * Note that to simplify page creation mediaListView may only be set once.
@@ -60,35 +60,35 @@ window.mediaPage = {
   set rounds(value) { this._rounds = value; },
   set score(value) { this._score = value; },
 
-  /** 
-   * Called when the page finishes loading.  
-   * By this time window.mediaPage.mediaListView should have 
-   * been externally set.  
+  /**
+   * Called when the page finishes loading.
+   * By this time window.mediaPage.mediaListView should have
+   * been externally set.
    */
   onLoad: function(e)
   {
     // Make sure we have the JavaScript modules we're going to use
-    if (!window.SBProperties) 
+    if (!window.SBProperties)
       Cu.import("resource://app/jsmodules/sbProperties.jsm");
-    if (!window.LibraryUtils) 
+    if (!window.LibraryUtils)
       Cu.import("resource://app/jsmodules/sbLibraryUtils.jsm");
-    if (!window.kPlaylistCommands) 
+    if (!window.kPlaylistCommands)
       Cu.import("resource://app/jsmodules/kPlaylistCommands.jsm");
 
     if (!this._mediaListView) {
-      Components.utils.reportError("Media Page did not receive  " + 
-                                   "a mediaListView before the onload event!");
+      Cu.reportError("Media Page did not receive a mediaListView before the " +
+                     "onload event!");
       return;
-    } 
+    }
 
     this._playlist = document.getElementById("playlist");
-    
+
     this._strings = document.getElementById("birdquizz-strings");
 
     this.readPrefs();
     this.rounds = this.maxRounds;
-
     this.score = 0;
+    // this.startPosition = 30000;
 
     // Get playlist commands (context menu, keyboard shortcuts, toolbar)
     // Note: playlist commands currently depend on the playlist widget.
@@ -100,7 +100,7 @@ window.mediaPage = {
     this._playlist.bind(this._mediaListView, cmds);
   },
 
-  /** 
+  /**
    * Called as the window is about to unload
    */
   onUnload: function(e)
@@ -111,7 +111,7 @@ window.mediaPage = {
     }
   },
 
-  /** 
+  /**
    * Show/highlight the MediaItem at the given MediaListView index.
    * Called by the Find Current Track button.
    */
@@ -120,7 +120,7 @@ window.mediaPage = {
     this._playlist.highlightItem(aIndex);
   },
 
-  /** 
+  /**
    * Called when something is dragged over the tabbrowser tab for this window
    */
   canDrop: function(aEvent, aSession)
@@ -128,7 +128,7 @@ window.mediaPage = {
     return this._playlist.canDrop(aEvent, aSession);
   },
 
-  /** 
+  /**
    * Called when something is dropped on the tabbrowser tab for this window
    */
   onDrop: function(aEvent, aSession)
@@ -206,15 +206,15 @@ window.mediaPage = {
     var currentTrack = pPS.currentURL;
     var position = pPS.position;
     pPS.stop();
-    // this.startPosition = start;
     if (answer == currentTrack)
     {
-        var score = position ? parseInt(16000 / position) : 0;
+        // var score = position ? parseInt(16000 / (position - this.startPosition)) : 0;
+        var score = position ? parseInt(16000 / (position - this.startPosition)) : 0;
         this.score += score;
         var scoreLabel = document.getElementById("score");
         scoreLabel.setAttribute("value", this.score);
     }
-    
+
     this.setButtons();
   },
 
@@ -243,10 +243,10 @@ window.mediaPage = {
       Cu.import("resource://app/jsmodules/sbLibraryUtils.jsm");
     if (!window.kPlaylistCommands)
       Cu.import("resource://app/jsmodules/kPlaylistCommands.jsm");
-    
+
     if (!this._mediaListView) {
-      Components.utils.reportError("Media Page did not receive  " + 
-                                   "a mediaListView before the onload event!");
+      Cu.reportError("Media Page did not receive a mediaListView before the " +
+                     "onload event!");
       return;
     }
 
@@ -299,9 +299,14 @@ window.mediaPage = {
                 .getService(Ci.sbIPlaylistPlayback);
 
     if ((command == "play") && (url != null))
+    {
         pPS.playURL(url);
+        // pPS.position = this.startPosition;
+    }
     else if (command == "stop")
+    {
         pPS.stop();
+    }
   }
 
 } // End window.mediaPage
