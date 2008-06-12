@@ -52,12 +52,10 @@ window.mediaPage = {
 
   set startPosition(value) { this._startPos = value; },
   get choices() { return this._choices; },
-  get isRunning() { return this._isRunning; },
   get maxRounds() { return this._maxRounds; },
   get rounds() { return this._rounds; },
   get score() { return this._score; },
   set choices(value) { this._choices = value; },
-  set isRunning(value) { this._isRunning = value; },
   set maxRounds(value) { this._maxRounds = value; },
   set rounds(value) { this._rounds = value; },
   set score(value) { this._score = value; },
