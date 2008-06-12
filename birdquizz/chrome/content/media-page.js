@@ -250,10 +250,27 @@ window.mediaPage = {
       return;
     }
 
-    var mediaList = this._mediaListView.mediaList;
-    var choice, item, r;
+    this.mediaListView.filterConstraint = LibraryUtils.standardFilterConstraint;
+
+    var mediaList = this.mediaListView.mediaList;
+    var choice, item, isList, r;
     var buttons = new Array();
     var ml = new Array();
+
+    if (mediaList.length < this.choices)
+    {
+        this.showInsufficientMediaWarning();
+        this.trackSamplePlayback("stop");
+        this.readPrefs();
+        this.rounds = this.maxRounds;
+        this.score = 0;
+        var scoreLabel = document.getElementById("score");
+        scoreLabel.setAttribute("value", "");
+        var start = document.getElementById("stop");
+        start.setAttribute("id", "start");
+        start.setAttribute("label", this._strings.getString("start"));
+        this.deleteButtons();
+    }
 
     for (var i = 1; i < mediaList.length; i++)
     {
@@ -284,6 +301,11 @@ window.mediaPage = {
   {
     alert(this._strings.getString("end") + " " + (this.score).toString() + " " +
           this._strings.getString("points") + ".");
+  },
+
+  showInsufficientMediaWarning: function()
+  {
+    alert(this._strings.getString("warning") + ".");
   },
 
   startOrStop: function(e)
