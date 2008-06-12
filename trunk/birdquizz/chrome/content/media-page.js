@@ -82,6 +82,8 @@ window.mediaPage = {
     } 
 
     this._playlist = document.getElementById("playlist");
+    
+    this._strings = document.getElementById("birdquizz-strings");
 
     this.readPrefs();
     this.rounds = this.maxRounds;
@@ -180,7 +182,7 @@ window.mediaPage = {
     scoreLabel.setAttribute("value", "");
     var start = document.getElementById("stop");
     start.setAttribute("id", "start");
-    start.setAttribute("label", "Start");
+    start.setAttribute("label", this._strings.getString("start"));
     this.deleteButtons();
   },
 
@@ -226,7 +228,7 @@ window.mediaPage = {
         scoreLabel.setAttribute("value", 0);
         var start = document.getElementById("start");
         start.setAttribute("id", "stop");
-        start.setAttribute("label", "Stop");
+        start.setAttribute("label", this._strings.getString("stop"));
     }
     else if (this.rounds <= 0)
     {
@@ -280,7 +282,7 @@ window.mediaPage = {
 
   showFinalScore: function()
   {
-    alert("Game finished! Your final score was " + (this.score).toString() + " points.");
+    alert(this._strings.getString("end") + " " + (this.score).toString() + " " + this._strings.getString("points") + ".");
   },
 
   startOrStop: function(e)

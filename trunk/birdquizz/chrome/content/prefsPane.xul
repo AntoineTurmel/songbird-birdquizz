@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 
+<!DOCTYPE overlay SYSTEM "chrome://birdquizz/locale/prefsPane.dtd">
+
 <overlay id="birdquizz-prefs-overlay"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
@@ -17,11 +19,11 @@
 		<spacer flex="1" />
 		<vbox flex="0" align="center">
 			<hbox flex="1">
-				<label value="Choices :" style="width:8em" />
+				<label value="&prefs.choices.value;" style="width:8em" />
 				<textbox preference="choices" size="4" />
 			</hbox>
             <hbox flex="1">
-				<label value="Maximum Rounds :" style="width:8em" />
+				<label value="&prefs.maxRounds.value;" style="width:8em" />
 				<textbox preference="maxRounds" size="4" />
             </hbox>
         </vbox>

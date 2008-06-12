@@ -6,7 +6,8 @@
 
 <?xml-stylesheet href="chrome://birdquizz/skin/media-page.css" type="text/css"?>
 
-<!DOCTYPE page SYSTEM "chrome://songbird/locale/songbird.dtd" >
+<!-- <!DOCTYPE page SYSTEM "chrome://songbird/locale/songbird.dtd" >-->
+<!DOCTYPE page SYSTEM "chrome://birdquizz/locale/media-page.dtd">
 
 <!-- Import the standard scripts and overlays for all media pages.
      Required for the playlist and other widgets to function correctly. -->
@@ -26,6 +27,9 @@
   For more information see http://developer.songbirdnest.com/add-on-api/
   
   -->
+  
+
+	
 <page
   id="birdquizz-media-page"
   xmlns:html="http://www.w3.org/1999/xhtml"
@@ -36,15 +40,19 @@
   windowtype="Songbird:MediaPage"
 >
 
+  <stringbundleset id="stringbundleset"> 
+     <stringbundle id="birdquizz-strings" src="chrome://birdquizz/locale/overlay.properties"/>
+  </stringbundleset>  
+
   <!-- TODO: Insert custom UI here? -->
   <vbox id="birdquizz-media-page-box">
   <vbox align="center">
-    <label value="BirdQuizz" />
+    <label value="&birdquizz.label;" />
   </vbox>
   <hbox>
     <!--<label control="timeleft" value="Time Left:"/>
     <textbox id="timeleft" disabled="true"/>-->
-    <label control="score" value="Score :"/>
+    <label control="score" value="&score.label;"/>
     <textbox id="score" disabled="true"/>
     <!--<label control="title" value="Title :"/>
   <textbox>
@@ -52,10 +60,10 @@
   </textbox>-->
   </hbox>
       <vbox uri="start" align="center">
-        <button id="start" label="Start!" oncommand="window.mediaPage.startOrStop(event);"/>
+        <button id="start" label="&start.label;" oncommand="window.mediaPage.startOrStop(event);"/>
       </vbox>
       <groupbox>
-   <caption label="Choices"/>
+   <caption label="&choices.label;"/>
       <vbox id="aChoice" uri="choice" align="left"/>
       </groupbox>
        <!--<box id="aBox" width="200">
