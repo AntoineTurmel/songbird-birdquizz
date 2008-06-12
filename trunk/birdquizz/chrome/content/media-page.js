@@ -46,7 +46,7 @@ window.mediaPage = {
     if (!this._mediaListView) {
       this._mediaListView = value;
     } else {
-      throw new Error("mediaListView may only be set once.  Please reload the page");
+      throw new Error("mediaListView may only be set once. Please reload the page");
     }
   },
 
