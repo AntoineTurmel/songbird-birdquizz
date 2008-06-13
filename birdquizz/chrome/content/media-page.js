@@ -259,8 +259,9 @@ window.mediaPage = {
 
     for (var i = 1; i < mediaList.length; i++)
     {
-        if (item)
-            ml.push(mediaList.getItemByIndex(i));
+        item = mediaList.getItemByIndex(i);
+        if (!item.getProperty(SBProperties.isList))
+            ml.push(item);
     }
 
     if (ml.length < this.choices)
