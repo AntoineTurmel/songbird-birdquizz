@@ -252,14 +252,18 @@ window.mediaPage = {
       return;
     }
 
-    this.mediaListView.filterConstraint = LibraryUtils.standardFilterConstraint;
-
     var mediaList = this.mediaListView.mediaList;
     var choice, item, r;
     var buttons = new Array();
     var ml = new Array();
 
-    if (mediaList.length < this.choices)
+    for (var i = 1; i < mediaList.length; i++)
+    {
+        if (item)
+            ml.push(mediaList.getItemByIndex(i));
+    }
+
+    if (ml.length < this.choices)
     {
         this.showInsufficientMediaWarning();
         this.trackSamplePlayback("stop");
@@ -273,11 +277,6 @@ window.mediaPage = {
         start.setAttribute("label", this._strings.getString("start"));
         this.deleteButtons();
         return;
-    }
-
-    for (var i = 1; i < mediaList.length; i++)
-    {
-        ml.push(mediaList.getItemByIndex(i));
     }
 
     // Set the buttons
