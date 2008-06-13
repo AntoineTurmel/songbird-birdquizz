@@ -5,7 +5,7 @@
     <em:id>BirdQuizz@songbirdnest.com</em:id>
     <em:type>2</em:type>
     <em:name>BirdQuizz</em:name>
-    <em:version>0.5</em:version>
+    <em:version>0.5.1</em:version>
     <em:creator>Mitch and GeekShadow</em:creator>
     <em:description>Identify songs in your collection.</em:description>
     <em:iconURL>chrome://birdquizz/skin/icon.png</em:iconURL>

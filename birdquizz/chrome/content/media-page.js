@@ -167,7 +167,9 @@ window.mediaPage = {
   deleteButtons: function()
   {
     var aChoice = document.getElementById("aChoice");
-    while (aChoice.hasChildNodes)
+    if (!aChoice)
+        return;
+    while (aChoice.hasChildNodes())
         aChoice.removeChild(aChoice.firstChild);
   },
 
