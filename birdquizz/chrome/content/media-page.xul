@@ -46,26 +46,21 @@
 
   <!-- TODO: Insert custom UI here? -->
   <vbox id="birdquizz-media-page-box">
-  <vbox align="center">
-    <label value="&birdquizz.label;" />
-  </vbox>
-  <hbox>
+    <hbox>
     <!--<label control="timeleft" value="Time Left:"/>
     <textbox id="timeleft" disabled="true"/>-->
-    <label control="score" value="&score.label;"/>
-    <textbox id="score" disabled="true"/>
-    <!--<label control="title" value="Title :"/>
-  <textbox>
-    <observes type="dataremote" key="metadata.title" attribute="value"/>
-  </textbox>-->
-  </hbox>
-      <vbox uri="start" align="center">
+        <label control="score" value="&score.label;"/>
+        <textbox id="score" disabled="true"/>
         <button id="start" label="&start.label;" oncommand="window.mediaPage.startOrStop(event);"/>
-      </vbox>
-      <groupbox>
-   <caption label="&choices.label;"/>
-      <vbox id="aChoice" uri="choice" align="left"/>
-      </groupbox>
+        <label id="title" value="&birdquizz.label;"/>
+        <html:img src="chrome://birdquizz/skin/icon.png"/>
+    </hbox>
+    <vbox uri="start" align="center">
+    </vbox>
+    <groupbox>
+        <caption label="&choices.label;"/>
+        <vbox id="aChoice" uri="choice" align="left"/>
+    </groupbox>
        <!--<box id="aBox" width="200">
   <button label="Ajouter" oncommand="addButton();"/>
 </box>-->
