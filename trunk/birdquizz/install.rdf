@@ -7,7 +7,7 @@
     <em:name>BirdQuizz</em:name>
     <em:version>0.5.3</em:version>
     <em:creator>Mitch and GeekShadow</em:creator>
-    <em:description>Identify songs in your collection.</em:description>
+    <em:description>Music quiz game, featuring your own music collection.</em:description>
     <em:iconURL>chrome://birdquizz/skin/icon.png</em:iconURL>
     <em:homepageURL>http://code.google.com/p/songbird-birdquizz/</em:homepageURL>
     <em:optionsURL>chrome://birdquizz/content/optionsWindow.xul</em:optionsURL>
