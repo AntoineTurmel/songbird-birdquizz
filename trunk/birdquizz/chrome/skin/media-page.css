@@ -2,3 +2,7 @@
   background-color: black;
   height: 200px;
 }
+
+#title {
+  font-size: 200%;
+}
