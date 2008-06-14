@@ -191,13 +191,15 @@ window.mediaPage = {
   readPrefs: function()
   {
 	// Preferences
-    const prefchoices = "extensions.birdquizz.choices";
-    const prefmaxRounds	= "extensions.birdquizz.maxRounds";
+    const prefchoices     = "extensions.birdquizz.choices";
+    const prefmaxRounds   = "extensions.birdquizz.maxRounds";
+    const playwith        = "extensions.birdquizz.playwith";
     var prefs = Cc["@mozilla.org/preferences-service;1"]
                   .getService(Ci.nsIPrefBranch2);
 
-    this.choices = prefs.getCharPref(prefchoices);
-    this.maxRounds = prefs.getCharPref(prefmaxRounds);
+    this.choices    = prefs.getCharPref(prefchoices);
+    this.maxRounds  = prefs.getCharPref(prefmaxRounds);
+    this.playwith   = prefs.getCharPref(playwith);
   },
 
   selectAnswer: function(e)
@@ -287,7 +289,10 @@ window.mediaPage = {
         r = parseInt(Math.random() * (ml.length - 1));
         item = ml[r];
         ml.splice(r, 1);
-        choice.setAttribute("label", item.getProperty(SBProperties.trackName));
+        if (this.playwith == "playartist") {
+        choice.setAttribute("label", item.getProperty(SBProperties.artistName)); }
+        if (this.playwith == "playtitle") {
+        choice.setAttribute("label", item.getProperty(SBProperties.trackName)); }
         choice.setAttribute("url", item.getProperty(SBProperties.contentURL));
         buttons.push(choice);
     }

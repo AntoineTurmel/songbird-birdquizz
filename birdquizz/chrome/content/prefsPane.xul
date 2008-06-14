@@ -10,9 +10,11 @@
 
 	<prefpane id="paneBQ" onpaneload="birdquizzPrefsPane.handleLoad();">
         <preferences>
-			<preference id="choices" name="extensions.birdquizz.choices"
+			<preference id="choices"      name="extensions.birdquizz.choices"
 				type="string" />
-            <preference id="maxRounds" name="extensions.birdquizz.maxRounds"
+      <preference id="maxRounds"    name="extensions.birdquizz.maxRounds"
+				type="string" />
+			<preference id="playwith"     name="extensions.birdquizz.playwith"
 				type="string" />
 		</preferences>
 
@@ -26,8 +28,15 @@
 				<label value="&prefs.maxRounds.value;" style="width:8em" />
 				<textbox preference="maxRounds" size="4" />
             </hbox>
+        
+        <label value="&prefs.playwith.value;" style="width:8em" />    
+        
+        <radiogroup preference="playwith">
+          <radio value="playtitle"  id="playtitle"  label="&prefs.playtitle.label;"   accesskey="T"/>
+          <radio value="playartist" id="playartist" label="&prefs.playartist.label;"  accesskey="A"/>
+        </radiogroup>
         </vbox>
-
+        
 		<spacer flex="1" />
 	</prefpane>
 </overlay>
