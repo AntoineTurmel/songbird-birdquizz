@@ -1,2 +1,5 @@
-<!ENTITY prefs.choices.value      "Choices :">
-<!ENTITY prefs.maxRounds.value    "Maximum Rounds :">
+<!ENTITY prefs.choices.value        "Choices :">
+<!ENTITY prefs.maxRounds.value      "Maximum Rounds :">
+<!ENTITY prefs.playwith.value       "Play with :">
+<!ENTITY prefs.playtitle.label      "Titles">
+<!ENTITY prefs.playartist.label     "Artists">

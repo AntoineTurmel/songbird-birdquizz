@@ -1,2 +1,5 @@
-<!ENTITY prefs.choices.value      "Nombre de choix :">
-<!ENTITY prefs.maxRounds.value    "Nombre de musiques :">
+<!ENTITY prefs.choices.value        "Nombre de choix :">
+<!ENTITY prefs.maxRounds.value      "Nombre de musiques :">
+<!ENTITY prefs.playwith.value       "Jouer avec :">
+<!ENTITY prefs.playtitle.label      "Titres des musiques">
+<!ENTITY prefs.playartist.label     "Artistes">
