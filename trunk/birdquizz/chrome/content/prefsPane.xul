@@ -13,22 +13,23 @@
       <preference id="playwith" name="extensions.birdquizz.playwith"
 				  type="string"/>
     </preferences>
-    <spacer flex="1"/>
-    <vbox flex="0" align="center">
-      <hbox flex="1">
-        <label value="&prefs.choices.value;" style="width:8em"/>
-        <textbox preference="choices" size="4"/>
-      </hbox>
-      <hbox flex="1">
-        <label value="&prefs.maxRounds.value;" style="width:8em"/>
-		<textbox preference="maxRounds" size="4"/>
-      </hbox>
-      <label value="&prefs.playwith.value;" style="width:8em"/>
-      <radiogroup preference="playwith">
-        <radio value="playtitle"  id="playtitle" label="&prefs.playtitle.label;" accesskey="T"/>
-        <radio value="playartist" id="playartist" label="&prefs.playartist.label;" accesskey="A"/>
-      </radiogroup>
-    </vbox>
-    <spacer flex="1"/>
+    <groupbox>
+      <caption label="&prefs.options.label;"/>
+      <vbox flex="0" align="center">
+        <hbox flex="1">
+          <label value="&prefs.choices.value;" style="width:8em"/>
+          <textbox preference="choices" size="4"/>
+        </hbox>
+        <hbox flex="1">
+          <label value="&prefs.maxRounds.value;" style="width:8em"/>
+		  <textbox preference="maxRounds" size="4"/>
+        </hbox>
+        <label value="&prefs.playwith.value;" style="width:8em"/>
+        <radiogroup preference="playwith">
+          <radio value="playtitle"  id="playtitle" label="&prefs.playtitle.label;" accesskey="T"/>
+          <radio value="playartist" id="playartist" label="&prefs.playartist.label;" accesskey="A"/>
+        </radiogroup>
+      </vbox>
+    </groupbox>
   </prefpane>
 </overlay>
