@@ -1,4 +1,4 @@
-<!ENTITY prefs.choices.value       "Opzioni di BirdQuizz">
+<!ENTITY prefs.options.label       "Opzioni di BirdQuizz">
 <!ENTITY prefs.choices.value       "Scelte :">
 <!ENTITY prefs.maxRounds.value     "Numero massimo di turni :">
 <!ENTITY prefs.playwith.value      "Gioca con :">
