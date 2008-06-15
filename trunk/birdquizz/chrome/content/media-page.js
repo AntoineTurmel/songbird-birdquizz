@@ -255,18 +255,41 @@ window.mediaPage = {
     }
 
     var mediaList = this.mediaListView.mediaList;
-    var choice, item, r;
+    var choice, item;
     var buttons = new Array();
-    var ml = new Array();
+    var trackList = new Array();
 
     for (var i = 1; i < mediaList.length; i++)
     {
         item = mediaList.getItemByIndex(i);
         if (!item.getProperty(SBProperties.isList))
-            ml.push(item);
+            trackList.push(item);
     }
 
-    if (ml.length < this.choices)
+    var artist, track, r;
+    var artistList = ["Various"]; // Put undesirable artist values here.
+    var rTrackList = new Array();
+    var tracks = trackList.length;
+
+    for (var i = 0; i < tracks; i++)
+    {
+        r = parseInt(Math.random() * (trackList.length - 1));
+        track = trackList[r];
+        trackList.splice(r, 1);
+        artist = track.getProperty(SBProperties.artistName);
+        if ((this.playwith == "playartist") && artist &&
+            (artistList.indexOf(artist) == -1))
+        {
+            artistList.push(artist);
+            rTrackList.push(track);
+        }
+        else if (this.playwith == "playtitle")
+        {
+            rTrackList.push(track);
+        }
+    }
+
+    if (rTrackList.length < this.choices)
     {
         this.showInsufficientMediaWarning();
         this.trackSamplePlayback("stop");
@@ -282,18 +305,26 @@ window.mediaPage = {
         return;
     }
 
+    var labelType, playwith;
+
     // Set the buttons
     for (var i = 0; i < this.choices; i++)
     {
         choice = document.getElementById("choice" + i.toString());
-        r = parseInt(Math.random() * (ml.length - 1));
-        item = ml[r];
-        ml.splice(r, 1);
-        if (this.playwith == "playartist") {
-        choice.setAttribute("label", item.getProperty(SBProperties.artistName)); }
-        if (this.playwith == "playtitle") {
-        choice.setAttribute("label", item.getProperty(SBProperties.trackName)); }
-        choice.setAttribute("url", item.getProperty(SBProperties.contentURL));
+        track = rTrackList[i];
+        playwith = this.playwith;
+        switch(playwith)
+        {
+            case "playartist":
+                labelType = "artistName";
+                break;
+            case "playtitle":
+                labelType = "trackName";
+                break;
+        }
+
+        choice.setAttribute("label", track.getProperty(SBProperties[labelType]));
+        choice.setAttribute("url", track.getProperty(SBProperties.contentURL));
         buttons.push(choice);
     }
     //

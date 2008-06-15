@@ -1,8 +1,6 @@
 const choices	    = "extensions.birdquizz.choices";
 const maxRounds	  = "extensions.birdquizz.maxRounds";
 const playwith	  = "extensions.birdquizz.playwith";
-const Cc = Components.classes;
-const Ci = Components.interfaces;
 
 var birdquizzPrefsPane = {
 	openPreferences: function() {
