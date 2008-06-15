@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <!DOCTYPE overlay SYSTEM "chrome://birdquizz/locale/prefsPane.dtd">
 <overlay id="birdquizz-prefs-overlay"
-	     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <script type="application/x-javascript"
-		  src="chrome://birdquizz/content/bqPrefs.js"/>
+          src="chrome://birdquizz/content/bqPrefs.js"/>
   <prefpane id="paneBQ" onpaneload="birdquizzPrefsPane.handleLoad();">
     <preferences>
       <preference id="choices" name="extensions.birdquizz.choices"
-				  type="string"/>
+                  type="string"/>
       <preference id="maxRounds" name="extensions.birdquizz.maxRounds"
-				  type="string"/>
+                  type="string"/>
       <preference id="playwith" name="extensions.birdquizz.playwith"
-				  type="string"/>
+                  type="string"/>
     </preferences>
     <groupbox>
       <caption label="&prefs.options.label;"/>
@@ -22,7 +22,7 @@
         </hbox>
         <hbox flex="1">
           <label value="&prefs.maxRounds.value;" style="width:8em"/>
-		  <textbox preference="maxRounds" size="4"/>
+          <textbox preference="maxRounds" size="4"/>
         </hbox>
         <label value="&prefs.playwith.value;" style="width:8em"/>
         <radiogroup preference="playwith">
