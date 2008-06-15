@@ -1,42 +1,34 @@
 <?xml version="1.0"?>
-
 <!DOCTYPE overlay SYSTEM "chrome://birdquizz/locale/prefsPane.dtd">
-
 <overlay id="birdquizz-prefs-overlay"
-	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-
-<script type="application/x-javascript"
-		src="chrome://birdquizz/content/bqPrefs.js"/>
-
-	<prefpane id="paneBQ" onpaneload="birdquizzPrefsPane.handleLoad();">
-        <preferences>
-			<preference id="choices"      name="extensions.birdquizz.choices"
-				type="string" />
-      <preference id="maxRounds"    name="extensions.birdquizz.maxRounds"
-				type="string" />
-			<preference id="playwith"     name="extensions.birdquizz.playwith"
-				type="string" />
-		</preferences>
-
-		<spacer flex="1" />
-		<vbox flex="0" align="center">
-			<hbox flex="1">
-				<label value="&prefs.choices.value;" style="width:8em" />
-				<textbox preference="choices" size="4" />
-			</hbox>
-            <hbox flex="1">
-				<label value="&prefs.maxRounds.value;" style="width:8em" />
-				<textbox preference="maxRounds" size="4" />
-            </hbox>
-        
-        <label value="&prefs.playwith.value;" style="width:8em" />    
-        
-        <radiogroup preference="playwith">
-          <radio value="playtitle"  id="playtitle"  label="&prefs.playtitle.label;"   accesskey="T"/>
-          <radio value="playartist" id="playartist" label="&prefs.playartist.label;"  accesskey="A"/>
-        </radiogroup>
-        </vbox>
-        
-		<spacer flex="1" />
-	</prefpane>
+	     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/x-javascript"
+		  src="chrome://birdquizz/content/bqPrefs.js"/>
+  <prefpane id="paneBQ" onpaneload="birdquizzPrefsPane.handleLoad();">
+    <preferences>
+      <preference id="choices" name="extensions.birdquizz.choices"
+				  type="string"/>
+      <preference id="maxRounds" name="extensions.birdquizz.maxRounds"
+				  type="string"/>
+      <preference id="playwith" name="extensions.birdquizz.playwith"
+				  type="string"/>
+    </preferences>
+    <spacer flex="1"/>
+    <vbox flex="0" align="center">
+      <hbox flex="1">
+        <label value="&prefs.choices.value;" style="width:8em"/>
+        <textbox preference="choices" size="4"/>
+      </hbox>
+      <hbox flex="1">
+        <label value="&prefs.maxRounds.value;" style="width:8em"/>
+		<textbox preference="maxRounds" size="4"/>
+      </hbox>
+      <label value="&prefs.playwith.value;" style="width:8em"/>
+      <radiogroup preference="playwith">
+        <radio value="playtitle"  id="playtitle" label="&prefs.playtitle.label;" accesskey="T"/>
+        <radio value="playartist" id="playartist" label="&prefs.playartist.label;" accesskey="A"/>
+      </radiogroup>
+    </vbox>
+    <spacer flex="1"/>
+  </prefpane>
 </overlay>

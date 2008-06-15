@@ -1,13 +1,10 @@
 <?xml version="1.0"?>
-
 <overlay id="birdquizz-prefs-overlay"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-
   <prefWindow id="BrowserPreferences">
     <prefpane id="paneBQ"
               label="BirdQuizz"
               image="chrome://birdquizz/skin/icon.png"
-              src="chrome://birdquizz/content/prefsPane.xul" />
- </prefWindow>
-
+              src="chrome://birdquizz/content/prefsPane.xul"/>
+  </prefWindow>
 </overlay>

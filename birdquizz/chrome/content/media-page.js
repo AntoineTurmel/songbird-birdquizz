@@ -43,11 +43,11 @@ window.mediaPage = {
    */
   set mediaListView(value)
   {
-    if (!this._mediaListView) {
-      this._mediaListView = value;
-    } else {
-      throw new Error("mediaListView may only be set once. Please reload the page");
-    }
+    if (!this._mediaListView)
+        this._mediaListView = value;
+    else
+        throw new Error("mediaListView may only be set once. " +
+                        "Please reload the page");
   },
 
   set startPosition(value) { this._startPos = value; },
@@ -69,16 +69,17 @@ window.mediaPage = {
   {
     // Make sure we have the JavaScript modules we're going to use
     if (!window.SBProperties)
-      Cu.import("resource://app/jsmodules/sbProperties.jsm");
+        Cu.import("resource://app/jsmodules/sbProperties.jsm");
     if (!window.LibraryUtils)
-      Cu.import("resource://app/jsmodules/sbLibraryUtils.jsm");
+        Cu.import("resource://app/jsmodules/sbLibraryUtils.jsm");
     if (!window.kPlaylistCommands)
-      Cu.import("resource://app/jsmodules/kPlaylistCommands.jsm");
+        Cu.import("resource://app/jsmodules/kPlaylistCommands.jsm");
 
-    if (!this._mediaListView) {
-      Cu.reportError("Media Page did not receive a mediaListView before the " +
-                     "onload event!");
-      return;
+    if (!this._mediaListView)
+    {
+        Cu.reportError("Media Page did not receive a mediaListView before " +
+                       "the onload event!");
+        return;
     }
 
     this._playlist = document.getElementById("playlist");
@@ -105,7 +106,8 @@ window.mediaPage = {
    */
   onUnload: function(e)
   {
-    if (this._playlist) {
+    if (this._playlist)
+    {
       this._playlist.destroy();
       this._playlist = null;
     }
@@ -191,15 +193,15 @@ window.mediaPage = {
   readPrefs: function()
   {
 	// Preferences
-    const prefchoices     = "extensions.birdquizz.choices";
-    const prefmaxRounds   = "extensions.birdquizz.maxRounds";
-    const playwith        = "extensions.birdquizz.playwith";
+    const prefchoices = "extensions.birdquizz.choices";
+    const prefmaxRounds = "extensions.birdquizz.maxRounds";
+    const playwith = "extensions.birdquizz.playwith";
     var prefs = Cc["@mozilla.org/preferences-service;1"]
                   .getService(Ci.nsIPrefBranch2);
 
-    this.choices    = prefs.getCharPref(prefchoices);
-    this.maxRounds  = prefs.getCharPref(prefmaxRounds);
-    this.playwith   = prefs.getCharPref(playwith);
+    this.choices = prefs.getCharPref(prefchoices);
+    this.maxRounds = prefs.getCharPref(prefmaxRounds);
+    this.playwith = prefs.getCharPref(playwith);
   },
 
   selectAnswer: function(e)
@@ -248,7 +250,8 @@ window.mediaPage = {
     if (!window.kPlaylistCommands)
       Cu.import("resource://app/jsmodules/kPlaylistCommands.jsm");
 
-    if (!this._mediaListView) {
+    if (!this._mediaListView)
+    {
       Cu.reportError("Media Page did not receive a mediaListView before the " +
                      "onload event!");
       return;
