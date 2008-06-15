@@ -1,5 +1,5 @@
 <!ENTITY prefs.choices.value       "Scelte :">
 <!ENTITY prefs.maxRounds.value     "Numero massimo di turni :">
 <!ENTITY prefs.playwith.value      "Gioca con :">
-<!ENTITY prefs.playtitle.label     "il titoli">
-<!ENTITY prefs.playartist.label    "il nome dell artista">
+<!ENTITY prefs.playtitle.label     "i titoli">
+<!ENTITY prefs.playartist.label    "i nomi degli artisti">
