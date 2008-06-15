@@ -1,12 +1,12 @@
 // Shorthand
 if (typeof(Cc) == "undefined")
-  var Cc = Components.classes;
+    var Cc = Components.classes;
 if (typeof(Ci) == "undefined")
-  var Ci = Components.interfaces;
+    var Ci = Components.interfaces;
 if (typeof(Cu) == "undefined")
-  var Cu = Components.utils;
+    var Cu = Components.utils;
 if (typeof(Cr) == "undefined")
-  var Cr = Components.results;
+    var Cr = Components.results;
 
 /**
  * Media Page Controller
@@ -192,7 +192,7 @@ window.mediaPage = {
 
   readPrefs: function()
   {
-	// Preferences
+    // Preferences
     const prefchoices = "extensions.birdquizz.choices";
     const prefmaxRounds = "extensions.birdquizz.maxRounds";
     const playwith = "extensions.birdquizz.playwith";
