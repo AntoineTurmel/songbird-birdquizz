@@ -7,7 +7,7 @@
     <em:name>BirdQuizz</em:name>
     <em:version>0.6.1</em:version>
     <em:creator>Mitch and GeekShadow</em:creator>
-    <em:contributor>Italian (it-IT) - ventuno</em:contributor>
+    <em:contributor>ventuno - Italian (it-IT) localisation</em:contributor>
     <em:description>Music quiz game, featuring your own music collection.</em:description>
     <em:iconURL>chrome://birdquizz/skin/icon.png</em:iconURL>
     <em:homepageURL>http://code.google.com/p/songbird-birdquizz/</em:homepageURL>
@@ -30,6 +30,5 @@
         <songbird:contentUrl>chrome://birdquizz/content/media-page.xul</songbird:contentUrl>
       </Description>
     </songbird:mediaPage>
-
   </Description>
 </RDF>

@@ -13,7 +13,6 @@
      Required for the playlist and other widgets to function correctly. -->
 <?xul-overlay href="chrome://songbird/content/xul/mediaPageOverlay.xul"?>
 
-
 <!--
 
   BirdQuizz Media Page
@@ -28,35 +27,33 @@
 
   -->
 
-<page
-  id="birdquizz-media-page"
-  xmlns:html="http://www.w3.org/1999/xhtml"
-  xmlns:rdf="http://www.w3.org/TR/WD-rdf-syntax#"
-  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-  onload="window.mediaPage.onLoad();"
-  onunload="window.mediaPage.onUnload();"
-  windowtype="Songbird:MediaPage"
->
+<page id="birdquizz-media-page"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      xmlns:rdf="http://www.w3.org/TR/WD-rdf-syntax#"
+      xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+      onload="window.mediaPage.onLoad();"
+      onunload="window.mediaPage.onUnload();"
+      windowtype="Songbird:MediaPage">
 
   <stringbundleset id="stringbundleset">
-     <stringbundle id="birdquizz-strings"
-                   src="chrome://birdquizz/locale/overlay.properties"/>
+    <stringbundle id="birdquizz-strings"
+                  src="chrome://birdquizz/locale/overlay.properties"/>
   </stringbundleset>
 
   <!-- TODO: Insert custom UI here? -->
   <vbox id="birdquizz-media-page-box">
     <hbox>
-        <label control="score" value="&score.label;"/>
-        <textbox id="score" disabled="true"/>
-        <button id="start" label="&start.label;"
-                oncommand="window.mediaPage.startOrStop(event);"/>
-        <label id="title" value="&birdquizz.label;"/>
-        <html:img src="chrome://birdquizz/skin/icon.png"
-                  style="max-height: 32px; max-height: 32px;"/>
+      <label control="score" value="&score.label;"/>
+      <textbox id="score" disabled="true"/>
+      <button id="start" label="&start.label;"
+              oncommand="window.mediaPage.startOrStop(event);"/>
+      <label id="title" value="&birdquizz.label;"/>
+      <html:img src="chrome://birdquizz/skin/icon.png"
+                style="max-height: 32px; max-height: 32px;"/>
     </hbox>
     <groupbox>
-        <caption label="&choices.label;"/>
-        <vbox id="aChoice" uri="choice" align="left"/>
+      <caption label="&choices.label;"/>
+      <vbox id="aChoice" uri="choice" align="left"/>
     </groupbox>
   </vbox>
 
@@ -73,13 +70,12 @@
                enableColumnDrag="true"
                persist="column-list column-widths"
                editable="true"
-               hidefilters="true"
-  />
+               hidefilters="true"/>
 
   <!-- Page Controller.
        Registers a window.mediaPage object implementing the
        sbIMediaPage interface.
     -->
-  <script type="application/x-javascript" src="media-page.js" />
+  <script type="application/x-javascript" src="media-page.js"/>
 
 </page>
