@@ -143,7 +143,7 @@ window.mediaPage = {
   createButtons: function()
   {
     var choicesBox = document.getElementById("choices-box");
-    choicesBox.setAttribute("style", "display: inherit;");
+    choicesBox.setAttribute("hidden", "false");
 
     var mediaList = this._mediaListView.mediaList;
     var ml = new Array();
@@ -176,7 +176,7 @@ window.mediaPage = {
     var aChoice = document.getElementById("aChoice");
     if (!choicesBox || !aChoice)
         return;
-    choicesBox.setAttribute("style", "display: none;");
+    choicesBox.setAttribute("hidden", "true");
     while (aChoice.hasChildNodes())
         aChoice.removeChild(aChoice.firstChild);
   },
