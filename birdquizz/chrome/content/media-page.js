@@ -160,7 +160,7 @@ window.mediaPage = {
     for (var i = 0; i < this.choices; i++)
     {
         choice = document.createElement("button");
-        r = parseInt(Math.random() * (ml.length - 1));
+        r = Math.round(Math.random() * (ml.length - 1));
         item = ml[r];
         ml.splice(r, 1);
         choice.setAttribute("id", "choice" + i.toString());
@@ -220,8 +220,8 @@ window.mediaPage = {
     pPS.stop();
     if (answer == currentTrack)
     {
-        // var score = position ? parseInt(16000 / (position - this.startPosition)) : 0;
-        var score = position ? parseInt(16000 / position) : 0;
+        // var score = position ? Math.round(16000 / (position - this.startPosition)) : 0;
+        var score = position ? Math.round(16000 / position) : 0;
         this.score += score;
         var scoreLabel = document.getElementById("score");
         scoreLabel.setAttribute("value", this.score);
@@ -281,7 +281,7 @@ window.mediaPage = {
 
     for (var i = 0; i < tracks; i++)
     {
-        r = parseInt(Math.random() * (trackList.length - 1));
+        r = Math.round(Math.random() * (trackList.length - 1));
         track = trackList[r];
         trackList.splice(r, 1);
         artist = track.getProperty(SBProperties.artistName);
@@ -338,7 +338,7 @@ window.mediaPage = {
     }
     //
 
-    var rb = parseInt(Math.random() * (this.choices - 1));
+    var rb = Math.round(Math.random() * (this.choices - 1));
     this.trackSamplePlayback("play", buttons[rb].getAttribute("url"));
     this.rounds--;
   },
