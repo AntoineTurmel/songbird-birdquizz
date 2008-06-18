@@ -49,7 +49,7 @@
               oncommand="window.mediaPage.startOrStop(event);"/>
       <label id="title" value="&birdquizz.label;"/>
       <html:img src="chrome://birdquizz/skin/icon.png"
-                style="max-height: 32px; max-height: 32px;"/>
+                style="max-height: 32px; max-width: 32px;"/>
     </hbox>
     <groupbox>
       <caption label="&choices.label;"/>
