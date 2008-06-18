@@ -142,16 +142,20 @@ window.mediaPage = {
 
   createButtons: function()
   {
-    this.readPrefs();
+    var choicesBox = document.getElementById("choices-box");
+    choicesBox.setAttribute("style", "display: inherit;");
+
     var mediaList = this._mediaListView.mediaList;
-    var choice, item, r;
     var ml = new Array();
-    var aChoice = document.getElementById("aChoice");
 
     for (var i = 1; i < mediaList.length; i++)
     {
         ml.push(mediaList.getItemByIndex(i));
     }
+
+    var choice, item, r;
+    var aChoice = document.getElementById("aChoice");
+    this.readPrefs();
 
     for (var i = 0; i < this.choices; i++)
     {
@@ -168,9 +172,11 @@ window.mediaPage = {
 
   deleteButtons: function()
   {
+    var choicesBox = document.getElementById("choices-box");
     var aChoice = document.getElementById("aChoice");
-    if (!aChoice)
+    if (!choicesBox || !aChoice)
         return;
+    choicesBox.setAttribute("style", "display: none;");
     while (aChoice.hasChildNodes())
         aChoice.removeChild(aChoice.firstChild);
   },
@@ -258,8 +264,7 @@ window.mediaPage = {
     }
 
     var mediaList = this.mediaListView.mediaList;
-    var choice, item;
-    var buttons = new Array();
+    var item;
     var trackList = new Array();
 
     for (var i = 1; i < mediaList.length; i++)
@@ -308,7 +313,8 @@ window.mediaPage = {
         return;
     }
 
-    var labelType, playwith;
+    var choice, labelType, playwith;
+    var buttons = new Array();
 
     // Set the buttons
     for (var i = 0; i < this.choices; i++)
@@ -333,9 +339,7 @@ window.mediaPage = {
     //
 
     var rb = parseInt(Math.random() * (this.choices - 1));
-
     this.trackSamplePlayback("play", buttons[rb].getAttribute("url"));
-
     this.rounds--;
   },
 
