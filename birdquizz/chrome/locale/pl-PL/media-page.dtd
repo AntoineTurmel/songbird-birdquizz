@@ -1,4 +1,4 @@
-<!ENTITY birdquizz.label    "BirdQuizz">
+﻿<!ENTITY birdquizz.label    "BirdQuizz">
 <!ENTITY score.label        "Punktacja :">
 <!ENTITY start.label        "Start!">
-<!ENTITY choices.label      "Warianty"
+<!ENTITY choices.label      "Warianty">
