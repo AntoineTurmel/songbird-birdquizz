@@ -1,0 +1,6 @@
+<!ENTITY prefs.options.label       "BirdQuizz Opcje">
+<!ENTITY prefs.choices.value       "Warianty" :">
+<!ENTITY prefs.maxRounds.value     "Rundy :">
+<!ENTITY prefs.playwith.value      "Wyæwietlaj :">
+<!ENTITY prefs.playtitle.label     "Tytu¸y">
+<!ENTITY prefs.playartist.label    "Wykonawc—w">
