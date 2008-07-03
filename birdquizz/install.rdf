@@ -1,13 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#"
      xmlns:songbird="http://www.songbirdnest.com/2007/addon-metadata-rdf#">
   <Description about="urn:mozilla:install-manifest">
     <em:id>BirdQuizz@songbirdnest.com</em:id>
     <em:type>2</em:type>
     <em:name>BirdQuizz</em:name>
-    <em:version>0.6.4</em:version>
-    <em:creator>Mitch and GeekShadow</em:creator>
+    <em:version>0.6.5</em:version>
+    <em:creator>Mitch, GeekShadow</em:creator>
     <em:contributor>ventuno - Italian (it-IT) localisation</em:contributor>
+    <em:contributor>Łukasz - Polish (pl-PL) localisation</em:contributor>
     <em:description>Music quiz game, featuring your own music collection.</em:description>
     <em:iconURL>chrome://birdquizz/skin/icon.png</em:iconURL>
     <em:homepageURL>http://code.google.com/p/songbird-birdquizz/</em:homepageURL>
