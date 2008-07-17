@@ -1,8 +1,16 @@
-#birdquizz-media-page-box {
+#birdquizz-media-page-box
+{
   /* background-color: black; */
   /* height: 50px; */
 }
 
-#title {
+#title
+{
   font-size: 200%;
+}
+
+#start,
+#stop
+{
+  width: 50px;
 }
