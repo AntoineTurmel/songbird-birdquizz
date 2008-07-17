@@ -45,7 +45,7 @@
     <hbox>
       <label control="score" value="&score.label;"/>
       <textbox id="score" disabled="true"/>
-      <button id="start" label="&start.label;"
+      <button id="start" label="&start.label;" width="50px"
               oncommand="window.mediaPage.startOrStop(event);"/>
       <label id="title" value="&birdquizz.label;"/>
       <html:img src="chrome://birdquizz/skin/icon.png"
