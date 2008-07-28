@@ -9,6 +9,13 @@
   font-size: 200%;
 }
 
+#score,
+#score-label
+{
+  text-align: center;
+  width: 50px;
+}
+
 #start,
 #stop
 {

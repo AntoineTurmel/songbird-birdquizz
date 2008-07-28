@@ -83,6 +83,7 @@ window.mediaPage = {
     }
 
     this._playlist = document.getElementById("playlist");
+    this._playlist.hidden = true;
 
     this._strings = document.getElementById("birdquizz-strings");
 
@@ -172,11 +173,15 @@ window.mediaPage = {
 
   deleteButtons: function()
   {
+    var scoreLabel = document.getElementById("score-label");
+    scoreLabel.hidden = true;
+    var scoreBox = document.getElementById("score");
+    scoreBox.hidden = true;
     var choicesBox = document.getElementById("choices-box");
     var aChoice = document.getElementById("aChoice");
     if (!choicesBox || !aChoice)
         return;
-    choicesBox.setAttribute("hidden", "true");
+    choicesBox.hidden = true;
     while (aChoice.hasChildNodes())
         aChoice.removeChild(aChoice.firstChild);
   },
@@ -188,8 +193,11 @@ window.mediaPage = {
     this.readPrefs();
     this.rounds = this.maxRounds;
     this.score = 0;
-    var scoreLabel = document.getElementById("score");
-    scoreLabel.setAttribute("value", "");
+    var scoreLabel = document.getElementById("score-label");
+    scoreLabel.hidden = true;
+    var scoreBox = document.getElementById("score");
+    scoreBox.hidden = true;
+    scoreBox.setAttribute("value", 0);
     var start = document.getElementById("stop");
     start.setAttribute("id", "start");
     start.setAttribute("label", this._strings.getString("start"));
@@ -223,8 +231,8 @@ window.mediaPage = {
         // var score = position ? Math.round(16000 / (position - this.startPosition)) : 0;
         var score = position ? Math.round(16000 / position) : 0;
         this.score += score;
-        var scoreLabel = document.getElementById("score");
-        scoreLabel.setAttribute("value", this.score);
+        var scoreBox = document.getElementById("score");
+        scoreBox.setAttribute("value", this.score);
     }
 
     this.setButtons();
@@ -232,17 +240,7 @@ window.mediaPage = {
 
   setButtons: function()
   {
-    var node = document.getElementById("choice0");
-    if (!node)
-    {
-        this.createButtons();
-        var scoreLabel = document.getElementById("score");
-        scoreLabel.setAttribute("value", 0);
-        var start = document.getElementById("start");
-        start.setAttribute("id", "stop");
-        start.setAttribute("label", this._strings.getString("stop"));
-    }
-    else if (this.rounds <= 0)
+    if (this.rounds <= 0)
     {
         this.endQuiz();
         return;
@@ -304,13 +302,27 @@ window.mediaPage = {
         this.readPrefs();
         this.rounds = this.maxRounds;
         this.score = 0;
-        var scoreLabel = document.getElementById("score");
-        scoreLabel.setAttribute("value", "");
+        var scoreBox = document.getElementById("score");
+        scoreBox.setAttribute("value", 0);
         var start = document.getElementById("stop");
         start.setAttribute("id", "start");
         start.setAttribute("label", this._strings.getString("start"));
         this.deleteButtons();
         return;
+    }
+
+    var node = document.getElementById("choice0");
+    if (!node)
+    {
+        this.createButtons();
+        var scoreLabel = document.getElementById("score-label");
+        scoreLabel.hidden = false;
+        var scoreBox = document.getElementById("score");
+        scoreBox.hidden = false;
+        scoreBox.setAttribute("value", " 0 ");
+        var start = document.getElementById("start");
+        start.setAttribute("id", "stop");
+        start.setAttribute("label", this._strings.getString("stop"));
     }
 
     var choice, labelType, playwith;

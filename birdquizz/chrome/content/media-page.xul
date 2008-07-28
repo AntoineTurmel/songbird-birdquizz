@@ -43,10 +43,11 @@
   <!-- TODO: Insert custom UI here? -->
   <vbox id="birdquizz-media-page-box">
     <hbox>
-      <label control="score" value="&score.label;"/>
-      <textbox id="score" disabled="true"/>
       <button id="start" label="&start.label;"
               oncommand="window.mediaPage.startOrStop(event);"/>
+      <label id="score-label" control="score" value="&score.label;"
+             hidden="true"/>
+      <textbox id="score" disabled="true" hidden="true"/>
       <label id="title" value="&birdquizz.label;"/>
       <html:img src="chrome://birdquizz/skin/icon.png"
                 style="max-height: 32px; max-width: 32px;"/>
