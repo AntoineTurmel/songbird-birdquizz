@@ -198,9 +198,12 @@ window.mediaPage = {
     var scoreBox = document.getElementById("score");
     scoreBox.hidden = true;
     scoreBox.setAttribute("value", 0);
-    var start = document.getElementById("stop");
-    start.setAttribute("id", "start");
-    start.setAttribute("label", this._strings.getString("start"));
+    var stop = document.getElementById("stop");
+    if (stop)
+    {
+        stop.setAttribute("id", "start");
+        stop.setAttribute("label", this._strings.getString("start"));
+    }
     this.deleteButtons();
   },
 
@@ -304,9 +307,12 @@ window.mediaPage = {
         this.score = 0;
         var scoreBox = document.getElementById("score");
         scoreBox.setAttribute("value", 0);
-        var start = document.getElementById("stop");
-        start.setAttribute("id", "start");
-        start.setAttribute("label", this._strings.getString("start"));
+        var stop = document.getElementById("stop")
+        if (stop)
+        {
+            stop.setAttribute("id", "start");
+            stop.setAttribute("label", this._strings.getString("start"));
+        }
         this.deleteButtons();
         return;
     }
@@ -379,7 +385,7 @@ window.mediaPage = {
     var pPS = Cc["@songbirdnest.com/Songbird/PlaylistPlayback;1"]
                 .getService(Ci.sbIPlaylistPlayback);
 
-    if ((command == "play") && (url != null))
+    if (command == "play")
     {
         pPS.playURL(url);
         // pPS.position = this.startPosition;
