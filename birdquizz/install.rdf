@@ -5,9 +5,10 @@
     <em:id>BirdQuizz@songbirdnest.com</em:id>
     <em:type>2</em:type>
     <em:name>BirdQuizz</em:name>
-    <em:version>0.7.3</em:version>
+    <em:version>0.7.4</em:version>
     <em:creator>Mitch, GeekShadow</em:creator>
     <em:contributor>ventuno - Italian (it-IT) localisation</em:contributor>
+    <em:contributor>discostu - sound taken at soundsnap.com</em:contributor>
     <em:description>Music quiz game, featuring your own music collection.</em:description>
     <em:iconURL>chrome://birdquizz/skin/icon.png</em:iconURL>
     <em:homepageURL>http://code.google.com/p/songbird-birdquizz/</em:homepageURL>
