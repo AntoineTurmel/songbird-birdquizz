@@ -12,6 +12,8 @@
                   type="string"/>
       <preference id="playwith" name="extensions.birdquizz.playwith"
                   type="string"/>
+      <preference id="sound" name="extensions.birdquizz.sound"
+                  type="bool"/>
     </preferences>
     <groupbox>
       <caption label="&prefs.options.label;"/>
@@ -29,6 +31,10 @@
           <radio value="playtitle"  id="playtitle" label="&prefs.playtitle.label;" accesskey="T"/>
           <radio value="playartist" id="playartist" label="&prefs.playartist.label;" accesskey="A"/>
         </radiogroup>
+	<hbox flex="1">
+       	<label value="&prefs.activatesound.label;" style="width:8em" />
+	<checkbox preference="sound" />
+	</hbox>
       </vbox>
     </groupbox>
   </prefpane>

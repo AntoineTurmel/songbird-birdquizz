@@ -213,12 +213,14 @@ window.mediaPage = {
     const prefchoices = "extensions.birdquizz.choices";
     const prefmaxRounds = "extensions.birdquizz.maxRounds";
     const playwith = "extensions.birdquizz.playwith";
+    const enablesound = "extensions.birdquizz.sound";
     var prefs = Cc["@mozilla.org/preferences-service;1"]
                   .getService(Ci.nsIPrefBranch2);
 
     this.choices = prefs.getCharPref(prefchoices);
     this.maxRounds = prefs.getCharPref(prefmaxRounds);
     this.playwith = prefs.getCharPref(playwith);
+    this.enablesound = prefs.getBoolPref(enablesound);
   },
 
   selectAnswer: function(e)
@@ -231,6 +233,16 @@ window.mediaPage = {
     pPS.stop();
     if (answer == currentTrack)
     {
+	//sound implementation
+	if (this.enablesound == true) {
+	var sound = Components.classes["@mozilla.org/sound;1"].createInstance(Components.interfaces.nsISound)
+	var ios = Components.classes["@mozilla.org/network/io-service;1"]
+	                    .getService(Components.interfaces.nsIIOService);
+	var url = ios.newURI("chrome://birdquizz/content/correct.wav", null, null)
+	             .QueryInterface(Components.interfaces.nsIURL);
+	sound.init();
+	sound.play(url);
+	}
         // var score = position ? Math.round(16000 / (position - this.startPosition)) : 0;
         var score = position ? Math.round(16000 / position) : 0;
         this.score += score;
