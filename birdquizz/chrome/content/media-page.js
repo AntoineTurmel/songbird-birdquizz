@@ -276,27 +276,29 @@ window.mediaPage = {
       return;
     }
 
-    var mediaList = this.mediaListView.mediaList;
-    var item;
-    var trackList = new Array();
-
-    for (var i = 1; i < mediaList.length; i++)
-    {
-        item = mediaList.getItemByIndex(i);
-        if (!item.getProperty(SBProperties.isList))
-            trackList.push(item);
-    }
+	var listener = {
+		trackList : null,
+		onEnumerationBegin : function(list) {
+			this.trackList = new Array()
+		},
+		onEnumeratedItem : function(list, item) {
+			this.trackList.push(item);
+		},
+		onEnumerationEnd : function(list) { }
+	};
+	this.mediaListView.mediaList.enumerateItemsByProperty(
+			SBProperties.isList, 0, listener);
 
     var artist, track, r;
     var artistList = ["Various"]; // Put undesirable artist values here.
     var rTrackList = new Array();
-    var tracks = trackList.length;
+    var tracks = listener.trackList.length;
 
     for (var i = 0; i < tracks; i++)
     {
-        r = Math.round(Math.random() * (trackList.length - 1));
-        track = trackList[r];
-        trackList.splice(r, 1);
+        r = Math.round(Math.random() * (listener.trackList.length - 1));
+        track = listener.trackList[r];
+        listener.trackList.splice(r, 1);
         artist = track.getProperty(SBProperties.artistName);
         if ((this.playwith == "playartist") && artist &&
             (artistList.indexOf(artist) == -1))
