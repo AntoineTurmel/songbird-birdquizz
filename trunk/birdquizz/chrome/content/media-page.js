@@ -250,6 +250,20 @@ window.mediaPage = {
         scoreBox.setAttribute("value", this.score);
     }
 
+    if (answer != currentTrack)
+    {
+	//sound implementation
+	if (this.enablesound == true) {
+	var sound = Components.classes["@mozilla.org/sound;1"].createInstance(Components.interfaces.nsISound)
+	var ios = Components.classes["@mozilla.org/network/io-service;1"]
+	                    .getService(Components.interfaces.nsIIOService);
+	var url2 = ios.newURI("chrome://birdquizz/content/bad.wav", null, null)
+	             .QueryInterface(Components.interfaces.nsIURL);
+	sound.init();
+	sound.play(url2);
+	}
+    }
+
     this.setButtons();
   },
 
