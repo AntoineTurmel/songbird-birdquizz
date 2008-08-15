@@ -5,11 +5,11 @@
     <em:id>BirdQuizz@songbirdnest.com</em:id>
     <em:type>2</em:type>
     <em:name>BirdQuizz</em:name>
-    <em:version>0.7.4</em:version>
+    <em:version>0.8.0</em:version>
     <em:creator>Mitch, GeekShadow</em:creator>
     <em:contributor>ventuno - Italian (it-IT) localisation</em:contributor>
-    <em:contributor>sounds taken at flashkit.com</em:contributor>
-    <em:contributor>stephen lau - bugfix for 0.7RC1 and higher</em:contributor>
+    <em:contributor>Stephen Lau - media list enum. bugfix</em:contributor>
+    <em:contributor>flashkit.com - various sounds</em:contributor>
     <em:description>Music quiz game, featuring your own music collection.</em:description>
     <em:iconURL>chrome://birdquizz/skin/icon.png</em:iconURL>
     <em:homepageURL>http://code.google.com/p/songbird-birdquizz/</em:homepageURL>
