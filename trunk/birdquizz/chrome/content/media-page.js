@@ -231,37 +231,28 @@ window.mediaPage = {
     var currentTrack = pPS.currentURL;
     var position = pPS.position;
     pPS.stop();
+
+    if (this.enablesound)
+    {
+        // sound implementation
+        var sound = Cc["@mozilla.org/sound;1"].createInstance(Ci.nsISound)
+        var ios = Cc["@mozilla.org/network/io-service;1"]
+                    .getService(Ci.nsIIOService);
+        var url = "chrome://birdquizz/content/";
+        url += (answer == currentTrack) ? "correct.wav" : "bad.wav";
+        var uri = ios.newURI(url, null, null)
+                     .QueryInterface(Ci.nsIURL);
+        sound.init();
+        sound.play(uri);
+    }
+
     if (answer == currentTrack)
     {
-	//sound implementation
-	if (this.enablesound == true) {
-	var sound = Components.classes["@mozilla.org/sound;1"].createInstance(Components.interfaces.nsISound)
-	var ios = Components.classes["@mozilla.org/network/io-service;1"]
-	                    .getService(Components.interfaces.nsIIOService);
-	var url = ios.newURI("chrome://birdquizz/content/correct.wav", null, null)
-	             .QueryInterface(Components.interfaces.nsIURL);
-	sound.init();
-	sound.play(url);
-	}
         // var score = position ? Math.round(16000 / (position - this.startPosition)) : 0;
         var score = position ? Math.round(16000 / position) : 0;
         this.score += score;
         var scoreBox = document.getElementById("score");
         scoreBox.setAttribute("value", this.score);
-    }
-
-    if (answer != currentTrack)
-    {
-	//sound implementation
-	if (this.enablesound == true) {
-	var sound = Components.classes["@mozilla.org/sound;1"].createInstance(Components.interfaces.nsISound)
-	var ios = Components.classes["@mozilla.org/network/io-service;1"]
-	                    .getService(Components.interfaces.nsIIOService);
-	var url2 = ios.newURI("chrome://birdquizz/content/bad.wav", null, null)
-	             .QueryInterface(Components.interfaces.nsIURL);
-	sound.init();
-	sound.play(url2);
-	}
     }
 
     this.setButtons();
@@ -290,18 +281,18 @@ window.mediaPage = {
       return;
     }
 
-	var listener = {
-		trackList : null,
-		onEnumerationBegin : function(list) {
-			this.trackList = new Array()
-		},
-		onEnumeratedItem : function(list, item) {
-			this.trackList.push(item);
-		},
-		onEnumerationEnd : function(list) { }
-	};
-	this.mediaListView.mediaList.enumerateItemsByProperty(
-			SBProperties.isList, 0, listener);
+    var listener = {
+        trackList : null,
+        onEnumerationBegin : function(list) {
+            this.trackList = new Array()
+        },
+        onEnumeratedItem : function(list, item) {
+            this.trackList.push(item);
+        },
+        onEnumerationEnd : function(list) { }
+    };
+    this.mediaListView.mediaList.enumerateItemsByProperty(
+            SBProperties.isList, 0, listener);
 
     var artist, track, r;
     var artistList = ["Various"]; // Put undesirable artist values here.
