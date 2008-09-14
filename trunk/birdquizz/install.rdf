@@ -5,9 +5,10 @@
     <em:id>BirdQuizz@songbirdnest.com</em:id>
     <em:type>2</em:type>
     <em:name>BirdQuizz</em:name>
-    <em:version>0.8.0</em:version>
+    <em:version>0.8.1</em:version>
     <em:creator>Mitch, GeekShadow</em:creator>
     <em:contributor>ventuno - Italian (it-IT) localisation</em:contributor>
+    <em:contributor>Humberto Sartini - Portuguese (Brazilian) (pt-BR) localisation</em:contributor>
     <em:contributor>Stephen Lau - media list enum. bugfix</em:contributor>
     <em:contributor>flashkit.com - various sounds</em:contributor>
     <em:description>Music quiz game, featuring your own music collection.</em:description>
@@ -19,7 +20,7 @@
     <em:targetApplication>
       <Description>
         <em:id>songbird@songbirdnest.com</em:id>
-        <em:minVersion>0.6</em:minVersion>
+        <em:minVersion>0.7.0</em:minVersion>
         <em:maxVersion>0.8.0pre</em:maxVersion>
       </Description>
     </em:targetApplication>
