@@ -1,0 +1,7 @@
+<!ENTITY prefs.options.label "BirdQuizz Ayarları">
+<!ENTITY prefs.choices.value "Seçimler:">
+<!ENTITY prefs.maxRounds.value "Maksimum Round:">
+<!ENTITY prefs.playwith.value "Birlikte oyna:">
+<!ENTITY prefs.playtitle.label "Başlıklar">
+<!ENTITY prefs.playartist.label "Artistler">
+<!ENTITY prefs.activatesound.label "Aktif ses">
