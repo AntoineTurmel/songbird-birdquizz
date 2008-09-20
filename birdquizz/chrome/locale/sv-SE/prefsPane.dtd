@@ -1,0 +1,7 @@
+<!ENTITY prefs.options.label "BirdQuizz inställningar">
+<!ENTITY prefs.choices.value "Alternativ:">
+<!ENTITY prefs.maxRounds.value "Maximalt antal omgångar:">
+<!ENTITY prefs.playwith.value "Spela med:">
+<!ENTITY prefs.playtitle.label "Titlar">
+<!ENTITY prefs.playartist.label "Artister">
+<!ENTITY prefs.activatesound.label "Aktivera ljud">
