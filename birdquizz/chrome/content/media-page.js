@@ -7,6 +7,18 @@ if (typeof(Cu) == "undefined")
     var Cu = Components.utils;
 if (typeof(Cr) == "undefined")
     var Cr = Components.results;
+	
+if ("sbIMediacoreManager" in Components.interfaces)
+	// new Media Core API (>= 0.8.0pre)
+	var gMM = Cc["@songbirdnest.com/Songbird/Mediacore/Manager;1"]
+				.getService(Ci.sbIMediacoreManager);
+else
+	var gPPS = Cc["@songbirdnest.com/Songbird/PlaylistPlayback;1"]
+				.getService(Ci.sbIPlaylistPlayback);
+
+if (typeof(gIOS) == "undefined")
+	var gIOS = Cc["@mozilla.org/network/io-service;1"]
+				.createInstance(Ci.nsIIOService);
 
 /**
  * Media Page Controller
@@ -87,6 +99,13 @@ window.mediaPage = {
 
     this._strings = document.getElementById("birdquizz-strings");
 
+	// Hide the currently playing track info in the faceplate
+	this.mainWin = Cc["@mozilla.org/appshell/window-mediator;1"]
+            .getService(Ci.nsIWindowMediator)
+            .getMostRecentWindow("Songbird:Main").window;
+	this.trackInfoBox = this.mainWin.document.getElementById("track_info");
+	this.trackInfoBox.style.visibility = "hidden";
+
     this.readPrefs();
     this.rounds = this.maxRounds;
     this.score = 0;
@@ -107,6 +126,9 @@ window.mediaPage = {
    */
   onUnload: function(e)
   {
+	// Restore the currently playing track info in the faceplate
+	this.trackInfoBox.style.visibility = "visible";
+
     if (this._playlist)
     {
       this._playlist.destroy();
@@ -226,11 +248,20 @@ window.mediaPage = {
   selectAnswer: function(e)
   {
     var answer = (e.target).getAttribute("url");
-    var pPS = Cc["@songbirdnest.com/Songbird/PlaylistPlayback;1"]
-                .getService(Ci.sbIPlaylistPlayback);
-    var currentTrack = pPS.currentURL;
-    var position = pPS.position;
-    pPS.stop();
+	var currentTrack;
+	var position;
+
+	if ("sbIMediacoreManager" in Components.interfaces) {
+		// new Media Core API (>= 0.8.0pre)
+		currentTrack = gMM.playbackControl.uri.spec;
+		position = gMM.playbackControl.position;
+		gMM.playbackControl.stop();
+	} else {
+		// old PlaylistPlaybackService API
+		currentTrack = gPPS.currentURL;
+		position = gPPS.position;
+		gPPS.stop();
+	}
 
     if (this.enablesound)
     {
@@ -401,18 +432,32 @@ window.mediaPage = {
 
   trackSamplePlayback: function(command, url)
   {
-    var pPS = Cc["@songbirdnest.com/Songbird/PlaylistPlayback;1"]
-                .getService(Ci.sbIPlaylistPlayback);
-
-    if (command == "play")
-    {
-        pPS.playURL(url);
-        // pPS.position = this.startPosition;
-    }
-    else if (command == "stop")
-    {
-        pPS.stop();
-    }
+	if ("sbIMediacoreManager" in Components.interfaces) {
+		// new Media Core API (>= 0.8.0pre)
+		switch (command) {
+			case "play":
+				var uri = gIOS.newURI(url, null, null);
+				gMM.sequencer.playURL(uri);
+				break;
+			case "stop":
+				gMM.playbackControl.stop();
+				break;
+			default:
+				break;
+		}
+	} else {
+		// old PlaylistPlaybackService API
+		switch (command) {
+			case "play":
+				gPPS.playURL(url);
+				break;
+			case "stop":
+				gPPS.stop();
+				break;
+			default:
+				break;
+		}
+	}
   }
 
 } // End window.mediaPage
