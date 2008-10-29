@@ -52,9 +52,9 @@
       <html:img src="chrome://birdquizz/skin/icon.png"
                 style="max-height: 32px; max-width: 32px;"/>
     </hbox>
-    <groupbox id="choices-box" hidden="true">
+    <groupbox id="choices-group-box" hidden="true">
       <caption label="&choices.label;"/>
-      <vbox id="aChoice" uri="choice" align="left"/>
+      <vbox id="choices-box" uri="choice" align="left"/>
     </groupbox>
   </vbox>
 
