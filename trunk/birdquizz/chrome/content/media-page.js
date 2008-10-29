@@ -7,18 +7,18 @@ if (typeof(Cu) == "undefined")
     var Cu = Components.utils;
 if (typeof(Cr) == "undefined")
     var Cr = Components.results;
-	
+    
 if ("sbIMediacoreManager" in Components.interfaces)
-	// new Media Core API (>= 0.8.0pre)
-	var gMM = Cc["@songbirdnest.com/Songbird/Mediacore/Manager;1"]
-				.getService(Ci.sbIMediacoreManager);
+    // new Media Core API (>= 0.8.0pre)
+    var gMM = Cc["@songbirdnest.com/Songbird/Mediacore/Manager;1"]
+                .getService(Ci.sbIMediacoreManager);
 else
-	var gPPS = Cc["@songbirdnest.com/Songbird/PlaylistPlayback;1"]
-				.getService(Ci.sbIPlaylistPlayback);
+    var gPPS = Cc["@songbirdnest.com/Songbird/PlaylistPlayback;1"]
+                 .getService(Ci.sbIPlaylistPlayback);
 
 if (typeof(gIOS) == "undefined")
-	var gIOS = Cc["@mozilla.org/network/io-service;1"]
-				.createInstance(Ci.nsIIOService);
+    var gIOS = Cc["@mozilla.org/network/io-service;1"]
+                 .createInstance(Ci.nsIIOService);
 
 /**
  * Media Page Controller
@@ -67,6 +67,7 @@ window.mediaPage = {
   get maxRounds() { return this._maxRounds; },
   get rounds() { return this._rounds; },
   get score() { return this._score; },
+  get startPosition() { return this._startPos; },
   set choices(value) { this._choices = value; },
   set maxRounds(value) { this._maxRounds = value; },
   set rounds(value) { this._rounds = value; },
@@ -94,22 +95,23 @@ window.mediaPage = {
         return;
     }
 
+    // Hide the playlist
     this._playlist = document.getElementById("playlist");
     this._playlist.hidden = true;
 
     this._strings = document.getElementById("birdquizz-strings");
 
-	// Hide the currently playing track info in the faceplate
-	this.mainWin = Cc["@mozilla.org/appshell/window-mediator;1"]
-            .getService(Ci.nsIWindowMediator)
-            .getMostRecentWindow("Songbird:Main").window;
-	this.trackInfoBox = this.mainWin.document.getElementById("track_info");
-	this.trackInfoBox.style.visibility = "hidden";
+    // Hide the currently playing track info in the faceplate
+    this.mainWin = Cc["@mozilla.org/appshell/window-mediator;1"]
+                     .getService(Ci.nsIWindowMediator)
+                     .getMostRecentWindow("Songbird:Main").window;
+    this.trackInfoBox = this.mainWin.document.getElementById("track_info");
+    this.trackInfoBox.style.visibility = "hidden";
 
     this.readPrefs();
     this.rounds = this.maxRounds;
     this.score = 0;
-    // this.startPosition = 30000;
+    this.startPosition = 30000;
 
     // Get playlist commands (context menu, keyboard shortcuts, toolbar)
     // Note: playlist commands currently depend on the playlist widget.
@@ -126,8 +128,8 @@ window.mediaPage = {
    */
   onUnload: function(e)
   {
-	// Restore the currently playing track info in the faceplate
-	this.trackInfoBox.style.visibility = "visible";
+    // Restore the currently playing track info in the faceplate
+    this.trackInfoBox.style.visibility = "visible";
 
     if (this._playlist)
     {
@@ -165,31 +167,20 @@ window.mediaPage = {
 
   createButtons: function()
   {
+    var choicesGroupBox = document.getElementById("choices-group-box");
+    choicesGroupBox.hidden = false;
+
+    var choice;
     var choicesBox = document.getElementById("choices-box");
-    choicesBox.setAttribute("hidden", "false");
-
-    var mediaList = this._mediaListView.mediaList;
-    var ml = new Array();
-
-    for (var i = 1; i < mediaList.length; i++)
-    {
-        ml.push(mediaList.getItemByIndex(i));
-    }
-
-    var choice, item, r;
-    var aChoice = document.getElementById("aChoice");
     this.readPrefs();
 
     for (var i = 0; i < this.choices; i++)
     {
         choice = document.createElement("button");
-        r = Math.round(Math.random() * (ml.length - 1));
-        item = ml[r];
-        ml.splice(r, 1);
         choice.setAttribute("id", "choice" + i.toString());
         choice.setAttribute("label", "");
         choice.setAttribute("onclick", "window.mediaPage.selectAnswer(event);");
-        aChoice.appendChild(choice);
+        choicesBox.appendChild(choice);
     }
   },
 
@@ -199,13 +190,13 @@ window.mediaPage = {
     scoreLabel.hidden = true;
     var scoreBox = document.getElementById("score");
     scoreBox.hidden = true;
+    var choicesGroupBox = document.getElementById("choices-group-box");
     var choicesBox = document.getElementById("choices-box");
-    var aChoice = document.getElementById("aChoice");
-    if (!choicesBox || !aChoice)
+    if (!choicesGroupBox || !choicesBox)
         return;
-    choicesBox.hidden = true;
-    while (aChoice.hasChildNodes())
-        aChoice.removeChild(aChoice.firstChild);
+    choicesGroupBox.hidden = true;
+    while (choicesBox.hasChildNodes())
+        choicesBox.removeChild(choicesBox.firstChild);
   },
 
   endQuiz: function()
@@ -248,20 +239,23 @@ window.mediaPage = {
   selectAnswer: function(e)
   {
     var answer = (e.target).getAttribute("url");
-	var currentTrack;
-	var position;
+    var currentTrack;
+    var position;
 
-	if ("sbIMediacoreManager" in Components.interfaces) {
-		// new Media Core API (>= 0.8.0pre)
-		currentTrack = gMM.playbackControl.uri.spec;
-		position = gMM.playbackControl.position;
-		gMM.playbackControl.stop();
-	} else {
-		// old PlaylistPlaybackService API
-		currentTrack = gPPS.currentURL;
-		position = gPPS.position;
-		gPPS.stop();
-	}
+    if ("sbIMediacoreManager" in Components.interfaces)
+    {
+        // new Media Core API (>= 0.8.0pre)
+        currentTrack = gMM.playbackControl.uri.spec;
+        position = gMM.playbackControl.position;
+        gMM.playbackControl.stop();
+    }
+    else
+    {
+        // old PlaylistPlaybackService API
+        currentTrack = gPPS.currentURL;
+        position = gPPS.position;
+        gPPS.stop();
+    }
 
     if (this.enablesound)
     {
@@ -322,8 +316,8 @@ window.mediaPage = {
         },
         onEnumerationEnd : function(list) { }
     };
-    this.mediaListView.mediaList.enumerateItemsByProperty(
-            SBProperties.isList, 0, listener);
+    this.mediaListView.mediaList.enumerateItemsByProperty(SBProperties.isList,
+                                                          0, listener);
 
     var artist, track, r;
     var artistList = ["Various"]; // Put undesirable artist values here.
@@ -432,32 +426,38 @@ window.mediaPage = {
 
   trackSamplePlayback: function(command, url)
   {
-	if ("sbIMediacoreManager" in Components.interfaces) {
-		// new Media Core API (>= 0.8.0pre)
-		switch (command) {
-			case "play":
-				var uri = gIOS.newURI(url, null, null);
-				gMM.sequencer.playURL(uri);
-				break;
-			case "stop":
-				gMM.playbackControl.stop();
-				break;
-			default:
-				break;
-		}
-	} else {
-		// old PlaylistPlaybackService API
-		switch (command) {
-			case "play":
-				gPPS.playURL(url);
-				break;
-			case "stop":
-				gPPS.stop();
-				break;
-			default:
-				break;
-		}
-	}
+    if ("sbIMediacoreManager" in Components.interfaces)
+    {
+        // new Media Core API (>= 0.8.0pre)
+        switch (command)
+        {
+            case "play":
+                var uri = gIOS.newURI(url, null, null);
+                gMM.sequencer.playURL(uri);
+                // gMM.playbackControl.position = this.startPosition;
+                break;
+            case "stop":
+                gMM.playbackControl.stop();
+                break;
+            default:
+                break;
+        }
+    }
+    else
+    {
+        // old PlaylistPlaybackService API
+        switch (command)
+        {
+            case "play":
+                gPPS.playURL(url);
+                break;
+            case "stop":
+                gPPS.stop();
+                break;
+            default:
+                break;
+        }
+    }
   }
 
 } // End window.mediaPage
