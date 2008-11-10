@@ -5,7 +5,7 @@
     <em:id>BirdQuizz@songbirdnest.com</em:id>
     <em:type>2</em:type>
     <em:name>BirdQuizz</em:name>
-    <em:version>0.8.3</em:version>
+    <em:version>0.8.4</em:version>
     <em:creator>Mitch, GeekShadow</em:creator>
     <em:contributor>animarval - Catalan (ca-AD) localisation</em:contributor>
     <em:contributor>AlleyKat - Danish (da-DK) localisation</em:contributor>
@@ -27,7 +27,7 @@
       <Description>
         <em:id>songbird@songbirdnest.com</em:id>
         <em:minVersion>0.7.0</em:minVersion>
-        <em:maxVersion>1.0.*</em:maxVersion>
+        <em:maxVersion>1.1.0</em:maxVersion>
       </Description>
     </em:targetApplication>
 
