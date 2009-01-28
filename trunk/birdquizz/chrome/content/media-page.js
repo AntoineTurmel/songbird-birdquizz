@@ -1,24 +1,15 @@
 // Shorthand
-if (typeof(Cc) == "undefined")
-    var Cc = Components.classes;
-if (typeof(Ci) == "undefined")
-    var Ci = Components.interfaces;
-if (typeof(Cu) == "undefined")
-    var Cu = Components.utils;
-if (typeof(Cr) == "undefined")
-    var Cr = Components.results;
-    
-if ("sbIMediacoreManager" in Components.interfaces)
-    // new Media Core API (>= 0.8.0pre)
-    var gMM = Cc["@songbirdnest.com/Songbird/Mediacore/Manager;1"]
-                .getService(Ci.sbIMediacoreManager);
-else
-    var gPPS = Cc["@songbirdnest.com/Songbird/PlaylistPlayback;1"]
-                 .getService(Ci.sbIPlaylistPlayback);
+if (!Cc) var Cc = Components.classes;
+if (!Ci) var Ci = Components.interfaces;
+if (!Cr) var Cr = Components.results;
+if (!Cu) var Cu = Components.utils;
 
-if (typeof(gIOS) == "undefined")
+if (!gIOS)
     var gIOS = Cc["@mozilla.org/network/io-service;1"]
-                 .createInstance(Ci.nsIIOService);
+                 .getService(Ci.nsIIOService);
+
+var gMM = Cc["@songbirdnest.com/Songbird/Mediacore/Manager;1"]
+            .getService(Ci.sbIMediacoreManager);
 
 /**
  * Media Page Controller
@@ -144,7 +135,7 @@ window.mediaPage = {
    */
   highlightItem: function(aIndex)
   {
-    this._playlist.highlightItem(aIndex);
+    // this._playlist.highlightItem(aIndex);
   },
 
   /**
@@ -152,7 +143,8 @@ window.mediaPage = {
    */
   canDrop: function(aEvent, aSession)
   {
-    return this._playlist.canDrop(aEvent, aSession);
+    return false;
+    // return this._playlist.canDrop(aEvent, aSession);
   },
 
   /**
@@ -160,9 +152,12 @@ window.mediaPage = {
    */
   onDrop: function(aEvent, aSession)
   {
+    return false;
+    /*
     return this._playlist
                ._dropOnTree(this._playlist.mediaListView.length,
                             Ci.sbIMediaListViewTreeViewObserver.DROP_AFTER);
+    */
   },
 
   createButtons: function()
@@ -239,39 +234,25 @@ window.mediaPage = {
   selectAnswer: function(e)
   {
     var answer = (e.target).getAttribute("url");
-    var currentTrack;
-    var position;
-
-    if ("sbIMediacoreManager" in Components.interfaces)
-    {
-        // new Media Core API (>= 0.8.0pre)
-        currentTrack = gMM.playbackControl.uri.spec;
-        position = gMM.playbackControl.position;
-        gMM.playbackControl.stop();
-    }
-    else
-    {
-        // old PlaylistPlaybackService API
-        currentTrack = gPPS.currentURL;
-        position = gPPS.position;
-        gPPS.stop();
-    }
+    var currentTrack = gMM.playbackControl.uri.spec;
+    var position = gMM.playbackControl.position;
+    var correct = (answer == currentTrack);
+    
+    gMM.playbackControl.stop();
 
     if (this.enablesound)
     {
         // sound implementation
         var sound = Cc["@mozilla.org/sound;1"].createInstance(Ci.nsISound)
-        var ios = Cc["@mozilla.org/network/io-service;1"]
-                    .getService(Ci.nsIIOService);
         var url = "chrome://birdquizz/content/";
-        url += (answer == currentTrack) ? "correct.wav" : "bad.wav";
-        var uri = ios.newURI(url, null, null)
-                     .QueryInterface(Ci.nsIURL);
+        url += correct ? "correct.wav" : "bad.wav";
+        var uri = gIOS.newURI(url, null, null)
+                      .QueryInterface(Ci.nsIURL);
         sound.init();
         sound.play(uri);
     }
 
-    if (answer == currentTrack)
+    if (correct)
     {
         // var score = position ? Math.round(16000 / (position - this.startPosition)) : 0;
         var score = position ? Math.round(16000 / position) : 0;
@@ -289,21 +270,6 @@ window.mediaPage = {
     {
         this.endQuiz();
         return;
-    }
-
-    // Make sure we have the JavasSript modules we're going to use
-    if (!window.SBProperties)
-      Cu.import("resource://app/jsmodules/sbProperties.jsm");
-    if (!window.LibraryUtils)
-      Cu.import("resource://app/jsmodules/sbLibraryUtils.jsm");
-    if (!window.kPlaylistCommands)
-      Cu.import("resource://app/jsmodules/kPlaylistCommands.jsm");
-
-    if (!this._mediaListView)
-    {
-      Cu.reportError("Media Page did not receive a mediaListView before the " +
-                     "onload event!");
-      return;
     }
 
     var listener = {
@@ -426,37 +392,18 @@ window.mediaPage = {
 
   trackSamplePlayback: function(command, url)
   {
-    if ("sbIMediacoreManager" in Components.interfaces)
+    switch (command)
     {
-        // new Media Core API (>= 0.8.0pre)
-        switch (command)
-        {
-            case "play":
-                var uri = gIOS.newURI(url, null, null);
-                gMM.sequencer.playURL(uri);
-                // gMM.playbackControl.position = this.startPosition;
-                break;
-            case "stop":
-                gMM.playbackControl.stop();
-                break;
-            default:
-                break;
-        }
-    }
-    else
-    {
-        // old PlaylistPlaybackService API
-        switch (command)
-        {
-            case "play":
-                gPPS.playURL(url);
-                break;
-            case "stop":
-                gPPS.stop();
-                break;
-            default:
-                break;
-        }
+        case "play":
+            var uri = gIOS.newURI(url, null, null);
+            gMM.sequencer.playURL(uri);
+            // gMM.playbackControl.position = this.startPosition;
+            break;
+        case "stop":
+            gMM.playbackControl.stop();
+            break;
+        default:
+            break;
     }
   }
 
