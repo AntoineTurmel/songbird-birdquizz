@@ -5,7 +5,7 @@
     <em:id>BirdQuizz@songbirdnest.com</em:id>
     <em:type>2</em:type>
     <em:name>BirdQuizz</em:name>
-    <em:version>0.9.0</em:version>
+    <em:version>0.9.1</em:version>
     <em:creator>Mitch, GeekShadow</em:creator>
     <em:contributor>animarval - Catalan (ca-AD) localisation</em:contributor>
     <em:contributor>AlleyKat - Danish (da-DK) localisation</em:contributor>
@@ -28,12 +28,12 @@
       <Description>
         <em:id>songbird@songbirdnest.com</em:id>
         <em:minVersion>1.1.0</em:minVersion>
-        <em:maxVersion>1.1.*</em:maxVersion>
+        <em:maxVersion>1.2.*</em:maxVersion>
       </Description>
     </em:targetApplication>
 
     <!-- Register a custom media page.
-         See http://songbirdnest.com/add-on-api/articles/media-pages -->
+         See http://wiki.songbirdnest.com/Developer/Articles/Getting_Started/Building_Media_Views -->
     <songbird:mediaPage>
       <Description>
         <songbird:contentTitle>BirdQuizz</songbird:contentTitle>
