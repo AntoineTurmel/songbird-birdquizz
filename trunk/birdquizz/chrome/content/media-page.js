@@ -63,7 +63,7 @@ window.mediaPage = {
   set maxRounds(value) { this._maxRounds = value; },
   set rounds(value) { this._rounds = value; },
   set score(value) { this._score = value; },
-
+  
   /**
    * Called when the page finishes loading.
    * By this time window.mediaPage.mediaListView should have
@@ -103,6 +103,24 @@ window.mediaPage = {
     this.rounds = this.maxRounds;
     this.score = 0;
     this.startPosition = 30000;
+// set the answers label and img 
+    var answersBox = document.getElementById("answers-box");
+    for (var j = 0; j < this.rounds; j++)
+    {
+	var answerImg = document.createElement("image");
+	answerImg.setAttribute("id","answerImg"+j.toString());
+	answerImg.setAttribute("style","max-height: 16px; max-width: 16px;");
+	answerImg.setAttribute("src","");
+	answerImg.setAttribute("hidden","true");
+	var answerhBox = document.createElement("hbox");
+	var answerLab = document.createElement("label");
+	answerLab.setAttribute("id","answer"+j.toString());
+	answerLab.setAttribute("value", "");
+	answerLab.setAttribute("hidden","true");
+	answerhBox.appendChild(answerLab);
+	answerhBox.appendChild(answerImg);
+	answersBox.appendChild(answerhBox);
+    }
 
     // Get playlist commands (context menu, keyboard shortcuts, toolbar)
     // Note: playlist commands currently depend on the playlist widget.
@@ -177,6 +195,10 @@ window.mediaPage = {
         choice.setAttribute("onclick", "window.mediaPage.selectAnswer(event);");
         choicesBox.appendChild(choice);
     }
+//put the answer groupbox visible
+    var answersGroupBox = document.getElementById("answers-group-box");
+    answersGroupBox.hidden = false;
+
   },
 
   deleteButtons: function()
@@ -192,6 +214,8 @@ window.mediaPage = {
     choicesGroupBox.hidden = true;
     while (choicesBox.hasChildNodes())
         choicesBox.removeChild(choicesBox.firstChild);
+
+
   },
 
   endQuiz: function()
@@ -213,6 +237,22 @@ window.mediaPage = {
         stop.setAttribute("label", this._strings.getString("start"));
     }
     this.deleteButtons();
+//reset the answers box, and hide them
+    var answersGroupBox = document.getElementById("answers-group-box");
+    var answersBox = document.getElementById("answers-box");
+    if (!answersGroupBox || !answersBox)
+	return;
+    answersGroupBox.hidden = true;
+    for (var i = 0; i < this.maxRounds; i++)
+    {
+	var answerImg = document.getElementById("answerImg" + i.toString());
+	answerImg.setAttribute("src","");
+	answerImg.setAttribute("hidden","true");
+        var answerElem = document.getElementById("answer" + i.toString());
+	answerElem.setAttribute("value","");
+	answerElem.setAttribute("hidden", "true");
+    }
+
   },
 
   readPrefs: function()
@@ -251,16 +291,25 @@ window.mediaPage = {
         sound.init();
         sound.play(uri);
     }
-
     if (correct)
     {
+	//Maybe a better way to get the score?
         // var score = position ? Math.round(16000 / (position - this.startPosition)) : 0;
-        var score = position ? Math.round(16000 / position) : 0;
+        var score = Math.round(( - position / 2000 ) + 10);
+	if (score < 1)
+	    score=1;
         this.score += score;
         var scoreBox = document.getElementById("score");
         scoreBox.setAttribute("value", this.score);
-    }
-
+    } 
+//set the image and label visible with their value
+    var answerlab = document.getElementById("answer" + (this.rounds).toString());
+    var answerImg = document.getElementById("answerImg" + (this.rounds).toString());
+    var urlImg = "chrome://birdquizz/skin/";
+    urlImg += correct ? "OK_Icons.png" : "not_OK_Icons.png";
+    answerImg.setAttribute("src",urlImg);
+    answerImg.setAttribute("hidden","false");
+    answerlab.setAttribute("hidden","false");
     this.setButtons();
   },
 
@@ -288,6 +337,7 @@ window.mediaPage = {
     var artist, track, r;
     var artistList = ["Various"]; // Put undesirable artist values here.
     var rTrackList = new Array();
+    var goodTrackList = new Array();
     var tracks = listener.trackList.length;
 
     for (var i = 0; i < tracks; i++)
@@ -365,9 +415,8 @@ window.mediaPage = {
         buttons.push(choice);
     }
     //
-
     var rb = Math.round(Math.random() * (this.choices - 1));
-    this.trackSamplePlayback("play", buttons[rb].getAttribute("url"));
+    this.trackSamplePlayback("play", buttons[rb].getAttribute("url"),buttons[rb].getAttribute("label"));
     this.rounds--;
   },
 
@@ -390,14 +439,18 @@ window.mediaPage = {
     this.setButtons();
   },
 
-  trackSamplePlayback: function(command, url)
+  trackSamplePlayback: function(command, url,artist)
   {
     switch (command)
     {
         case "play":
             var uri = gIOS.newURI(url, null, null);
             gMM.sequencer.playURL(uri);
-            // gMM.playbackControl.position = this.startPosition;
+// put the good answer on the answerlab node
+	    var answerlab = document.getElementById("answer" + (this.rounds-1).toString());
+
+	    answerlab.setAttribute("value",artist);
+	    // gMM.playbackControl.position = this.startPosition;
             break;
         case "stop":
             gMM.playbackControl.stop();
@@ -406,5 +459,5 @@ window.mediaPage = {
             break;
     }
   }
-
+ 
 } // End window.mediaPage
