@@ -52,10 +52,16 @@
       <html:img src="chrome://birdquizz/skin/icon.png"
                 style="max-height: 32px; max-width: 32px;"/>
     </hbox>
-    <groupbox id="choices-group-box" hidden="true">
-      <caption label="&choices.label;"/>
-      <vbox id="choices-box" uri="choice" align="left"/>
-    </groupbox>
+    <vbox>
+      <groupbox id="choices-group-box" hidden="true">
+	<caption label="&choices.label;"/>
+	<vbox id="choices-box" uri="choice" align="left"/>
+      </groupbox>
+      <groupbox id="answers-group-box" hidden="true">
+	<caption label="&answers.label;"/>
+	<vbox id="answers-box" uri="answers-b" align="left"/>
+      </groupbox>
+    </vbox>
   </vbox>
 
   <!-- Songbird Playlist tree/table widget.
