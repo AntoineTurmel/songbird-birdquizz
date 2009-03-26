@@ -1,0 +1,7 @@
+<!ENTITY prefs.options.label       "Opciones de BirdQuizz">
+<!ENTITY prefs.choices.value       "Nombre de posibilidades :">
+<!ENTITY prefs.maxRounds.value     "Máximo de turnos :">
+<!ENTITY prefs.playwith.value      "Jugar con :">
+<!ENTITY prefs.playtitle.label     "Titulos">
+<!ENTITY prefs.playartist.label    "Artistas">
+<!ENTITY prefs.activatesound.label "Activar sonido">
