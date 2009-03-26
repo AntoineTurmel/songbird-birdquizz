@@ -29,3 +29,8 @@ label.titleName
 {
   font-style: italic;
 }
+image.answerImg
+{
+  max-height: 16px;
+  max-width: 16px;
+}

@@ -10,9 +10,6 @@ if (!gIOS)
 
 var gMM = Cc["@songbirdnest.com/Songbird/Mediacore/Manager;1"]
             .getService(Ci.sbIMediacoreManager);
-//if (!gPPs)
-    //var gPPS = Cc["@songbirdnest.com/Songbird/PlaylistPlayback;1"]  
-	//	.getService(Ci.sbIPlaylistPlayback);  
 
 
 /**
@@ -178,7 +175,7 @@ window.mediaPage = {
     {
 	var answerImg = document.createElement("image");
 	answerImg.setAttribute("id","answerImg"+j.toString());
-	answerImg.setAttribute("style","max-height: 16px; max-width: 16px;");
+	answerImg.className = "answerImg";
 	answerImg.setAttribute("src","");
 	answerImg.setAttribute("hidden","true");
 	var answerhBox = document.createElement("hbox");
