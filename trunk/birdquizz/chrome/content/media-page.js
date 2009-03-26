@@ -10,6 +10,10 @@ if (!gIOS)
 
 var gMM = Cc["@songbirdnest.com/Songbird/Mediacore/Manager;1"]
             .getService(Ci.sbIMediacoreManager);
+//if (!gPPs)
+    //var gPPS = Cc["@songbirdnest.com/Songbird/PlaylistPlayback;1"]  
+	//	.getService(Ci.sbIPlaylistPlayback);  
+
 
 /**
  * Media Page Controller
@@ -64,6 +68,8 @@ window.mediaPage = {
   set rounds(value) { this._rounds = value; },
   set score(value) { this._score = value; },
   
+
+
   /**
    * Called when the page finishes loading.
    * By this time window.mediaPage.mediaListView should have
@@ -85,7 +91,6 @@ window.mediaPage = {
                        "the onload event!");
         return;
     }
-
     // Hide the playlist
     this._playlist = document.getElementById("playlist");
     this._playlist.hidden = true;
@@ -103,25 +108,8 @@ window.mediaPage = {
     this.rounds = this.maxRounds;
     this.score = 0;
     this.startPosition = 30000;
-// set the answers label and img 
-    var answersBox = document.getElementById("answers-box");
-    for (var j = 0; j < this.rounds; j++)
-    {
-	var answerImg = document.createElement("image");
-	answerImg.setAttribute("id","answerImg"+j.toString());
-	answerImg.setAttribute("style","max-height: 16px; max-width: 16px;");
-	answerImg.setAttribute("src","");
-	answerImg.setAttribute("hidden","true");
-	var answerhBox = document.createElement("hbox");
-	var answerLab = document.createElement("label");
-	answerLab.setAttribute("id","answer"+j.toString());
-	answerLab.setAttribute("value", "");
-	answerLab.setAttribute("hidden","true");
-	answerhBox.appendChild(answerLab);
-	answerhBox.appendChild(answerImg);
-	answersBox.appendChild(answerhBox);
-    }
-
+    this.createAnswers();
+    
     // Get playlist commands (context menu, keyboard shortcuts, toolbar)
     // Note: playlist commands currently depend on the playlist widget.
     var mgr = Cc["@songbirdnest.com/Songbird/PlaylistCommandsManager;1"]
@@ -178,10 +166,47 @@ window.mediaPage = {
     */
   },
 
+
+/**
+* create the answers labels and img 
+*
+*/
+  createAnswers: function()
+  {
+    var answersBox = document.getElementById("answers-box");
+    for (var j = 0; j < this.rounds; j++)
+    {
+	var answerImg = document.createElement("image");
+	answerImg.setAttribute("id","answerImg"+j.toString());
+	answerImg.setAttribute("style","max-height: 16px; max-width: 16px;");
+	answerImg.setAttribute("src","");
+	answerImg.setAttribute("hidden","true");
+	var answerhBox = document.createElement("hbox");
+	var answerArtist = document.createElement("label");
+	var answerAlbum = document.createElement("label");
+	var answerTitle = document.createElement("label");
+	answerArtist.setAttribute("id","answerArtist"+j.toString());
+	answerArtist.setAttribute("hidden","true");
+	answerArtist.className = "artistName";
+	answerAlbum.setAttribute("id","answerAlbum"+j.toString());
+	answerAlbum.setAttribute("hidden","true");
+	answerTitle.setAttribute("id","answerTitle"+j.toString());
+	answerTitle.setAttribute("hidden","true");
+	answerTitle.className = "titleName";
+	answerhBox.appendChild(answerArtist);
+	answerhBox.appendChild(answerAlbum);
+	answerhBox.appendChild(answerTitle);
+	answerhBox.appendChild(answerImg);
+	answersBox.appendChild(answerhBox);
+    }
+  },
+
   createButtons: function()
   {
     var choicesGroupBox = document.getElementById("choices-group-box");
     choicesGroupBox.hidden = false;
+    var answersGroupBox = document.getElementById("answers-group-box");
+    answersGroupBox.hidden = false;
 
     var choice;
     var choicesBox = document.getElementById("choices-box");
@@ -195,10 +220,6 @@ window.mediaPage = {
         choice.setAttribute("onclick", "window.mediaPage.selectAnswer(event);");
         choicesBox.appendChild(choice);
     }
-//put the answer groupbox visible
-    var answersGroupBox = document.getElementById("answers-group-box");
-    answersGroupBox.hidden = false;
-
   },
 
   deleteButtons: function()
@@ -237,7 +258,13 @@ window.mediaPage = {
         stop.setAttribute("label", this._strings.getString("start"));
     }
     this.deleteButtons();
-//reset the answers box, and hide them
+    this.resetAnswers();
+
+  },
+
+//reset the answers box, and hide them  
+  resetAnswers: function()
+  {
     var answersGroupBox = document.getElementById("answers-group-box");
     var answersBox = document.getElementById("answers-box");
     if (!answersGroupBox || !answersBox)
@@ -248,11 +275,16 @@ window.mediaPage = {
 	var answerImg = document.getElementById("answerImg" + i.toString());
 	answerImg.setAttribute("src","");
 	answerImg.setAttribute("hidden","true");
-        var answerElem = document.getElementById("answer" + i.toString());
-	answerElem.setAttribute("value","");
-	answerElem.setAttribute("hidden", "true");
+	var answerArtist = document.getElementById("answerArtist"+i.toString());
+	answerArtist.setAttribute("value", "");	
+	answerArtist.setAttribute("hidden","true");
+	var answerAlbum = document.getElementById("answerAlbum"+i.toString());
+	answerAlbum.setAttribute("value", "");
+	answerAlbum.setAttribute("hidden","true");
+	var answerTitle = document.getElementById("answerTitle"+i.toString());
+	answerTitle.setAttribute("value", "");
+	answerTitle.setAttribute("hidden","true");
     }
-
   },
 
   readPrefs: function()
@@ -301,16 +333,25 @@ window.mediaPage = {
         this.score += score;
         var scoreBox = document.getElementById("score");
         scoreBox.setAttribute("value", this.score);
-    } 
-//set the image and label visible with their value
-    var answerlab = document.getElementById("answer" + (this.rounds).toString());
+    }
+    this.showAnswers(correct);
+    this.setButtons();
+  },
+  
+  //set the image and labels visible 
+  showAnswers: function(correct)
+  {
+    var answerArtist = document.getElementById("answerArtist" + (this.rounds).toString());
+    answerArtist.setAttribute("hidden","false");
+    var answerAlbum = document.getElementById("answerAlbum" + (this.rounds).toString());
+    answerAlbum.setAttribute("hidden","false");
+    var answerTitle = document.getElementById("answerTitle" + (this.rounds).toString());
+    answerTitle.setAttribute("hidden","false");
     var answerImg = document.getElementById("answerImg" + (this.rounds).toString());
     var urlImg = "chrome://birdquizz/skin/";
     urlImg += correct ? "OK_Icons.png" : "not_OK_Icons.png";
     answerImg.setAttribute("src",urlImg);
     answerImg.setAttribute("hidden","false");
-    answerlab.setAttribute("hidden","false");
-    this.setButtons();
   },
 
   setButtons: function()
@@ -335,7 +376,7 @@ window.mediaPage = {
                                                           0, listener);
 
     var artist, track, r;
-    var artistList = ["Various"]; // Put undesirable artist values here.
+    var artistList = ["Various", "Various Artists"]; // Put undesirable artist values here.
     var rTrackList = new Array();
     var goodTrackList = new Array();
     var tracks = listener.trackList.length;
@@ -393,7 +434,7 @@ window.mediaPage = {
 
     var choice, labelType, playwith;
     var buttons = new Array();
-
+    var songs = new Array();
     // Set the buttons
     for (var i = 0; i < this.choices; i++)
     {
@@ -412,14 +453,25 @@ window.mediaPage = {
 
         choice.setAttribute("label", track.getProperty(SBProperties[labelType]));
         choice.setAttribute("url", track.getProperty(SBProperties.contentURL));
-        buttons.push(choice);
+	songs.push(track);
+	buttons.push(choice);
     }
     //
     var rb = Math.round(Math.random() * (this.choices - 1));
-    this.trackSamplePlayback("play", buttons[rb].getAttribute("url"),buttons[rb].getAttribute("label"));
+    this.setAnswersValues(songs[rb]);
+    this.trackSamplePlayback("play", buttons[rb].getAttribute("url"));
     this.rounds--;
   },
 
+  setAnswersValues: function(info)
+  {
+	    var answerArtist = document.getElementById("answerArtist" + (this.rounds-1).toString());
+	    var answerAlbum = document.getElementById("answerAlbum" + (this.rounds-1).toString());
+	    var answerTitle = document.getElementById("answerTitle" + (this.rounds-1).toString());
+	    answerArtist.setAttribute("value",info.getProperty(SBProperties["artistName"]));
+	    answerAlbum.setAttribute("value",info.getProperty(SBProperties["albumName"]));
+	    answerTitle.setAttribute("value", info.getProperty(SBProperties["trackName"]));
+  },
   showFinalScore: function()
   {
     alert(this._strings.getString("end") + " " + (this.score).toString() + " " +
@@ -439,17 +491,13 @@ window.mediaPage = {
     this.setButtons();
   },
 
-  trackSamplePlayback: function(command, url,artist)
+  trackSamplePlayback: function(command, url)
   {
     switch (command)
     {
         case "play":
             var uri = gIOS.newURI(url, null, null);
             gMM.sequencer.playURL(uri);
-// put the good answer on the answerlab node
-	    var answerlab = document.getElementById("answer" + (this.rounds-1).toString());
-
-	    answerlab.setAttribute("value",artist);
 	    // gMM.playbackControl.position = this.startPosition;
             break;
         case "stop":

@@ -21,3 +21,11 @@
 {
   width: 50px;
 }
+label.artistName
+{
+  font-weight: bold;
+}
+label.titleName
+{
+  font-style: italic;
+}
