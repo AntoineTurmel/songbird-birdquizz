@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#"
      xmlns:songbird="http://www.songbirdnest.com/2007/addon-metadata-rdf#">
   <Description about="urn:mozilla:install-manifest">
@@ -16,7 +16,9 @@
     <em:contributor>Humberto Sartini - Portuguese (Brazilian) (pt-BR) localisation</em:contributor>
     <em:contributor>Schwadegan - Swedish (sv-SE) localisation</em:contributor>
     <em:contributor>mrtcvk - Turkish (tr-TR) localisation</em:contributor>
+    <em:contributor>Loremetal - Spanish (es-ES) localisation</em:contributor>
     <em:contributor>Stephen Lau</em:contributor>
+    <em:contributor>Thain</em:contributor>
     <em:contributor>flashkit.com - various sounds</em:contributor>
     <em:description>Music quiz game, featuring your own music collection.</em:description>
     <em:iconURL>chrome://birdquizz/skin/icon.png</em:iconURL>
