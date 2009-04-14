@@ -1,4 +1,5 @@
-<!ENTITY birdquizz.label    "BirdQuizz">
-<!ENTITY score.label        "Punteggio :">
-<!ENTITY start.label        "Gioca!">
-<!ENTITY choices.label      "Scelte">
+<!ENTITY birdquizz.label "BirdQuizz">
+<!ENTITY score.label "Punteggio :">
+<!ENTITY start.label "Gioca!">
+<!ENTITY choices.label "Scelte">
+<!ENTITY answers.label "Risposte">
