@@ -1,0 +1,7 @@
+<!ENTITY prefs.options.label "BirdQuizz 選項">
+<!ENTITY prefs.choices.value "選擇 :">
+<!ENTITY prefs.maxRounds.value "要玩幾回合 :">
+<!ENTITY prefs.playwith.value "要猜什麼 :">
+<!ENTITY prefs.playtitle.label "曲名">
+<!ENTITY prefs.playartist.label "演出者">
+<!ENTITY prefs.activatesound.label "啟用音效">
