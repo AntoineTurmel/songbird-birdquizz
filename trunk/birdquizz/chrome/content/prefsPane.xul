@@ -30,6 +30,7 @@
         <radiogroup preference="playwith">
           <radio value="playtitle"  id="playtitle" label="&prefs.playtitle.label;" accesskey="T"/>
           <radio value="playartist" id="playartist" label="&prefs.playartist.label;" accesskey="A"/>
+          <radio value="playalbum"  id="playalbum" label="&prefs.playalbum.label;" accesskey="L"/>
         </radiogroup>
 	<hbox flex="1">
        	<label value="&prefs.activatesound.label;" style="width:8em" />

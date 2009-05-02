@@ -4,4 +4,5 @@
 <!ENTITY prefs.playwith.value      "Play with :">
 <!ENTITY prefs.playtitle.label     "Titles">
 <!ENTITY prefs.playartist.label    "Artists">
+<!ENTITY prefs.playalbum.label     "Albums">
 <!ENTITY prefs.activatesound.label "Activate sound">
