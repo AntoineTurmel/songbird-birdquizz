@@ -374,6 +374,7 @@ window.mediaPage = {
 
     var artist, track, r;
     var artistList = ["Various", "Various Artists"]; // Put undesirable artist values here.
+    var albumList = [""];
     var rTrackList = new Array();
     var goodTrackList = new Array();
     var tracks = listener.trackList.length;
@@ -384,6 +385,7 @@ window.mediaPage = {
         track = listener.trackList[r];
         listener.trackList.splice(r, 1);
         artist = track.getProperty(SBProperties.artistName);
+	album = track.getProperty(SBProperties.albumName);
         if ((this.playwith == "playartist") && artist &&
             (artistList.indexOf(artist) == -1))
         {
@@ -394,6 +396,11 @@ window.mediaPage = {
         {
             rTrackList.push(track);
         }
+	else if ((this.playwith == "playalbum") && album && (albumList.indexOf(album)==-1))
+	{
+            albumList.push(album);
+            rTrackList.push(track);
+	}
     }
 
     if (rTrackList.length < this.choices)
@@ -445,6 +452,9 @@ window.mediaPage = {
                 break;
             case "playtitle":
                 labelType = "trackName";
+                break;
+	    case "playalbum":
+                labelType = "albumName";
                 break;
         }
 
