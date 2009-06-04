@@ -1,5 +1,5 @@
 <!ENTITY birdquizz.label    "BirdQuizz">
 <!ENTITY score.label        "Score :">
-<!ENTITY start.label        "Démarrer!">
 <!ENTITY choices.label      "Choix">
 <!ENTITY answers.label	    "Réponses">
+<!ENTITY options.label      "Options">
