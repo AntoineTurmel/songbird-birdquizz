@@ -123,7 +123,16 @@ window.mediaPage = {
     this.playwith = prefs.getCharPref("extensions.birdquizz.playwith");
     this.enablesound = prefs.getBoolPref("extensions.birdquizz.sound");
     
-    //TODO random config
+    this.randomMatchTypesList = [];
+    for (var i in matchTypes) {
+	    if (prefs.getBoolPref(matchTypes[i].randomConf)) {
+	       this.randomMatchTypesList.push(matchTypes[i]);
+	    }
+	}
+    if (this.randomMatchTypesList.length == 0) {
+        this.randomMatchTypesList.push(matchTypes.title);
+    }
+    
   },
   
   /**
@@ -187,7 +196,7 @@ window.mediaPage = {
         
         //set type of round (e.g. artist, album..)  number of possibilities and correct answer
         var trackNum = randomIndex(numTracks);
-        var thisRound = new Round(this.choices,this.playwith,this.mediaListView.getItemByIndex(trackNum));
+        var thisRound = new Round(this.choices,this.playwith,this.mediaListView.getItemByIndex(trackNum),this.randomMatchTypesList);
         
         
         for (var x = 0; x < this.choices; x++) {
@@ -428,12 +437,12 @@ window.mediaPage = {
 };
 
     
-function Round(choices, playWith, track) {
+function Round(choices, playWith, track, randomList) {
     if(!choices || !playWith || !track) {
         throw new Error("Can't initialize Round");
     }
  
-    this.type = matchTypes[playWith] ? matchTypes[playWith] : matchTypesList[randomIndex(matchTypesList.length)];
+    this.type = matchTypes[playWith] ? matchTypes[playWith] : randomList[randomIndex(randomList.length)];
     this.answers = [];
     this.hash = {};
     this.choices = choices;
@@ -771,21 +780,25 @@ var matchTypes = {
   artist: {
     labelType: "artistName", 
     property: SBProperties.artistName,
+    randomConf: "extensions.birdquizz.random_artist",
     coefficient: 0.8
   },
   title: {
     labelType: "trackName",
     property: SBProperties.trackName,
+    randomConf: "extensions.birdquizz.random_title",
     coefficient: 1.1
   },
   album: {
     labelType: "albumName",
     property: SBProperties.albumName,
+    randomConf: "extensions.birdquizz.random_album",
     coefficient: 1
   },
   year: {
     labelType: "yearName",
     property: SBProperties.year,
+    randomConf: "extensions.birdquizz.random_year",
     coefficient: 1.5
   }
 };
