@@ -5,21 +5,22 @@
     <em:id>BirdQuizz@songbirdnest.com</em:id>
     <em:type>2</em:type>
     <em:name>BirdQuizz</em:name>
-    <em:version>1.0.1</em:version>
+    <em:version>1.0.2</em:version>
     <em:creator>Mitch, GeekShadow</em:creator>
-    <em:contributor>animarval - Catalan (ca-AD) localisation</em:contributor>
-    <em:contributor>AlleyKat - Danish (da-DK) localisation</em:contributor>
-    <em:contributor>Lukas Diener - German (de-DE) localisation</em:contributor>
-    <em:contributor>Loremetal - Spanish (es-ES) localisation</em:contributor>
-    <em:contributor>ventuno - Italian (it-IT) localisation</em:contributor>
-    <em:contributor>Mavbaby - Dutch (nl-NL) localisation</em:contributor>
-    <em:contributor>Wacław Jacek - Polish (pl-PL) localisation</em:contributor>
-    <em:contributor>Humberto Sartini - Portuguese (Brazilian) (pt-BR) localisation</em:contributor>
-    <em:contributor>Schwadegan - Swedish (sv-SE) localisation</em:contributor>
-    <em:contributor>mrtcvk - Turkish (tr-TR) localisation</em:contributor>
-    <em:contributor>Jose Sun - Chinese (zh-TW) localisation</em:contributor>
+    <em:contributor>animarval - Catalan (ca-AD) localization</em:contributor>
+    <em:contributor>AlleyKat - Danish (da-DK) localization</em:contributor>
+    <em:contributor>Lukas Diener - German (de-DE) localization</em:contributor>
+    <em:contributor>Loremetal - Spanish (es-ES) localization</em:contributor>
+    <em:contributor>ventuno - Italian (it-IT) localization</em:contributor>
+    <em:contributor>Mavbaby - Dutch (nl-NL) localization</em:contributor>
+    <em:contributor>Wacław Jacek - Polish (pl-PL) localization</em:contributor>
+    <em:contributor>Humberto Sartini - Portuguese (Brazilian) (pt-BR) localization</em:contributor>
+    <em:contributor>Schwadegan - Swedish (sv-SE) localization</em:contributor>
+    <em:contributor>mrtcvk - Turkish (tr-TR) localization</em:contributor>
+    <em:contributor>Jose Sun - Chinese (zh-TW) localization</em:contributor>
     <em:contributor>Stephen Lau</em:contributor>
     <em:contributor>Thain</em:contributor>
+    <em:contributor>Mone</em:contributor>
     <em:contributor>flashkit.com - various sounds</em:contributor>
     <em:description>Music quiz game, featuring your own music collection.</em:description>
     <em:iconURL>chrome://birdquizz/skin/icon.png</em:iconURL>
