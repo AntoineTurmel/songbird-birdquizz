@@ -9,8 +9,10 @@ locale  birdquizz  it-IT  chrome/locale/it-IT/
 locale  birdquizz  nl-NL  chrome/locale/nl-NL/
 locale  birdquizz  pl-PL  chrome/locale/pl-PL/
 locale  birdquizz  pt-BR  chrome/locale/pt-BR/
+locale  birdquizz  sr-RS  chrome/locale/sr-RS/
 locale  birdquizz  sv-SE  chrome/locale/sv-SE/
 locale  birdquizz  tr-TR  chrome/locale/tr-TR/
+locale  birdquizz  uk-UA  chrome/locale/uk-UA/
 locale  birdquizz  zh-TW  chrome/locale/zh-TW/
 skin    birdquizz  classic/1.0 chrome/skin/
 

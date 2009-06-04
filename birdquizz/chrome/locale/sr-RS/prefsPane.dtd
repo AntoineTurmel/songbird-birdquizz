@@ -1,0 +1,7 @@
+<!ENTITY prefs.options.label "Опције БирдКвиза">
+<!ENTITY prefs.choices.value "Избори:">
+<!ENTITY prefs.maxRounds.value "Највише рунди:">
+<!ENTITY prefs.playwith.value "Играј са:">
+<!ENTITY prefs.playtitle.label "Наслови">
+<!ENTITY prefs.playartist.label "Аутори">
+<!ENTITY prefs.activatesound.label "Укључи звук">

@@ -5,7 +5,7 @@
     <em:id>BirdQuizz@songbirdnest.com</em:id>
     <em:type>2</em:type>
     <em:name>BirdQuizz</em:name>
-    <em:version>1.0.2</em:version>
+    <em:version>1.1</em:version>
     <em:creator>Mitch, GeekShadow</em:creator>
     <em:contributor>animarval - Catalan (ca-AD) localization</em:contributor>
     <em:contributor>AlleyKat - Danish (da-DK) localization</em:contributor>
@@ -15,8 +15,10 @@
     <em:contributor>Mavbaby - Dutch (nl-NL) localization</em:contributor>
     <em:contributor>Wacław Jacek - Polish (pl-PL) localization</em:contributor>
     <em:contributor>Humberto Sartini - Portuguese (Brazilian) (pt-BR) localization</em:contributor>
+    <em:contributor>Касперски - Serbian (Serbia) (sr-RS) localization</em:contributor>
     <em:contributor>Schwadegan - Swedish (sv-SE) localization</em:contributor>
     <em:contributor>mrtcvk - Turkish (tr-TR) localization</em:contributor>
+    <em:contributor>Володимир Савчук - Ukrainian (uk-UA) localization</em:contributor>
     <em:contributor>Jose Sun - Chinese (zh-TW) localization</em:contributor>
     <em:contributor>Stephen Lau</em:contributor>
     <em:contributor>Thain</em:contributor>
@@ -31,8 +33,8 @@
     <em:targetApplication>
       <Description>
         <em:id>songbird@songbirdnest.com</em:id>
-        <em:minVersion>1.1.0</em:minVersion>
-        <em:maxVersion>1.2.*</em:maxVersion>
+        <em:minVersion>1.1.1</em:minVersion>
+        <em:maxVersion>1.3.0a</em:maxVersion>
       </Description>
     </em:targetApplication>
 
