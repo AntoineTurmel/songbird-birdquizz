@@ -2,7 +2,7 @@
 pref("extensions.birdquizz.firstrun", true);
 pref("extensions.birdquizz.choices", "5");
 pref("extensions.birdquizz.maxRounds", "5");
-pref("extensions.birdquizz.playwith", "playtitle");
+pref("extensions.birdquizz.playwith", "title");
 pref("extensions.birdquizz.sound", true);
 pref("extensions.birdquizz.random_title", true);
 pref("extensions.birdquizz.random_artist", true);

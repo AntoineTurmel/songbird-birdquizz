@@ -1,0 +1,7 @@
+<!ENTITY prefs.options.label "Параметри BirdQuizz">
+<!ENTITY prefs.choices.value "Варіанти:">
+<!ENTITY prefs.maxRounds.value "Раундів (максимально):">
+<!ENTITY prefs.playwith.value "Грати з:">
+<!ENTITY prefs.playtitle.label "Заголовками">
+<!ENTITY prefs.playartist.label "Артистами">
+<!ENTITY prefs.activatesound.label "Увімкнути звук">
