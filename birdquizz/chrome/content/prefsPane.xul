@@ -28,14 +28,18 @@
         </hbox>
         <label value="&prefs.playwith.value;" style="width:8em"/>
         <radiogroup preference="playwith">
-          <radio value="playtitle"  id="playtitle" label="&prefs.playtitle.label;" accesskey="T"/>
-          <radio value="playartist" id="playartist" label="&prefs.playartist.label;" accesskey="A"/>
-          <radio value="playalbum"  id="playalbum" label="&prefs.playalbum.label;" accesskey="L"/>
+          <radio value="title"  id="playtitle" label="&prefs.playtitle.label;" accesskey="T"/>
+          <radio value="artist" id="playartist" label="&prefs.playartist.label;" accesskey="A"/>
+          <radio value="album"  id="playalbum" label="&prefs.playalbum.label;" accesskey="L"/>
+          <radio value="year"  id="playyear" label="&prefs.playyear.label;" accesskey="Y"/>
+          <radio value="random"  id="playrandom" label="&prefs.playrandom.label;" accesskey="R"/>
         </radiogroup>
-	<hbox flex="1">
-       	<label value="&prefs.activatesound.label;" style="width:8em" />
-	<checkbox preference="sound" />
-	</hbox>
+  
+        <hbox flex="1">
+              <label value="&prefs.activatesound.label;" style="width:8em" />
+             <checkbox preference="sound" />
+        </hbox>
+        
       </vbox>
     </groupbox>
   </prefpane>
