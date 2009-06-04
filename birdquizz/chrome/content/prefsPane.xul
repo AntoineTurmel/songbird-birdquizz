@@ -14,6 +14,15 @@
                   type="string"/>
       <preference id="sound" name="extensions.birdquizz.sound"
                   type="bool"/>
+     
+      <preference id="random_title" name="extensions.birdquizz.random_title"
+                  type="bool"/>
+      <preference id="random_artist" name="extensions.birdquizz.random_artist"
+                  type="bool"/>
+      <preference id="random_album" name="extensions.birdquizz.random_album"
+                  type="bool"/>
+      <preference id="random_year" name="extensions.birdquizz.random_year"
+                  type="bool"/>
     </preferences>
     <groupbox>
       <caption label="&prefs.options.label;"/>
@@ -40,6 +49,27 @@
              <checkbox preference="sound" />
         </hbox>
         
+        <vbox flex="1">
+              <label value="&prefs.randomlist.label;" style="width:8em" />
+              <hbox flex="1">
+                <label value="&prefs.playtitle.label;" style="width:8em" />
+                <checkbox preference="random_title" />
+              </hbox>
+              <hbox flex="1">
+                <label value="&prefs.playartist.label;" style="width:8em" />
+                <checkbox preference="random_artist" />
+              </hbox>
+              <hbox flex="1">
+                <label value="&prefs.playalbum.label;" style="width:8em" />
+                <checkbox preference="random_album" />
+              </hbox>
+              <hbox flex="1">
+                <label value="&prefs.playyear.label;" style="width:8em" />
+                <checkbox preference="random_year" />
+              </hbox>
+        </vbox>
+        
+	
       </vbox>
     </groupbox>
   </prefpane>
