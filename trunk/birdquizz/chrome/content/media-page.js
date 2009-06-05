@@ -444,9 +444,9 @@ function Round(choices, playWith, track, randomList) {
 
     this.answerNumber = randomIndex(choices);
     this.correctTrack = track;
-    var neededValue = cleanValue(track.getProperty(this.type.property));
-    this.hash[neededValue] = true;
-    this.answers[this.answerNumber] = neededValue;
+    var prop = track.getProperty(this.type.property);
+    this.hash[cleanValue(prop)] = true;
+    this.answers[this.answerNumber] = prop;
 }
 
 Round.prototype = {
@@ -461,7 +461,7 @@ Round.prototype = {
         if (!neededValue || this.hash[neededValue])
             return false;
 
-        this.answers[this.fillIndex] = neededValue;
+        this.answers[this.fillIndex] = value;
         this.hash[neededValue] = true;
 
         this.fillIndex++;
