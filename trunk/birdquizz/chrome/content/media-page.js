@@ -102,6 +102,10 @@ window.mediaPage = {
         // Setup the start stop button.
         this.mainButton = document.getElementById("startStop");
         this.mainButton.setAttribute("label", this._strings.getString("start"));
+        
+        this.passButton = document.getElementById("passButton");
+        this.disablePass();
+        
     } catch(e) {
         this.unexpected(e);
         return;
@@ -182,7 +186,9 @@ window.mediaPage = {
     // Reset and show the score.
     this.score.reset();
     this.score.show();
-
+    
+    this.enablePass();
+    
     // Setup the rounds.
     var numTracks = this.mediaListView.length;
     this.roundsArray = [];
@@ -272,14 +278,24 @@ window.mediaPage = {
     this.next();
 
   },
-
+  
   next: function() {
+    // Start next round or end game.
+    if (this.playingRound >= this.roundsArray.length - 1) {
+        this.endQuiz();
+        return;
+    }
+  
     // Next round.
     this.playingRound++;
     // This is the Round object for this round.
     var thisRound = this.roundsArray[this.playingRound];
     //put the labels on the buttons
     this.buttons.bind(thisRound);
+    
+    if(thisRound.getSpentTime() > 0) {
+        this.disablePass();
+    }
 
     //get the track to play
     var track = thisRound.getTrack();
@@ -301,6 +317,36 @@ window.mediaPage = {
     this.startTime = new Date().getTime();
 
   },
+  
+  disablePass: function() {
+    this.passIsDisabled = true;
+    this.passButton.setAttribute("disabled",true);
+  },
+  
+  enablePass: function() {
+    this.passIsDisabled = false;
+    this.passButton.setAttribute("disabled",false);
+  },
+  
+  pass: function() {
+    if (this.passIsDisabled) {
+        // Should never happen due to the disabling of the pass button 
+        return;
+    }
+    // Stop timing.
+    var spentTime = new Date().getTime() - this.startTime;
+    
+    // Stop the track.
+    this.stop();
+    
+    // This is the Round object for this round.
+    var thisRound = this.roundsArray[this.playingRound];
+    
+    thisRound.addSpentTime(spentTime);
+    this.roundsArray.push(thisRound);
+    
+    this.next();
+  },
 
   selectAnswer: function(value) {
     // Stop timing.
@@ -308,6 +354,8 @@ window.mediaPage = {
 
     // Get the Round object and check if the answer is correct.
     var thisRound = this.roundsArray[this.playingRound];
+    spentTime += thisRound.getSpentTime();
+    
     var correct = thisRound.guess(value);
 
     // Stop the track.
@@ -333,19 +381,16 @@ window.mediaPage = {
         score = score < 1 ? 1 : Math.round(score);
 
         this.score.addScore(score);
+    } else {
+        this.score.addScore(-1);
     }
 
     // Show the answer.
-    this.answerBoxes.showAnswer(this.playingRound,
-                                thisRound.getTrack(),
+    this.answerBoxes.showAnswer(thisRound.getTrack(),
                                 correct,
                                 thisRound.getLabel(value));
 
-    // Start next round or end game.
-    if (this.playingRound >= this.maxRounds - 1)
-        this.endQuiz()
-    else
-        this.next();
+    this.next();
   },
 
   endQuiz: function(noFinalScore) {
@@ -355,7 +400,9 @@ window.mediaPage = {
 
     // Show the start button.
     this.mainButton.setAttribute("label", this._strings.getString("start"));
-
+    
+    this.disablePass();
+    
     // Hide the answers buttons, show just the answers (maybe for wrong answers
     // we can also show what was clicked?)
     this.buttons.hide();
@@ -447,6 +494,8 @@ function Round(choices, playWith, track, randomList) {
     var prop = track.getProperty(this.type.property);
     this.hash[cleanValue(prop)] = true;
     this.answers[this.answerNumber] = prop;
+    
+    this.spentTime = 0;
 }
 
 Round.prototype = {
@@ -480,6 +529,15 @@ Round.prototype = {
     getTrack: function() {
         return (this.correctTrack) ? this.correctTrack : null;
     },
+    
+    getSpentTime: function() {
+        return this.spentTime;
+    },
+    
+    addSpentTime: function(val) {
+        if(!isNaN(val)) 
+            this.spentTime += val;
+    }
 
 };
 
@@ -542,12 +600,13 @@ AnswersManager.prototype = {
         for (var i = 0; i < this.answerLabels.length; i++) {
             this.answerLabels[i].box.setAttribute("hidden",true);
         }
-        this.next = 0;
+        this.next = 1;
     },
 
-    showAnswer: function(roundNum, track, correct, response) {
-        var labelId = this.answerLabels.length - (roundNum + 1);
-        var answerObj = this.answerLabels[labelId];
+    showAnswer: function(track, correct, response) {
+        var labelIndex = this.answerLabels.length - this.next;
+        this.next++;
+        var answerObj = this.answerLabels[labelIndex];
 
         var urlImg = "chrome://birdquizz/skin/";
         urlImg += correct ? "OK_Icons.png" : "not_OK_Icons.png";

@@ -43,6 +43,7 @@
     <hbox>
       <button label="&options.label;" oncommand="window.mediaPage.showPrefs();" />
       <button id="startStop" oncommand="window.mediaPage.startOrStop();"/>
+      <button id="passButton" label="&pass.label;" oncommand="window.mediaPage.pass();" disabled="true" />
       <label id="score-label" control="score" value="&score.label;"
              hidden="true"/>
       <textbox id="score" disabled="true" hidden="true"/>
