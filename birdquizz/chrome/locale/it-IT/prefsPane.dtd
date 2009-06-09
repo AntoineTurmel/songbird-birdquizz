@@ -1,11 +1,11 @@
-<!ENTITY prefs.options.label "Opzioni di BirdQuizz">
-<!ENTITY prefs.choices.value "Scelte :">
-<!ENTITY prefs.maxRounds.value "Numero massimo di turni :">
-<!ENTITY prefs.playwith.value "Gioca con :">
-<!ENTITY prefs.playtitle.label "i titoli">
-<!ENTITY prefs.playartist.label "i nomi degli artisti">
-<!ENTITY prefs.playyear.label   "l'anno dei brani">
-<!ENTITY prefs.playalbum.label     "i nome degli album">
-<!ENTITY prefs.playrandom.label   "qualcosa a caso">
-<!ENTITY prefs.activatesound.label "Attiva il suono">
-<!ENTITY prefs.randomlist.label "Configura il gioco casuale">
+<!ENTITY prefs.options.label        "Opzioni di BirdQuizz">
+<!ENTITY prefs.choices.value        "Scelte :">
+<!ENTITY prefs.maxRounds.value      "Numero massimo di turni :">
+<!ENTITY prefs.playwith.value       "Gioca con :">
+<!ENTITY prefs.playtitle.label      "i titoli">
+<!ENTITY prefs.playartist.label     "i nomi degli artisti">
+<!ENTITY prefs.playyear.label       "l'anno dei brani">
+<!ENTITY prefs.playalbum.label      "i nomi degli album">
+<!ENTITY prefs.playrandom.label     "qualcosa a caso">
+<!ENTITY prefs.activatesound.label  "Attiva il suono">
+<!ENTITY prefs.randomlist.label     "Configura il gioco casuale">
