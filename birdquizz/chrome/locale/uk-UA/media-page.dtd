@@ -1,5 +1,6 @@
 <!ENTITY birdquizz.label "BirdQuizz">
 <!ENTITY score.label "Рахунок">
-<!ENTITY start.label "Старт!">
 <!ENTITY choices.label "Варіанти">
 <!ENTITY answers.label "Відповіді">
+<!ENTITY options.label      "Options">
+<!ENTITY pass.label         "Pass">

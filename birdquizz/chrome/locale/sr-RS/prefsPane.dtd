@@ -4,4 +4,8 @@
 <!ENTITY prefs.playwith.value "Играј са:">
 <!ENTITY prefs.playtitle.label "Наслови">
 <!ENTITY prefs.playartist.label "Аутори">
+<!ENTITY prefs.playyear.label "Година">
+<!ENTITY prefs.playalbum.label "Албуми">
+<!ENTITY prefs.playrandom.label "Насумично">
 <!ENTITY prefs.activatesound.label "Укључи звук">
+<!ENTITY prefs.randomlist.label "Насумично подешавање игре">

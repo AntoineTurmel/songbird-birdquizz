@@ -1,5 +1,6 @@
 <!ENTITY birdquizz.label "BirdQuizz">
 <!ENTITY score.label "Poäng:">
-<!ENTITY start.label "Starta!">
 <!ENTITY choices.label "Alternativ">
 <!ENTITY answers.label	    "Answers">
+<!ENTITY options.label      "Options">
+<!ENTITY pass.label         "Pass">
