@@ -101,18 +101,47 @@ window.mediaPage = {
 
         // Setup the start stop button.
         this.mainButton = document.getElementById("startStop");
-        this.mainButton.setAttribute("label", this._strings.getString("start"));
         
+        //Setup the Pass button
         this.passButton = document.getElementById("passButton");
         this.disablePass();
+        
+        //Get the "player"'s ref to hide it when needed
+        var mainWin = Cc["@mozilla.org/appshell/window-mediator;1"]
+                 .getService(Ci.nsIWindowMediator)
+                 .getMostRecentWindow("Songbird:Main")
+                 .window;
+        this.controlButtonsBox = mainWin.document.getElementById("control_pane");
+        
+        //Get the playlist's ref to hide it when needed
+        this._playlist = document.getElementById("playlist");
+        var cmds = Cc["@songbirdnest.com/Songbird/PlaylistCommandsManager;1"]
+                 .createInstance(Components.interfaces.sbIPlaylistCommandsManager)
+                 .request(kPlaylistCommands.MEDIAITEM_DEFAULT);
+             
+        //Bind the playlist to our media view
+        this._playlist.bind(this.mediaListView, cmds);
+        
+        this.showStandardControls();
         
     } catch(e) {
         this.unexpected(e);
         return;
     }
-
-    this.mainButton.setAttribute("hidden", false);
-
+  },
+  
+  showStandardControls: function() {
+    this.mainButton.setAttribute("label", this._strings.getString("start"));
+    this.controlButtonsBox.style.visibility = "visible";
+    this._playlist.style.visibility = "visible";
+    this.disablePass();
+  },
+  
+  showGameControls: function() {
+    this.mainButton.setAttribute("label", this._strings.getString("stop"));
+    this.controlButtonsBox.style.visibility = "hidden";
+    this._playlist.style.visibility = "hidden";
+    this.enablePass();
   },
 
   readPrefs: function() {
@@ -137,12 +166,17 @@ window.mediaPage = {
     if (this.randomMatchTypesList.length == 0)
         this.randomMatchTypesList.push(matchTypes.title);
   },
-
+  
   /**
    * Called as the window is about to unload
    */
   onUnload: function(e) {
     this.endQuiz(true);
+    this.showStandardControls();
+    if (this._playlist) {
+      this._playlist.destroy();
+      this._playlist = null;
+    }
   },
 
   /**
@@ -186,8 +220,7 @@ window.mediaPage = {
     // Reset and show the score.
     this.score.reset();
     this.score.show();
-    
-    this.enablePass();
+    this.showGameControls();
     
     // Setup the rounds.
     var numTracks = this.mediaListView.length;
@@ -271,8 +304,6 @@ window.mediaPage = {
     this.answerBoxes.reset();
     this.answerBoxes.show();
 
-    this.mainButton.setAttribute("label", this._strings.getString("stop"));
-
     this.playing = true;
 
     this.next();
@@ -312,7 +343,7 @@ window.mediaPage = {
     }
 
     // Listen to this!
-    this.play(track,true);
+    this.playTrack(track,true);
 
     this.startTime = new Date().getTime();
 
@@ -398,13 +429,9 @@ window.mediaPage = {
         return;
     this.playing = false;
 
-    // Show the start button.
-    this.mainButton.setAttribute("label", this._strings.getString("start"));
+    this.showStandardControls();
     
-    this.disablePass();
-    
-    // Hide the answers buttons, show just the answers (maybe for wrong answers
-    // we can also show what was clicked?)
+    // Hide the answers buttons, show just the answers 
     this.buttons.hide();
 
     // Stop the track.
@@ -441,13 +468,27 @@ window.mediaPage = {
     alert(this._strings.getString("unexpected") + ".\n" + e);
   },
 
-  play: function(track, randomStart) {
+  playTrack: function(track, randomStart) {
     if (!track)
         return; // TODO error message?
-
+    
+    var started = false;
     this.playbackPhase++;
-    var uri = gIOS.newURI(track.getProperty(SBProperties.contentURL), null, null);
-    gMM.sequencer.playURL(uri);
+    
+    if(!randomStart) {
+	    try {
+	        var index = this.mediaListView.getIndexForItem(track);
+	        gMM.sequencer.playView(this.mediaListView,index);
+	    
+	        started = true;    
+	    } catch(e) {
+	    }
+    }
+    
+    if (!started) {
+	    var uri = gIOS.newURI(track.getProperty(SBProperties.contentURL), null, null);
+	    gMM.sequencer.playURL(uri);
+	}
 
 
     //this doesn't work if executed in this thread. Probably the sequencer executes its commands
@@ -623,7 +664,7 @@ AnswersManager.prototype = {
 
         answerObj.box.addEventListener("click", function() {
             if (!window.mediaPage.playing)
-                window.mediaPage.play(track);
+                window.mediaPage.playTrack(track);
         }, false);
 
         answerObj.box.setAttribute("hidden", false);
