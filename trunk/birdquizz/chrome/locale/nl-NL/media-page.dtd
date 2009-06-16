@@ -1,5 +1,5 @@
 <!ENTITY birdquizz.label "BirdQuizz">
 <!ENTITY score.label "Score:">
-<!ENTITY start.label "Start!">
-<!ENTITY choices.label "Keuzes">
-<!ENTITY answers.label	    "Answers">
+<!ENTITY choices.label "Keuzes:">
+<!ENTITY answers.label "Antwoorden">
+<!ENTITY options.label "Opties">

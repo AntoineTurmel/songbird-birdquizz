@@ -4,4 +4,8 @@
 <!ENTITY prefs.playwith.value "Jogar com :">
 <!ENTITY prefs.playtitle.label "Títulos">
 <!ENTITY prefs.playartist.label "Artistas">
+<!ENTITY prefs.playyear.label "Anos">
+<!ENTITY prefs.playalbum.label "Álbuns">
+<!ENTITY prefs.playrandom.label "Aleatório">
 <!ENTITY prefs.activatesound.label "Ativar som">
+<!ENTITY prefs.randomlist.label "Configuração jogo-aleatório">

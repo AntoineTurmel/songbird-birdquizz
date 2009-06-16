@@ -1,7 +1,11 @@
 <!ENTITY prefs.options.label "BirdQuizz - opcje">
-<!ENTITY prefs.choices.value "Możliwości :">
+<!ENTITY prefs.choices.value "Liczba możliwości :">
 <!ENTITY prefs.maxRounds.value "Maksymalna liczba rund :">
 <!ENTITY prefs.playwith.value "Zgaduj :">
 <!ENTITY prefs.playtitle.label "tytuły">
 <!ENTITY prefs.playartist.label "wykonawców">
-<!ENTITY prefs.activatesound.label "Aktywuj dźwięk">
+<!ENTITY prefs.playyear.label "lata">
+<!ENTITY prefs.playalbum.label "nazwy albumów">
+<!ENTITY prefs.playrandom.label "losowo">
+<!ENTITY prefs.activatesound.label "Odtwarzaj efekty dźwiękowe">
+<!ENTITY prefs.randomlist.label "W losowej grze, zgaduj">

@@ -4,4 +4,8 @@
 <!ENTITY prefs.playwith.value "Spela med:">
 <!ENTITY prefs.playtitle.label "Titlar">
 <!ENTITY prefs.playartist.label "Artister">
+<!ENTITY prefs.playyear.label      "Years">
+<!ENTITY prefs.playalbum.label     "Albums">
+<!ENTITY prefs.playrandom.label    "Random">
 <!ENTITY prefs.activatesound.label "Aktivera ljud">
+<!ENTITY prefs.randomlist.label    "Random-game configuration">

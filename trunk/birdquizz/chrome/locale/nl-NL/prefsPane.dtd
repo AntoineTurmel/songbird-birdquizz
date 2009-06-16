@@ -1,7 +1,11 @@
-<!ENTITY prefs.options.label "BirdQuizz Opties">
+<!ENTITY prefs.options.label "BirdQuizz opties">
 <!ENTITY prefs.choices.value "Keuzes:">
-<!ENTITY prefs.maxRounds.value "Maximale Rondes:">
-<!ENTITY prefs.playwith.value "Spelen met:">
+<!ENTITY prefs.maxRounds.value "Maximum rondes:">
+<!ENTITY prefs.playwith.value "Speel met:">
 <!ENTITY prefs.playtitle.label "Titels">
 <!ENTITY prefs.playartist.label "Artiesten">
+<!ENTITY prefs.playyear.label "Jaren">
+<!ENTITY prefs.playalbum.label "Albums">
+<!ENTITY prefs.playrandom.label "Random">
 <!ENTITY prefs.activatesound.label "Activeer geluid">
+<!ENTITY prefs.randomlist.label "Random-spel configuratie">

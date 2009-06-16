@@ -4,4 +4,8 @@
 <!ENTITY prefs.playwith.value "Birlikte oyna:">
 <!ENTITY prefs.playtitle.label "Başlıklar">
 <!ENTITY prefs.playartist.label "Artistler">
+<!ENTITY prefs.playyear.label "Yıl">
+<!ENTITY prefs.playalbum.label "Albüm">
+<!ENTITY prefs.playrandom.label "Rastgele">
 <!ENTITY prefs.activatesound.label "Aktif ses">
+<!ENTITY prefs.randomlist.label "Rastgele Oyun konfigürasyonu">

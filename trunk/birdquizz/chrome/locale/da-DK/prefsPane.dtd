@@ -4,4 +4,8 @@
 <!ENTITY prefs.playwith.value "Spil med :">
 <!ENTITY prefs.playtitle.label "Titler">
 <!ENTITY prefs.playartist.label "Kunstnere">
+<!ENTITY prefs.playyear.label      "Years">
+<!ENTITY prefs.playalbum.label     "Albums">
+<!ENTITY prefs.playrandom.label    "Random">
 <!ENTITY prefs.activatesound.label "Aktiver lyd">
+<!ENTITY prefs.randomlist.label    "Random-game configuration">
