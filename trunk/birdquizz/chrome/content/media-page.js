@@ -184,20 +184,29 @@ window.mediaPage = {
    * Called by the Find Current Track button.
    */
   highlightItem: function(aIndex) {
+    if(this.playing) 
+        return;
+    this._playlist.highlightItem(aIndex);
   },
 
   /**
    * Called when something is dragged over the tabbrowser tab for this window
    */
   canDrop: function(aEvent, aSession) {
-    return false;
+    if(this.playing) 
+        return false;
+    return this._playlist.canDrop(aEvent, aSession);
   },
 
   /**
    * Called when something is dropped on the tabbrowser tab for this window
    */
   onDrop: function(aEvent, aSession) {
-    return false;
+    if(this.playing) 
+        return false;
+    return this._playlist.
+       _dropOnTree(this._playlist.mediaListView.length,
+               Ci.sbIMediaListViewTreeViewObserver.DROP_AFTER);
   },
 
   showPrefs: function() {
@@ -210,7 +219,9 @@ window.mediaPage = {
   startQuiz: function() {
     if (this.playing)
         return;
-
+    
+    this.playing = true;
+    
     // Read configuration.
     this.readPrefs();
 
@@ -303,8 +314,6 @@ window.mediaPage = {
     this.answerBoxes.setNumAnswers(this.maxRounds);
     this.answerBoxes.reset();
     this.answerBoxes.show();
-
-    this.playing = true;
 
     this.next();
 
