@@ -9,6 +9,5 @@ pref("extensions.birdquizz.random_artist", true);
 pref("extensions.birdquizz.random_album", true);
 pref("extensions.birdquizz.random_year", false);
 
-
 // See http://kb.mozillazine.org/Localize_extension_descriptions
-// pref("extensions.{fbf32071-b7fc-402b-b6fd-86e50abe1d20}.description", "chrome://birdquizz/locale/birdquizz.properties");
+pref("extensions.BirdQuizz@songbirdnest.com.description", "chrome://birdquizz/locale/overlay.properties");
