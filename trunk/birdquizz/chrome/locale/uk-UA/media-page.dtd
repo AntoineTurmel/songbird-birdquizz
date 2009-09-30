@@ -2,5 +2,5 @@
 <!ENTITY score.label "Рахунок">
 <!ENTITY choices.label "Варіанти">
 <!ENTITY answers.label "Відповіді">
-<!ENTITY options.label      "Options">
-<!ENTITY pass.label         "Pass">
+<!ENTITY options.label "Параметри">
+<!ENTITY pass.label "Пройти">

@@ -1,6 +1,6 @@
-<!ENTITY birdquizz.label    "BirdQuizz">
-<!ENTITY score.label        "Punteggio :">
-<!ENTITY choices.label      "Scelte">
-<!ENTITY answers.label      "Risposte">
-<!ENTITY options.label      "Opzioni">
-<!ENTITY pass.label         "Passa">
+<!ENTITY birdquizz.label "BirdQuizz">
+<!ENTITY score.label "Punteggio :">
+<!ENTITY choices.label "Scelte">
+<!ENTITY answers.label "Risposte">
+<!ENTITY options.label "Opzioni">
+<!ENTITY pass.label "Passa">
