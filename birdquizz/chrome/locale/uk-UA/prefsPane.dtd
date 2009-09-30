@@ -4,8 +4,8 @@
 <!ENTITY prefs.playwith.value "Грати з:">
 <!ENTITY prefs.playtitle.label "Заголовками">
 <!ENTITY prefs.playartist.label "Артистами">
-<!ENTITY prefs.playyear.label      "Years">
-<!ENTITY prefs.playalbum.label     "Albums">
-<!ENTITY prefs.playrandom.label    "Random">
+<!ENTITY prefs.playyear.label "Роками">
+<!ENTITY prefs.playalbum.label "Альбомами">
+<!ENTITY prefs.playrandom.label "Випадковою категорією">
 <!ENTITY prefs.activatesound.label "Увімкнути звук">
-<!ENTITY prefs.randomlist.label    "Random-game configuration">
+<!ENTITY prefs.randomlist.label "Конфігурація гри з випадковою категорією">
