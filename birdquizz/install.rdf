@@ -5,17 +5,18 @@
     <em:id>BirdQuizz@songbirdnest.com</em:id>
     <em:type>2</em:type>
     <em:name>BirdQuizz</em:name>
-    <em:version>1.2.1</em:version>
+    <em:version>1.2.2</em:version>
     <em:creator>Mitch, GeekShadow</em:creator>
     <em:contributor>animarval - Catalan (ca-AD) localisation</em:contributor>
     <em:contributor>AlleyKat - Danish (da-DK) localisation</em:contributor>
-    <em:contributor>Lukas Diener - German (de-DE) localisation</em:contributor>
+    <em:contributor>Lukas Diener - German (de) localisation</em:contributor>
     <em:contributor>Loremetal - Spanish (es-ES) localisation</em:contributor>
     <em:contributor>GeekShadow - French (fr-FR) localisation</em:contributor>
+    <em:contributor>Bling - Hungarian (hu-HU) localisation</em:contributor>
     <em:contributor>ventuno and Mone - Italian (it-IT) localisation</em:contributor>
     <em:contributor>sebak - Dutch (nl) localisation</em:contributor>
     <em:contributor>Mavbaby - Dutch (nl-NL) localisation</em:contributor>
-    <em:contributor>Wacław Jacek - Polish (pl-PL) localisation</em:contributor>
+    <em:contributor>Wacław Jacek - Polish (pl) localisation</em:contributor>
     <em:contributor>Humberto Sartini - Portuguese (Brazilian) (pt-BR) localisation</em:contributor>
     <em:contributor>Касперски - Serbian (Serbia) (sr-RS) localisation</em:contributor>
     <em:contributor>Schwadegan - Swedish (sv-SE) localisation</em:contributor>
@@ -35,8 +36,8 @@
     <em:targetApplication>
       <Description>
         <em:id>songbird@songbirdnest.com</em:id>
-        <em:minVersion>1.2.0</em:minVersion>
-        <em:maxVersion>1.8.*</em:maxVersion>
+        <em:minVersion>1.9.0a</em:minVersion>
+        <em:maxVersion>1.10.0a</em:maxVersion>
       </Description>
     </em:targetApplication>
 
@@ -124,6 +125,15 @@
     
     <em:localized>
       <Description>
+        <em:locale>hu</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Zenei kvízjáték, a saját zenekollekcióddal</em:description>
+        <em:translator>Bling</em:translator>
+      </Description>
+    </em:localized>    
+    
+    <em:localized>
+      <Description>
         <em:locale>it-IT</em:locale>
         <em:name>BirdQuizz</em:name>
         <em:description>Quiz musicale, con la tua raccolta di musica.</em:description>
@@ -158,24 +168,15 @@
       </Description>
     </em:localized>
     
-    <!-- <em:localized>
-      <Description>
-        <em:locale>pl-PL</em:locale>
-        <em:name>BirdQuizz</em:name>
-        <em:description>Music quiz game, featuring your own music collection.</em:description>
-        <em:translator>Wacław Jacek</em:translator>
-      </Description>
-    </em:localized>
-    
     <em:localized>
       <Description>
         <em:locale>pl</em:locale>
         <em:name>BirdQuizz</em:name>
-        <em:description>Music quiz game, featuring your own music collection.</em:description>
+        <em:description>Muzyczny quiz, utworzony na podstawie Twojej własnej kolekcji muzycznej.</em:description>
         <em:translator>Wacław Jacek</em:translator>
       </Description>
-    </em:localized> -->
-    
+    </em:localized>
+       
     <em:localized>
       <Description>
         <em:locale>pt-BR</em:locale>
@@ -184,22 +185,13 @@
         <em:translator>Humberto Sartini</em:translator>
       </Description>
     </em:localized>
-    
-    <em:localized>
-      <Description>
-        <em:locale>sr-RS</em:locale>
-        <em:name>BirdQuizz</em:name>
-        <em:description>Музички квиз са могућношћу коришћења ваше музичке колекције</em:description>
-        <em:translator>Касперски</em:translator>
-      </Description>
-    </em:localized>
-    
+        
     <em:localized>
       <Description>
         <em:locale>sr</em:locale>
         <em:name>BirdQuizz</em:name>
         <em:description>Музички квиз са могућношћу коришћења ваше музичке колекције</em:description>
-        <em:translator>Касперски</em:translator>
+        <em:translator>ДакСРБИЈА</em:translator>
       </Description>
     </em:localized>
     
