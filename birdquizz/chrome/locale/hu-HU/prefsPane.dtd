@@ -1,0 +1,11 @@
+<!ENTITY prefs.options.label "BirdQuizz Opciók">
+<!ENTITY prefs.choices.value "Választások :">
+<!ENTITY prefs.maxRounds.value "Maximum Körök:">
+<!ENTITY prefs.playwith.value "Ezzel játszani:">
+<!ENTITY prefs.playtitle.label "Címek">
+<!ENTITY prefs.playartist.label "Előadók">
+<!ENTITY prefs.playyear.label "Évek">
+<!ENTITY prefs.playalbum.label "Albumom">
+<!ENTITY prefs.playrandom.label "Véletlenszerű">
+<!ENTITY prefs.activatesound.label "Hang bekapcsolása">
+<!ENTITY prefs.randomlist.label "Véletlen-játék beállítás">

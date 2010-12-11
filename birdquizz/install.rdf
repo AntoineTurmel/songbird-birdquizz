@@ -47,7 +47,7 @@
       <Description>
         <songbird:contentTitle>BirdQuizz</songbird:contentTitle>
         <songbird:contentUrl>chrome://birdquizz/content/media-page.xul</songbird:contentUrl>
-        <!-- <songbird:contentIcon>chrome://birdquizz/skin/button.png</songbird:contentIcon> -->        
+        <songbird:contentIcon>chrome://birdquizz/skin/button.png</songbird:contentIcon>
       </Description>
     </songbird:mediaPage>
     
