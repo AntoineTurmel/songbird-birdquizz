@@ -4,7 +4,7 @@ from zipfile import ZipFile
 from xml.dom.minidom import parse
 
 # The current working directory has to be where make.py is.
-os.chdir(os.path.split(sys.argv[0])[0])
+# os.chdir(os.path.split(sys.argv[0])[0])
 
 install = parse(os.path.join("birdquizz", "install.rdf"))
 element = install.getElementsByTagName("em:version")[0]
