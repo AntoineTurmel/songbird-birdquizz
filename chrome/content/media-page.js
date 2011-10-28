@@ -11,7 +11,7 @@ if (!gIOS) {
     var gIOS = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);
 }
 
-var gMM = Cc["@songbirdnest.com/Songbird/Mediacore/Manager;1"].getService(Ci.sbIMediacoreManager);
+var gMM = Cc["@getnightingale.com/Nightingale/Mediacore/Manager;1"].getService(Ci.sbIMediacoreManager);
 
 // Make sure we have the JavaScript modules we're going to use.
 if (!window.SBProperties) {
@@ -48,7 +48,7 @@ window.mediaPage = {
 
   /**
    * Set the sbIMediaListView that this page is to display.
-   * Called in the capturing phase of window load by the Songbird browser.
+   * Called in the capturing phase of window load by the Nightingale browser.
    * Note that to simplify page creation mediaListView may only be set once.
    */
   set mediaListView(value) {
@@ -109,13 +109,13 @@ window.mediaPage = {
         //Get the "player"'s ref to hide it when needed
         var mainWin = Cc["@mozilla.org/appshell/window-mediator;1"]
                  .getService(Ci.nsIWindowMediator)
-                 .getMostRecentWindow("Songbird:Main")
+                 .getMostRecentWindow("Nightingale:Main")
                  .window;
         this.controlButtonsBox = mainWin.document.getElementById("control_pane");
         
         //Get the playlist's ref to hide it when needed
         this._playlist = document.getElementById("playlist");
-        var cmds = Cc["@songbirdnest.com/Songbird/PlaylistCommandsManager;1"]
+        var cmds = Cc["@getnightingale.com/Nightingale/PlaylistCommandsManager;1"]
                  .createInstance(Components.interfaces.sbIPlaylistCommandsManager)
                  .request(kPlaylistCommands.MEDIAITEM_DEFAULT);
              
@@ -212,7 +212,7 @@ window.mediaPage = {
   showPrefs: function() {
      var windowMediator = Cc["@mozilla.org/appshell/window-mediator;1"]
                                .getService(Ci.nsIWindowMediator);
-     var window = windowMediator.getMostRecentWindow("Songbird:Main");
+     var window = windowMediator.getMostRecentWindow("Nightingale:Main");
      window.SBOpenPreferences("paneBQ");
   },
 
@@ -345,7 +345,7 @@ window.mediaPage = {
         // there are no tracks in the library, in which case we can't arrive
         // here as we exit on the startQuiz method.
 
-        // is there the ASSERT statement in Songbird's JavaScript?
+        // is there the ASSERT statement in Nightingale's JavaScript?
         // ASSERT(false);
         this.cannotPlay();
         return;

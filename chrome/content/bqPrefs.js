@@ -4,7 +4,7 @@ var birdquizzPrefsPane = {
     openPreferences: function() {
         var windowMediator = Cc["@mozilla.org/appshell/window-mediator;1"]
                                .getService(Ci.nsIWindowMediator);
-        var window = windowMediator.getMostRecentWindow("Songbird:Main");
+        var window = windowMediator.getMostRecentWindow("Nightingale:Main");
         window.SBOpenPreferences("paneBQ");
     },
 

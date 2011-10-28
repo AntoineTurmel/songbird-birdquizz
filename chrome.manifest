@@ -18,5 +18,5 @@ locale  birdquizz  uk-UA  chrome/locale/uk-UA/
 #locale  birdquizz  zh-TW  chrome/locale/zh-TW/
 skin    birdquizz  classic/1.0 chrome/skin/
 
-overlay chrome://songbird/content/xul/layoutWithBrowserOverlay.xul chrome://birdquizz/content/scripts-overlay.xul
+overlay chrome://nightingale/content/xul/layoutWithBrowserOverlay.xul chrome://birdquizz/content/scripts-overlay.xul
 overlay chrome://browser/content/preferences/preferences.xul chrome://birdquizz/content/prefsOverlay.xul

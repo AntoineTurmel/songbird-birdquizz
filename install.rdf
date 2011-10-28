@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#"
-     xmlns:songbird="http://www.songbirdnest.com/2007/addon-metadata-rdf#">
+     xmlns:nightingale="http://www.getnightingale.com/2007/addon-metadata-rdf#">
   <Description about="urn:mozilla:install-manifest">
     <em:id>BirdQuizz@songbirdnest.com</em:id>
     <em:type>2</em:type>
-    <em:name>BirdQuizz</em:name>
+    <em:name>Music Quiz</em:name>
     <em:version>1.2.3</em:version>
     <em:creator>Mitch, GeekShadow</em:creator>
     <em:contributor>animarval - Catalan (ca-AD) localisation</em:contributor>
@@ -32,10 +32,10 @@
     <em:homepageURL>http://code.google.com/p/songbird-birdquizz/</em:homepageURL>
     <em:optionsURL>chrome://birdquizz/content/optionsWindow.xul</em:optionsURL>
 
-    <!-- Songbird -->
+    <!-- Nightingale -->
     <em:targetApplication>
       <Description>
-        <em:id>songbird@songbirdnest.com</em:id>
+        <em:id>nightingale@getnightingale.com</em:id>
         <em:minVersion>1.9.0a</em:minVersion>
         <em:maxVersion>2.0.0</em:maxVersion>
       </Description>
@@ -43,13 +43,13 @@
 
     <!-- Register a custom media page.
          See http://wiki.songbirdnest.com/Developer/Articles/Getting_Started/Building_Media_Views -->
-    <songbird:mediaPage>
+    <nightingale:mediaPage>
       <Description>
-        <songbird:contentTitle>BirdQuizz</songbird:contentTitle>
-        <songbird:contentUrl>chrome://birdquizz/content/media-page.xul</songbird:contentUrl>
-        <songbird:contentIcon>chrome://birdquizz/skin/button.png</songbird:contentIcon>
+        <nightingale:contentTitle>BirdQuizz</nightingale:contentTitle>
+        <nightingale:contentUrl>chrome://birdquizz/content/media-page.xul</nightingale:contentUrl>
+        <nightingale:contentIcon>chrome://birdquizz/skin/button.png</nightingale:contentIcon>
       </Description>
-    </songbird:mediaPage>
+    </nightingale:mediaPage>
     
     <em:localized>
       <Description>
