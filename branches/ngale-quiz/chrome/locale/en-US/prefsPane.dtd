@@ -1,0 +1,11 @@
+<!ENTITY prefs.options.label       "BirdQuizz Options">
+<!ENTITY prefs.choices.value       "Choices :">
+<!ENTITY prefs.maxRounds.value     "Maximum Rounds :">
+<!ENTITY prefs.playwith.value      "Play with :">
+<!ENTITY prefs.playtitle.label     "Titles">
+<!ENTITY prefs.playartist.label    "Artists">
+<!ENTITY prefs.playyear.label      "Years">
+<!ENTITY prefs.playalbum.label     "Albums">
+<!ENTITY prefs.playrandom.label    "Random">
+<!ENTITY prefs.activatesound.label "Activate sound">
+<!ENTITY prefs.randomlist.label    "Random-game configuration">

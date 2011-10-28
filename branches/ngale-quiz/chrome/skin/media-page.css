@@ -1,0 +1,27 @@
+#title {
+  font-size: 200%;
+}
+#score,#score-label {
+  text-align: center;
+  width: 50px;
+}
+#startStop {
+  width: 50px;
+}
+label.artistName, #choices-type {
+  font-weight: bold;
+}
+label.trackName {
+    font-style:italic; 
+}
+label.response {
+  text-decoration:underline;
+}
+image.answerImg {
+  max-height: 16px;
+  max-width: 16px;
+}
+.answerhBox:hover {
+    background-color: #352e4f;
+}
+

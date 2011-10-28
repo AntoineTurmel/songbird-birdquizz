@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+     xmlns:nightingale="http://www.getnightingale.com/2007/addon-metadata-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>BirdQuizz@songbirdnest.com</em:id>
+    <em:type>2</em:type>
+    <em:name>Music Quiz</em:name>
+    <em:version>1.2.3</em:version>
+    <em:creator>Mitch, GeekShadow</em:creator>
+    <em:contributor>animarval - Catalan (ca-AD) localisation</em:contributor>
+    <em:contributor>AlleyKat - Danish (da-DK) localisation</em:contributor>
+    <em:contributor>Lukas Diener - German (de) localisation</em:contributor>
+    <em:contributor>Loremetal - Spanish (es-ES) localisation</em:contributor>
+    <em:contributor>GeekShadow - French (fr-FR) localisation</em:contributor>
+    <em:contributor>Bling - Hungarian (hu-HU) localisation</em:contributor>
+    <em:contributor>ventuno and Mone - Italian (it-IT) localisation</em:contributor>
+    <em:contributor>sebak - Dutch (nl) localisation</em:contributor>
+    <em:contributor>Mavbaby - Dutch (nl-NL) localisation</em:contributor>
+    <em:contributor>Wacław Jacek - Polish (pl) localisation</em:contributor>
+    <em:contributor>Humberto Sartini - Portuguese (Brazilian) (pt-BR) localisation</em:contributor>
+    <em:contributor>Касперски - Serbian (Serbia) (sr-RS) localisation</em:contributor>
+    <em:contributor>Schwadegan - Swedish (sv-SE) localisation</em:contributor>
+    <em:contributor>mrtcvk - Turkish (tr-TR) localisation</em:contributor>
+    <em:contributor>Володимир Савчук - Ukrainian (uk-UA) localisation</em:contributor>
+    <em:contributor>Jose Sun - Chinese (zh-TW) localisation</em:contributor>
+    <em:contributor>Stephen Lau</em:contributor>
+    <em:contributor>Thain</em:contributor>
+    <em:contributor>Mone</em:contributor>
+    <em:contributor>flashkit.com - various sounds</em:contributor>
+    <em:description>Music quiz game, featuring your own music collection.</em:description>
+    <em:iconURL>chrome://birdquizz/skin/icon.png</em:iconURL>
+    <em:homepageURL>http://code.google.com/p/songbird-birdquizz/</em:homepageURL>
+    <em:optionsURL>chrome://birdquizz/content/optionsWindow.xul</em:optionsURL>
+
+    <!-- Nightingale -->
+    <em:targetApplication>
+      <Description>
+        <em:id>nightingale@getnightingale.com</em:id>
+        <em:minVersion>1.9.0a</em:minVersion>
+        <em:maxVersion>2.0.0</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <!-- Register a custom media page.
+         See http://wiki.songbirdnest.com/Developer/Articles/Getting_Started/Building_Media_Views -->
+    <nightingale:mediaPage>
+      <Description>
+        <nightingale:contentTitle>BirdQuizz</nightingale:contentTitle>
+        <nightingale:contentUrl>chrome://birdquizz/content/media-page.xul</nightingale:contentUrl>
+        <nightingale:contentIcon>chrome://birdquizz/skin/button.png</nightingale:contentIcon>
+      </Description>
+    </nightingale:mediaPage>
+    
+    <em:localized>
+      <Description>
+        <em:locale>ca-AD</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Joc de preguntes musicals, utilitzant la teva col·lecció de música.</em:description>
+        <em:translator>animarval</em:translator>
+      </Description>
+    </em:localized>
+    
+    <em:localized>
+      <Description>
+        <em:locale>ca</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Joc de preguntes musicals, utilitzant la teva col·lecció de música.</em:description>
+        <em:translator>animarval</em:translator>
+      </Description>
+    </em:localized>
+    
+    <!-- <em:localized>
+      <Description>
+        <em:locale>da-DK</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Music quiz game, featuring your own music collection.</em:description>
+        <em:translator>AlleyKat</em:translator>
+      </Description>
+    </em:localized>
+    
+    <em:localized>
+      <Description>
+        <em:locale>da</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Music quiz game, featuring your own music collection.</em:description>
+        <em:translator>AlleyKat</em:translator>
+      </Description>
+    </em:localized> -->
+    
+    <em:localized>
+      <Description>
+        <em:locale>de-DE</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Musikquiz aus Ihrer eigenen Musiksammlung.</em:description>
+        <em:translator>Lukas Diener</em:translator>
+      </Description>
+    </em:localized>
+    
+    <em:localized>
+      <Description>
+        <em:locale>de</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Musikquiz aus Ihrer eigenen Musiksammlung.</em:description>
+        <em:translator>Lukas Diener</em:translator>
+      </Description>
+    </em:localized>
+    
+    <!-- <em:localized>
+      <Description>
+        <em:locale>es-ES</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Music quiz game, featuring your own music collection.</em:description>
+        <em:translator>Loremetal</em:translator>
+      </Description>
+    </em:localized> --> 
+
+    <em:localized>
+      <Description>
+        <em:locale>fr</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Quiz Musical, avec votre propre bibliothèque musicale.</em:description>
+        <em:translator>Antoine Turmel (GeekShadow)</em:translator>
+      </Description>
+    </em:localized>
+    
+    <em:localized>
+      <Description>
+        <em:locale>hu</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Zenei kvízjáték, a saját zenekollekcióddal</em:description>
+        <em:translator>Bling</em:translator>
+      </Description>
+    </em:localized>    
+    
+    <em:localized>
+      <Description>
+        <em:locale>it-IT</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Quiz musicale, con la tua raccolta di musica.</em:description>
+        <em:translator>ventuno and Mone</em:translator>
+      </Description>
+    </em:localized>
+    
+    <em:localized>
+      <Description>
+        <em:locale>it</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Quiz musicale, con la tua raccolta di musica.</em:description>
+        <em:translator>ventuno and Mone</em:translator>
+      </Description>
+    </em:localized>
+    
+    <em:localized>
+      <Description>
+        <em:locale>nl-NL</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Speel een muziek quiz met je eigen muziek collectie.</em:description>
+        <em:translator>sebak</em:translator>
+      </Description>
+    </em:localized>
+    
+    <em:localized>
+      <Description>
+        <em:locale>nl</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Speel een muziek quiz met je eigen muziek collectie.</em:description>
+        <em:translator>sebak</em:translator>
+      </Description>
+    </em:localized>
+    
+    <em:localized>
+      <Description>
+        <em:locale>pl</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Muzyczny quiz, utworzony na podstawie Twojej własnej kolekcji muzycznej.</em:description>
+        <em:translator>Wacław Jacek</em:translator>
+      </Description>
+    </em:localized>
+       
+    <em:localized>
+      <Description>
+        <em:locale>pt-BR</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Jogo de perguntas sobre música, apresentando sua coleção de músicas próprias.</em:description>
+        <em:translator>Humberto Sartini</em:translator>
+      </Description>
+    </em:localized>
+        
+    <em:localized>
+      <Description>
+        <em:locale>sr</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Музички квиз са могућношћу коришћења ваше музичке колекције</em:description>
+        <em:translator>ДакСРБИЈА</em:translator>
+      </Description>
+    </em:localized>
+    
+    <em:localized>
+      <Description>
+        <em:locale>sv-SE</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Frågesport med din egen musiksamling.</em:description>
+        <em:translator>Schwadegan</em:translator>
+      </Description>
+    </em:localized>
+    
+    <em:localized>
+      <Description>
+        <em:locale>tr-TR</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Kendi müzik koleksiyonu ile kendinizi sınayın.</em:description>
+        <em:translator>mrtcvk</em:translator>
+      </Description>
+    </em:localized>
+    
+    <em:localized>
+      <Description>
+        <em:locale>tr</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Kendi müzik koleksiyonu ile kendinizi sınayın.</em:description>
+        <em:translator>mrtcvk</em:translator>
+      </Description>
+    </em:localized>
+    
+    <em:localized>
+      <Description>
+        <em:locale>uk-UA</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Прийміть участь у музичній вікторині та вгадуйте пісні з вашої власної музичної колекції.</em:description>
+        <em:translator>Володимир Савчук</em:translator>
+      </Description>
+    </em:localized>
+    
+    <em:localized>
+      <Description>
+        <em:locale>uk</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Прийміть участь у музичній вікторині та вгадуйте пісні з вашої власної музичної колекції.</em:description>
+        <em:translator>Володимир Савчук</em:translator>
+      </Description>
+    </em:localized>
+    
+    <!-- <em:localized>
+      <Description>
+        <em:locale>zh-TW</em:locale>
+        <em:name>BirdQuizz</em:name>
+        <em:description>Music quiz game, featuring your own music collection.</em:description>
+        <em:translator>Jose Sun</em:translator>
+      </Description>
+    </em:localized> -->
+        
+  </Description>
+</RDF>

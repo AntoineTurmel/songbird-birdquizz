@@ -1,0 +1,6 @@
+<!ENTITY birdquizz.label    "BirdQuizz">
+<!ENTITY score.label        "Score :">
+<!ENTITY choices.label      "Choix">
+<!ENTITY answers.label	    "Réponses">
+<!ENTITY options.label      "Options">
+<!ENTITY pass.label         "Passer">

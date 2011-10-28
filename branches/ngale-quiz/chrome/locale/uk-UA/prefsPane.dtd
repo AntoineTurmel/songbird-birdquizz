@@ -1,0 +1,11 @@
+<!ENTITY prefs.options.label "Параметри BirdQuizz">
+<!ENTITY prefs.choices.value "Варіанти:">
+<!ENTITY prefs.maxRounds.value "Раундів (максимально):">
+<!ENTITY prefs.playwith.value "Грати з:">
+<!ENTITY prefs.playtitle.label "Заголовками">
+<!ENTITY prefs.playartist.label "Артистами">
+<!ENTITY prefs.playyear.label "Роками">
+<!ENTITY prefs.playalbum.label "Альбомами">
+<!ENTITY prefs.playrandom.label "Випадковою категорією">
+<!ENTITY prefs.activatesound.label "Увімкнути звук">
+<!ENTITY prefs.randomlist.label "Конфігурація гри з випадковою категорією">

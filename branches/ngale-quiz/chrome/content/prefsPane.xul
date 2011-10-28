@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE overlay SYSTEM "chrome://birdquizz/locale/prefsPane.dtd">
+<overlay id="birdquizz-prefs-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/x-javascript"
+          src="chrome://birdquizz/content/bqPrefs.js"/>
+  <prefpane id="paneBQ" onpaneload="birdquizzPrefsPane.handleLoad();">
+    <preferences>
+      <preference id="choices" name="extensions.birdquizz.choices"
+                  type="string"/>
+      <preference id="maxRounds" name="extensions.birdquizz.maxRounds"
+                  type="string"/>
+      <preference id="playwith" name="extensions.birdquizz.playwith"
+                  type="string"/>
+      <preference id="sound" name="extensions.birdquizz.sound"
+                  type="bool"/>
+     
+      <preference id="random_title" name="extensions.birdquizz.random_title"
+                  type="bool"/>
+      <preference id="random_artist" name="extensions.birdquizz.random_artist"
+                  type="bool"/>
+      <preference id="random_album" name="extensions.birdquizz.random_album"
+                  type="bool"/>
+      <preference id="random_year" name="extensions.birdquizz.random_year"
+                  type="bool"/>
+    </preferences>
+    <groupbox>
+      <caption label="&prefs.options.label;"/>
+      <vbox flex="0" align="center">
+        <hbox flex="1">
+          <label value="&prefs.choices.value;" style="width:8em"/>
+          <textbox preference="choices" size="4"/>
+        </hbox>
+        <hbox flex="1">
+          <label value="&prefs.maxRounds.value;" style="width:8em"/>
+          <textbox preference="maxRounds" size="4"/>
+        </hbox>
+        <hbox flex="1">
+              <label value="&prefs.activatesound.label;" style="width:8em" />
+             <checkbox preference="sound" />
+        </hbox>        
+        <label value="&prefs.playwith.value;" style="width:8em"/>
+        <radiogroup preference="playwith">
+          <radio value="title"  id="playtitle" label="&prefs.playtitle.label;" accesskey="T"/>
+          <radio value="artist" id="playartist" label="&prefs.playartist.label;" accesskey="A"/>
+          <radio value="album"  id="playalbum" label="&prefs.playalbum.label;" accesskey="L"/>
+          <radio value="year"  id="playyear" label="&prefs.playyear.label;" accesskey="Y"/>
+          <radio value="random"  id="playrandom" label="&prefs.playrandom.label;" accesskey="R"/>
+        </radiogroup>
+       
+        <vbox flex="1">
+              <label value="&prefs.randomlist.label;" />
+              
+              <groupbox>
+              <hbox flex="1">
+                <checkbox preference="random_title" />
+                <label value="&prefs.playtitle.label;" />
+              </hbox>
+              <hbox flex="1">
+                <checkbox preference="random_artist" />
+                <label value="&prefs.playartist.label;" />
+              </hbox>
+              <hbox flex="1">
+                <checkbox preference="random_album" />
+                <label value="&prefs.playalbum.label;" />
+              </hbox>
+              <hbox flex="1">
+                <checkbox preference="random_year" />
+                <label value="&prefs.playyear.label;" />
+              </hbox>
+              </groupbox>
+        </vbox>
+        
+	
+      </vbox>
+    </groupbox>
+  </prefpane>
+</overlay>

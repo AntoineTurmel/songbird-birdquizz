@@ -1,0 +1,22 @@
+content birdquizz  chrome/content/
+locale  birdquizz  en-US  chrome/locale/en-US/
+locale  birdquizz  ca-AD  chrome/locale/ca-AD/
+#locale  birdquizz  da-DK  chrome/locale/da-DK/
+locale  birdquizz  de  chrome/locale/de/
+#locale  birdquizz  es-ES  chrome/locale/es-ES/
+locale  birdquizz  fr     chrome/locale/fr/
+locale  birdquizz  hu-HU chrome/locale/hu-HU
+locale  birdquizz  it-IT  chrome/locale/it-IT/
+locale  birdquizz  nl  chrome/locale/nl/
+#locale  birdquizz  nl-NL  chrome/locale/nl-NL/
+locale  birdquizz  pl  chrome/locale/pl/
+locale  birdquizz  pt-BR  chrome/locale/pt-BR/
+locale  birdquizz  sr  chrome/locale/sr/
+locale  birdquizz  sv-SE  chrome/locale/sv-SE/
+locale  birdquizz  tr-TR  chrome/locale/tr-TR/
+locale  birdquizz  uk-UA  chrome/locale/uk-UA/
+#locale  birdquizz  zh-TW  chrome/locale/zh-TW/
+skin    birdquizz  classic/1.0 chrome/skin/
+
+overlay chrome://nightingale/content/xul/layoutWithBrowserOverlay.xul chrome://birdquizz/content/scripts-overlay.xul
+overlay chrome://browser/content/preferences/preferences.xul chrome://birdquizz/content/prefsOverlay.xul
