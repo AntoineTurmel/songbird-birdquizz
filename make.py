@@ -9,11 +9,10 @@ from xml.dom.minidom import parse
 install = parse(os.path.join("birdquizz", "install.rdf"))
 element = install.getElementsByTagName("em:version")[0]
 version = element.firstChild.data
-xpiName = "birdquizz-" + version + ".xpi"
+xpiName = "music-quiz-" + version + ".xpi"
 xpi = ZipFile(xpiName, "w")
 os.chdir("birdquizz")
 for root, dirs, files in os.walk("."):
-    dirs.remove(".svn")
     for name in files:
         path = os.path.join(root, name)
         xpi.write(path, path, 8)
