@@ -4,8 +4,8 @@
   <Description about="urn:mozilla:install-manifest">
     <em:id>BirdQuizz@songbirdnest.com</em:id>
     <em:type>2</em:type>
-    <em:name>BirdQuizz</em:name>
-    <em:version>1.2.3</em:version>
+    <em:name>Music Quiz</em:name>
+    <em:version>1.2.4</em:version>
     <em:creator>Mitch, GeekShadow</em:creator>
     <em:contributor>animarval - Catalan (ca-AD) localisation</em:contributor>
     <em:contributor>AlleyKat - Danish (da-DK) localisation</em:contributor>
@@ -38,6 +38,15 @@
         <em:id>songbird@songbirdnest.com</em:id>
         <em:minVersion>1.9.0a</em:minVersion>
         <em:maxVersion>2.0.0</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <!-- Nightingale -->
+    <em:targetApplication>
+      <Description>
+        <em:id>nightingale@getnightingale.com</em:id>
+        <em:minVersion>1.11.0a</em:minVersion>
+        <em:maxVersion>1.12.0a</em:maxVersion>
       </Description>
     </em:targetApplication>
 
